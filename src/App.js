@@ -1,28 +1,60 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './components/pages/Home';
-import Services from './components/pages/Services';
-import Products from './components/pages/Products';
-import SignUp from './components/pages/SignUp';
-import Connexion from './components/pages/Connexion';  
+import Login from "./components/login";
+import Inscription from "./components/inscription";
+import Navbar from "./components/Navbar";
+import "./App.css";
+import React, { Component } from "react";
+import axios from "axios";
+import Home from "./components/pages/Home";
+import Services from "./components/pages/Services";
+import Products from "./components/pages/Products";
 
-function App() {
-  return (
-    <>
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+export default class App extends Component {
+  state = {};
+  handleAddUser = (utilisateur) => {
+    const url = "/addUser";
+    const data = utilisateur;
+    axios
+      .post(url, data)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+  handleConnection = (data) => {
+    const url = "/connection";
+    axios
+      .post(url, data)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+
+  render() {
+    return (
       <Router>
-        <Navbar/>
+        <Navbar />
         <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/services' component={Services} />
-          <Route path='/products' component={Products} />
-          <Route path='/sign-up' component={SignUp} />
-          <Route path='/connexion' component={Connexion} />
+          <Route path="/" exact component={Home} />
+          <Route path="/services" component={Services} />
+          <Route path="/products" component={Products} />
+          <Route path="/login">
+            <Login
+              onInscription={this.handleGoToInscriptionPage}
+              onConnection={this.handleConnection}
+            />
+          </Route>
+          <Route path="/sign-up">
+            <Inscription onInscription={this.handleAddUser} />
+          </Route>
         </Switch>
       </Router>
-    </>
-  );
+    );
+  }
 }
-
-export default App;
