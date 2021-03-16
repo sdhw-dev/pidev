@@ -16,6 +16,24 @@ const exists = (utilisateur) => {
   );
 };
 
+const checkMail = (mail) => {
+  return userModel.findOne(
+    {
+      contact: { mail: mail.mail },
+    },
+    (user, err) => {
+      if (err) {
+        console.log(err);
+      }
+      if (user) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  );
+};
+
 const addUser = (utilisateur) => {
   const newUser = new userModel({
     nom: utilisateur.nom,
@@ -37,4 +55,4 @@ const addUser = (utilisateur) => {
 
 exports.exists = exists;
 exports.addUser = addUser;
-
+exports.checkMail = checkMail;

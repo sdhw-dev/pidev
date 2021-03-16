@@ -12,29 +12,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default class App extends Component {
   state = {};
-  handleAddUser = (utilisateur) => {
-    const url = "/addUser";
-    const data = utilisateur;
-    axios
-      .post(url, data)
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
-  };
-  handleConnection = (data) => {
-    const url = "/connection";
-    axios
-      .post(url, data)
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
-  };
 
   render() {
     return (
@@ -45,13 +22,10 @@ export default class App extends Component {
           <Route path="/services" component={Services} />
           <Route path="/products" component={Products} />
           <Route path="/login">
-            <Login
-              onInscription={this.handleGoToInscriptionPage}
-              onConnection={this.handleConnection}
-            />
+            <Login />
           </Route>
           <Route path="/sign-up">
-            <Inscription onInscription={this.handleAddUser} />
+            <Inscription />
           </Route>
         </Switch>
       </Router>

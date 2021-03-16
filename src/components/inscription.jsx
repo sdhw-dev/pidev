@@ -2,8 +2,37 @@ import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
 import Box from "@material-ui/core/Box";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import axios from "axios";
 
 import { BrowserRouter as Router, Link } from "react-router-dom";
+
+const CheckMail = (data) => {
+  var res;
+  const url = "/checkMail";
+  res = axios
+    .post(url, { mail: data })
+    .then((response) => {
+      return JSON.parse(JSON.stringify(response.data));
+    })
+
+    .catch((error) => {
+      console.log(error.response);
+    });
+  return res;
+};
+
+const handleAddUser = (utilisateur) => {
+  const url = "/addUser";
+  const data = utilisateur;
+  axios
+    .post(url, data)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch((error) => {
+      console.log(error.response);
+    });
+};
 
 class Inscription extends Component {
   state = {
@@ -22,7 +51,38 @@ class Inscription extends Component {
     },
     pass2: "",
     error: false, // erreur mot de passes differents
-    error2: false, //erreur adresse mail deja associé a un compte
+    erreurMailExitant: false,
+    erreurChampsVide: false, // Si un des champs est laissé vide avant clique sur inscription
+  };
+
+  handleCliqueInscription = () => {
+    if (
+      //Si l'un des champs est vide
+      this.state.infosInscription.nom == "" ||
+      this.state.infosInscription.prenom == "" ||
+      this.state.infosInscription.pass == "" ||
+      this.state.infosInscription.contact.mail == "" ||
+      this.state.infosInscription.adresse.idVille == 0 ||
+      this.state.infosInscription.adresse.adresse == ""
+    ) {
+      this.setState({ erreurChampsVide: true });
+      return;
+    } else {
+      this.setState({ erreurChampsVide: false });
+      //si tout les champs son remplies
+      if (this.state.pass2 === this.state.infosInscription.pass) {
+        let res = CheckMail(this.state.infosInscription.contact.mail);
+        res.then((a) => {
+          if (!a) {
+            handleAddUser(this.state.infosInscription);
+          } else {
+            this.setState({ erreurMailExitant: true });
+          }
+        });
+      } else {
+        this.setState({ error: true });
+      }
+    }
   };
 
   render() {
@@ -46,7 +106,9 @@ class Inscription extends Component {
           <TextField
             id="nom"
             label="Nom"
+            required
             margin="normal"
+            error={this.state.erreurChampsVide}
             style={{ margin: 8 }}
             variant="outlined"
             onChange={(event) => {
@@ -56,7 +118,9 @@ class Inscription extends Component {
           <TextField
             id="prenom"
             label="Prenom"
+            required
             margin="normal"
+            error={this.state.erreurChampsVide}
             variant="outlined"
             style={{ margin: 8 }}
             onChange={(event) => {
@@ -67,9 +131,11 @@ class Inscription extends Component {
           <TextField
             id="pass1"
             label="Mot de passe"
+            required
             style={{ margin: 8 }}
             margin="normal"
             variant="outlined"
+            error={this.state.erreurChampsVide}
             type="password"
             onChange={(event) => {
               this.setState({ error: false });
@@ -81,8 +147,9 @@ class Inscription extends Component {
             label="Confirmation mot de passe"
             style={{ margin: 8 }}
             margin="normal"
+            required
             variant="outlined"
-            error={this.state.error}
+            error={this.state.error || this.state.erreurChampsVide}
             helperText={this.state.error ? "mot de passes differents" : ""}
             type="password"
             onChange={(event) => {
@@ -96,9 +163,15 @@ class Inscription extends Component {
             label="adresse mail"
             style={{ margin: 8 }}
             margin="normal"
+            required
             variant="outlined"
+            error={this.state.erreurMailExitant || this.state.erreurChampsVide}
+            helperText={
+              this.state.erreurMailExitant ? "cette adresse existe deja " : ""
+            }
             onChange={(event) => {
               this.state.infosInscription.contact.mail = event.target.value;
+              this.setState({ erreurMailExitant: false });
             }}
           />
           <TextField
@@ -109,16 +182,6 @@ class Inscription extends Component {
             variant="outlined"
             onChange={(event) => {
               this.state.infosInscription.contact.tel = event.target.value;
-            }}
-          />
-          <TextField
-            id="adresse"
-            label="Adresse"
-            style={{ margin: 8 }}
-            margin="normal"
-            variant="outlined"
-            onChange={(event) => {
-              this.state.infosInscription.adresse.adresse = event.target.value;
             }}
           />
           <Autocomplete
@@ -133,18 +196,29 @@ class Inscription extends Component {
               this.state.infosInscription.adresse.idVille = value.id;
             }}
           />
+          <TextField
+            id="adresse"
+            label="Adresse"
+            style={{ margin: 8 }}
+            margin="normal"
+            required
+            variant="outlined"
+            error={this.state.erreurChampsVide}
+            helperText={
+              this.state.erreurChampsVide
+                ? "Remplissez tout les champs avec * et choisissez votre ville"
+                : ""
+            }
+            onChange={(event) => {
+              this.state.infosInscription.adresse.adresse = event.target.value;
+            }}
+          />
+
           <button
             className="btn"
             key="inscription"
             style={{ backgroundColor: "#008000" }}
-            onClick={() => {
-              if (this.state.pass2 === this.state.infosInscription.pass) {
-                console.log(this.state.pass2);
-                this.props.onInscription(this.state.infosInscription);
-              } else {
-                this.setState({ error: true });
-              }
-            }}
+            onClick={this.handleCliqueInscription}
           >
             S'inscrire
           </button>

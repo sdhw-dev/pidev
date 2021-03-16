@@ -19,8 +19,16 @@ app.all("/connection", (req, res) => {
 
 app.all("/addUser", (req, res) => {
   let newUser = req.body;
-  users.addUser(newUser).then((user) => res.json(user));
+  users.addUser(newUser);
 });
 const PORT = process.env.PORT || 6700;
+
+app.all("/checkMail", (req, res) => {
+  let mail = req.body;
+  console.log(mail);
+  users.checkMail(mail).then((result) => {
+    res.json(result);
+  });
+});
 
 app.listen(PORT, () => console.log("server started"));
