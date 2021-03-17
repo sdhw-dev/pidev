@@ -1,4 +1,4 @@
-import Login from "./components/login";
+import Login from "./components/pages/login";
 import Inscription from "./components/inscription";
 import Navbar from "./components/Navbar";
 import "./App.css";
