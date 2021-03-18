@@ -5,7 +5,7 @@ const exists = (utilisateur) => {
   return userModel.findOne(
     {
       pass: utilisateur.pass,
-      contact: { mail: utilisateur.mail },
+      "contact.mail": utilisateur.mail,
     },
     (user, err) => {
       if (err) {
@@ -19,7 +19,7 @@ const exists = (utilisateur) => {
 const checkMail = (mail) => {
   return userModel.findOne(
     {
-      contact: { mail: mail.mail },
+      "contact.mail": mail.mail,
     },
     (user, err) => {
       if (err) {
