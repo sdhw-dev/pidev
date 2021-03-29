@@ -4,6 +4,7 @@ import Box from "@material-ui/core/Box";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 
+
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const CheckMail = (data) => {
@@ -84,10 +85,11 @@ class Inscription extends Component {
       }
     }
   };
+  
 
   render() {
     return (
-      <Box style={{ overflow: "auto" }}>
+      <Box style={{ overflow: "auto" }} >
         <Box
           border={1}
           display="flex"

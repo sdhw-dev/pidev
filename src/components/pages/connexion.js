@@ -19,7 +19,7 @@ const handleConnection = (data) => {
   return res;
 };
 
-class Login extends Component {
+class Connexion extends Component {
   state = {
     infoAuthentification: {
       mail: "",
@@ -114,4 +114,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Connexion;
