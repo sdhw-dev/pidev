@@ -2,7 +2,7 @@ import TextField from "@material-ui/core/TextField";
 import { Route } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
-const Login = (props) => {
+const Connexion = (props) => {
   var infoAuthentification = {
     mail: "",
     pass: "",
@@ -79,4 +79,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Connexion;

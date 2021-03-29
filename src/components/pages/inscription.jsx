@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import Box from "@material-ui/core/Box";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
+
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class Inscription extends Component {
@@ -24,10 +25,11 @@ class Inscription extends Component {
     error: false, // erreur mot de passes differents
     error2: false, //erreur adresse mail deja associé a un compte
   };
+  
 
   render() {
     return (
-      <Box style={{ overflow: "auto" }}>
+      <Box style={{ overflow: "auto" }} >
         <Box
           border={1}
           display="flex"
