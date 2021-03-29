@@ -6,6 +6,7 @@ import axios from "axios";
 import Home from "./components/pages/Home";
 import Services from "./components/pages/Services";
 import Products from "./components/pages/Products";
+import EspaceP from "./components/pages/EspaceP"; 
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
