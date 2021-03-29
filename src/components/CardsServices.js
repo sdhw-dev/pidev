@@ -9,8 +9,7 @@ function CardsServices() {
     <>
     <SidebarData/>
     <div className='cards'>
-      Accueil/Services
-     
+      Accueil/Service
     </div>
     </>
   );
