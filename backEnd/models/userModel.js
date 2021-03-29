@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema(
       idVille: String,
       adresse: String,
     },
+    image: String,
   },
   { collection: "users" },
   { timestamps: true }
