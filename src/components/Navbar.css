@@ -45,10 +45,7 @@
     margin-right: 2rem;
   }
   
-  .nav-item {
-    height: 80px;
-  }
-  
+ 
   .nav-links {
     color: #fff;
     display: flex;
@@ -79,6 +76,11 @@
     .NavbarItems {
       position: relative;
     }
+    .nav-item {
+      height: 80px;
+     
+    }
+
   
     .nav-menu {
       display: flex;
@@ -86,19 +88,16 @@
       width: 100%;
       height: 90vh;
       position: absolute;
-      top: 80px;
+      top: 50px;
       left: -100%;
       opacity: 1;
       transition: all 0.5s ease;
+      
+      
     }
+ 
   
-    .nav-menu.active {
-      background: #242222;
-      left: 0;
-      opacity: 1;
-      transition: all 0.5s ease;
-      z-index: 1;
-    }
+    
   
     .nav-links {
       text-align: center;
@@ -150,9 +149,11 @@
       transition: all 0.3s ease-out;
     }
   
+  
     .nav-links-mobile:hover {
       background: #fff;
       color: #242424;
       transition: 250ms;
     }
+  
   }
