@@ -15,18 +15,13 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-       
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/services" component={Services} />
           <Route path="/products" component={Products} />
-<<<<<<< HEAD
-          <Route path="/login">
-            <Login />
-          </Route>
           <Route path="/sign-up">
             <Inscription />
-=======
+          </Route>
           <Route path="/connexion">
             <Connexion
               onInscription={this.handleGoToInscriptionPage}
@@ -35,7 +30,6 @@ export default class App extends Component {
           </Route>
           <Route path="/inscription">
             <Inscription onInscription={this.handleAddUser} />
->>>>>>> fc8441ac1636186ec6f55bb20ed428cd8cf959d0
           </Route>
         </Switch>
       </Router>

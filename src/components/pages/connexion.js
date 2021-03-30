@@ -2,16 +2,8 @@ import TextField from "@material-ui/core/TextField";
 import { Route } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
-<<<<<<< HEAD:src/components/pages/login.js
 import { Component } from "react";
 import axios from "axios";
-=======
-const Connexion = (props) => {
-  var infoAuthentification = {
-    mail: "",
-    pass: "",
-  };
->>>>>>> fc8441ac1636186ec6f55bb20ed428cd8cf959d0:src/components/pages/connexion.js
 
 const handleConnection = (data) => {
   const url = "/connection";
@@ -27,7 +19,7 @@ const handleConnection = (data) => {
   return res;
 };
 
-class Login extends Component {
+class Connexion extends Component {
   state = {
     infoAuthentification: {
       mail: "",
