@@ -31,6 +31,9 @@
     margin: 0 1rem;
     border-radius: 10px;
   }
+  .selectedList{
+    margin : 50px ; 
+  }
   
   .cards__item__link {
     display: flex;
