@@ -1,4 +1,3 @@
-const user = require("../models/userModel");
 const userModel = require("../models/userModel");
 
 const exists = (utilisateur) => {
@@ -34,6 +33,13 @@ const checkMail = (mail) => {
   );
 };
 
+const addImage = async (userId, image) => {
+  let user = await userModel.findOne({ _id: userId });
+  user.set("image", image);
+  user.save();
+  return user;
+};
+
 const addUser = (utilisateur) => {
   const newUser = new userModel({
     nom: utilisateur.nom,
@@ -56,3 +62,4 @@ const addUser = (utilisateur) => {
 exports.exists = exists;
 exports.addUser = addUser;
 exports.checkMail = checkMail;
+exports.addImage = addImage;
