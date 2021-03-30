@@ -19,9 +19,12 @@ export default class App extends Component {
           <Route path="/" exact component={Home} />
           <Route path="/services" component={Services} />
           <Route path="/products" component={Products} />
+<<<<<<< HEAD
+=======
           <Route path="/sign-up">
             <Inscription />
           </Route>
+>>>>>>> 17772de548b8b73358cfa687f35d3debad347544
           <Route path="/connexion">
             <Connexion
               onInscription={this.handleGoToInscriptionPage}

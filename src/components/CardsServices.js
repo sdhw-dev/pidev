@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Cards.css';
 
+<<<<<<< HEAD
 import CardItem from './CardItem';
 
 
@@ -14,6 +15,18 @@ class CardsServices extends Component{
  render(){
     let arrayOfData = this.props.arrayOfData;
     let options = arrayOfData.map((data) => <option key={data.id} value={data.id} > {data.name} </option> ); 
+=======
+function CardsServices() {
+  return (
+    <>
+  
+    <div className='cards'>
+      Accueil/Service
+    </div>
+    </>
+  );
+}
+>>>>>>> b36a6be6d163ba733b54f579032ef3e3a21ea362
 
     let arrayOfData1 = this.props.arrayOfData1;
     let options1 = arrayOfData1.map((data) => <option key={data.id} value={data.id} > {data.name} </option> ); 
