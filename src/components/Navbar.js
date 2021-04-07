@@ -34,11 +34,6 @@ function Navbar() {
             <i class='fab fa-typo3' />
           </Link>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-            <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                Accueil
-              </Link>
-              </li>
               <li className='nav-item'>
               <Link to='/services' className='nav-links'onClick={closeMobileMenu}>
                 Services
@@ -51,11 +46,11 @@ function Navbar() {
             </li>
             <li className='nav-item'>
               <Link to='/connexion' className='nav-links' onClick={closeMobileMenu}>
-                Se connecter
+                Connexion
               </Link>
             </li>
           </ul>
-          {button && <ButtonInscription buttonStyle='btn--outline'>S'inscrire</ButtonInscription>}
+          {button && <ButtonInscription buttonStyle='btn--outline'>Inscription</ButtonInscription>}
           
         </div>
       </nav>

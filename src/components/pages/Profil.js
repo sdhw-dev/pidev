@@ -1,5 +1,5 @@
 import React from 'react';
-import CssSideBar from '../'
+import '../CssSideBar.css';
 function Profil() {
   return (
     <div className='profil'>

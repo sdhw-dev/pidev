@@ -33,11 +33,6 @@ function NavbarServices() {
             <i class='fab fa-typo3' />
           </Link>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-            <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                Accueil
-              </Link>
-              </li>
               <li className='nav-item'>
               <Link to='/services' className='nav-links'onClick={closeMobileMenu}>
                 Services
@@ -50,7 +45,7 @@ function NavbarServices() {
             </li>
             <li className='nav-item'>
               <Link to='/products' className='nav-links' onClick={closeMobileMenu}>
-                Mon profil
+                Modification profil
               </Link>
             </li>
           </ul>
