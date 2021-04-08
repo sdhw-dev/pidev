@@ -84,6 +84,9 @@ class Connexion extends Component {
             />
           </Box>
           <footer>
+
+            <Route
+            render={({history}) => (
             <button
               className="btn"
               key="connection"
@@ -92,8 +95,8 @@ class Connexion extends Component {
                 color: "#000000",
                 borderColor: "#000000",
               }}
-              onClick={() => {
-                handleConnection(this.state.infoAuthentification).then(
+              onClick={async () => {
+              await  handleConnection(this.state.infoAuthentification).then(
                   (res) => {
                     if (!res) {
                       this.setState({ erreur: true });
@@ -102,11 +105,17 @@ class Connexion extends Component {
                     }
                   }
                 );
+               
+                if(!this.state.erreur)
+                {history.push("./EspaceP"); }
+               
               }}
             >
               {" "}
               Se connecter{" "}
             </button>
+            )}
+            />
           </footer>
         </Box>
       </Container>
