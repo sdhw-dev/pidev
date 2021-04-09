@@ -3,7 +3,6 @@ import EspaceP from "./components/pages/EspaceP";
 import Inscription from "./components/pages/inscription";
 import "./App.css";
 import React, { Component } from "react";
-import axios from "axios";
 import Home from "./components/pages/Home";
 import Services from "./components/pages/Services";
 import Products from "./components/pages/Products";
