@@ -2,12 +2,12 @@ import Connexion from "./components/pages/connexion";
 import Inscription from "./components/pages/inscription";
 import "./App.css";
 import React, { Component } from "react";
-import axios from "axios";
 import Home from "./components/pages/Home";
 import Services from "./components/pages/Services";
 import Products from "./components/pages/Products";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import EspaceP from "./components/pages/EspaceP";
 
 
 export default class App extends Component {
@@ -25,11 +25,13 @@ export default class App extends Component {
             <Connexion
               onInscription={this.handleGoToInscriptionPage}
               onConnection={this.handleConnection}
+              
               />
           </Route>
           <Route path="/inscription">
             <Inscription onInscription={this.handleAddUser} />
           </Route>
+          <Route path="/EspaceP" component={EspaceP}> </Route>
         </Switch>
       </Router>
     );
