@@ -1,17 +1,14 @@
-import React from 'react';
-import NavbarServices from './NavbarServices';
-import Sidebar from './sidebar';
-
+import React from "react";
+import NavbarServices from "../NavbarServices";
+import Sidebar from "../SideBar";
 
 function EspaceP() {
-    return (
-      <div className='EsapceP'>
-        <NavbarServices/>
-        <Sidebar/>
-        
-      </div>
-     
-    );
+  return (
+    <div className="EspaceP">
+      <NavbarServices />
+      <Sidebar />
+    </div>
+  );
 }
 
 export default EspaceP;
