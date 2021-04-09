@@ -8,12 +8,14 @@ import Products from "./components/pages/Products";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+
 export default class App extends Component {
   state = {};
 
   render() {
     return (
       <Router>
+       
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/services" component={Services} />
@@ -22,7 +24,7 @@ export default class App extends Component {
             <Connexion
               onInscription={this.handleGoToInscriptionPage}
               onConnection={this.handleConnection}
-            />
+              />
           </Route>
           <Route path="/inscription">
             <Inscription onInscription={this.handleAddUser} />

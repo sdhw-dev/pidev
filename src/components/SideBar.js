@@ -1,69 +1,62 @@
-import React, { useState , useEffect } from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import { SidebarData } from './SidebarData';
-import './CssSideBar.css';
-import { IconContext } from 'react-icons';
+import React from 'react';
+import {
+  CDBSidebar,
+  CDBSidebarContent,
+  CDBSidebarFooter,
+  CDBSidebarHeader,
+  CDBSidebarMenu,
+  CDBSidebarMenuItem,
+} from 'cdbreact';
+import { NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-
-function SideBar() {
-  //sidebarData
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
-  // headerData
-  const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
-
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
-  };
-
-  useEffect(() => {
-    showButton();
-  }, []);
-
-  window.addEventListener('resize', showButton);
-
-  return (
-    <>
-  
-      <IconContext.Provider value={{ color: '#006b76' }}>
-        <div className='navbar'>
-          <Link to='#' className='menu-bars'>
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
-        </div>
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu '}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className='navbar-toggle'>
-              <Link to='#' className='menu-bars'>
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li>
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-         
-        </nav>
-      </IconContext.Provider>
-    </>
-  );
+const checkActive = (match, location) => {
+    //some additional logic to verify you are in the home URI
+    if(!location) return false;
+    const {pathname} = location;
+    console.log(pathname);
+    return pathname === "/";
 }
 
-export default SideBar;
+const Sidebar = () => {
+  return (
+    <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
+      <CDBSidebar textColor="#fff" backgroundColor="linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%)">
+        <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
+          <a href="/"  className="text-decoration-none" style={{ color: 'inherit' }} >  Menu </a>
+        </CDBSidebarHeader>
+
+        <CDBSidebarContent className="sidebar-content">
+          <CDBSidebarMenu>
+             <li >
+            <NavLink exact to="/profil" activeClassName="active-link" isActive={checkActive}>
+              <CDBSidebarMenuItem icon="user">Profil</CDBSidebarMenuItem>
+            </NavLink></li>
+           
+            <NavLink exact to="/mesTrocs" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="table">Mes Trocs</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/mesMessages" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="envelope">Mes Messages</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/mesFavoris" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="heart">Mes Favoris</CDBSidebarMenuItem>
+            </NavLink>
+
+            <NavLink exact to="/calendrier" target="_blank"  activeClassName="activeClicked"     >
+              <CDBSidebarMenuItem icon="calculator">    Calendrier  </CDBSidebarMenuItem>
+            </NavLink>
+          </CDBSidebarMenu>
+        </CDBSidebarContent>
+
+
+        <CDBSidebarFooter style={{ textAlign: 'center' }}>
+          <div style={{   padding: '20px 5px', }} >   E.TROC </div>
+        </CDBSidebarFooter>
+       
+      </CDBSidebar>
+    </div>
+  );
+};
+
+export default Sidebar;

@@ -1,25 +1,17 @@
 import React from 'react';
-import '../../App.css';
-import Profil from '../Profil';
-import SideBar from '../SideBar';
-import Calendrier from '../Calendrier';
-import mesMessages from '../mesMessages';
-import mesFavoris from '../mesFavoris';
-import NavbarServices from '../NavbarServices';
+import NavbarServices from './NavbarServices';
+import Sidebar from './sidebar';
+
 
 function EspaceP() {
-  return (
-    <>
-    <NavbarServices/>
-    <SideBar/>
-      <Profil/>
-      <mesMessages/>
-      <mesTrocs/>
-      <mesFavoris />
-      <Calendrier />
-     <CssSideBar/>
-    </>
-  );
+    return (
+      <div className='EsapceP'>
+        <NavbarServices/>
+        <Sidebar/>
+        
+      </div>
+     
+    );
 }
 
 export default EspaceP;
