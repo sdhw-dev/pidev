@@ -13,8 +13,8 @@ function EspaceP() {
     <NavbarServices/>
     <SideBar/>
       <Profil/>
-      <mesMessages />
-      <mesTrocs />
+      <mesMessages/>
+      <mesTrocs/>
       <mesFavoris />
       <Calendrier />
      <CssSideBar/>
