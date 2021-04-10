@@ -5,7 +5,6 @@ import Sidebar from "../SideBar";
 function EspaceP() {
   return (
     <div className="EspaceP">
-      <NavbarServices />
       <Sidebar />
     </div>
   );

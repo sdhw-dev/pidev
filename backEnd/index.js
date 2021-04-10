@@ -52,8 +52,9 @@ app.all("/checkMail", (req, res) => {
 });
 
 app.all("/addImagestoAnnonce", upload.array("image"), (req, res) => {
+  console.log(req.body.annonce);
   annonceId = req.query.id;
-  annonces.addImage(annonceId, req.file.filename).then((result) => {
+  annonces.addImage(annonceId, req.files[0].filename).then((result) => {
     res.json(result);
   });
 });
@@ -93,6 +94,7 @@ app.get("/getVilles", (req, res) => {
       }
     })
     .then((result) => {
+      console.log(result);
       res.json(result);
     });
 });
