@@ -22,24 +22,32 @@ class AjouterAnnonce extends Component {
       description: "",
       titre: "",
       image: "",
-      idUser: 0,
+      idUser: "",
     },
     file: "",
   };
 
   handleCliqueAjouterAnnonce = () => {
     const formData = new FormData();
-    formData.append("image", this.state.file);
-    formData.append("annonce", JSON.stringify(this.state.annonce));
-    axios.post("/addImagestoAnnonce", formData);
+    if (!this.state.annonce.type) {
+      formData.append("image", this.state.file);
+      formData.append("annonce", JSON.stringify(this.state.annonce));
+      axios.post("/addBien", formData);
+    } else {
+      axios
+        .post("/addService", this.state.annonce)
+        .then()
+        .catch((error) => console.log(error));
+    }
   };
 
   componentWillMount = async () => {
+    this.state.annonce.idUser = this.props.userId;
     await axios
       .get("/getVilles")
       .then((res) => this.setState({ Ville: res.data }));
     await axios
-      .get("/getCategories")
+      .get("/getCategories?type=" + this.state.annonce.type)
       .then((res) => this.setState({ Categorie: res.data }));
   };
 
@@ -86,8 +94,11 @@ class AjouterAnnonce extends Component {
               value={false}
               control={<Radio />}
               label="Bien"
-              onClick={() => {
+              onClick={async () => {
                 this.state.annonce.type = false;
+                await axios
+                  .get("/getCategories?type=" + this.state.annonce.type)
+                  .then((res) => this.setState({ Categorie: res.data }));
                 this.setState({});
               }}
             />
@@ -95,8 +106,11 @@ class AjouterAnnonce extends Component {
               value={true}
               control={<Radio />}
               label="Service"
-              onClick={() => {
+              onClick={async () => {
                 this.state.annonce.type = true;
+                await axios
+                  .get("/getCategories?type=" + this.state.annonce.type)
+                  .then((res) => this.setState({ Categorie: res.data }));
                 this.setState({});
               }}
             />
@@ -114,6 +128,7 @@ class AjouterAnnonce extends Component {
           }}
         />
         <TextareaAutosize
+          style={{ marginLeft: 5, marginRight: 5 }}
           rowsMin={5}
           rowsMax={5}
           aria-label="empty textarea"

@@ -18,6 +18,7 @@ export default class App extends Component {
   state = {
     isConnected: false,
     user: {},
+    userId: "60509c17d5280b4db0720397",
   };
 
   navbar = () => {
@@ -35,7 +36,7 @@ export default class App extends Component {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/ajouterAnnonce">
-            <AjouterAnnonce />
+            <AjouterAnnonce userId={this.state.userId} />
           </Route>
           <Route path="/services" component={Services} />
           <Route path="/products" component={Products} />

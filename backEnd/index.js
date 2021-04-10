@@ -51,13 +51,22 @@ app.all("/checkMail", (req, res) => {
   });
 });
 
-app.all("/addImagestoAnnonce", upload.array("image"), (req, res) => {
-  console.log(req.body.annonce);
-  annonceId = req.query.id;
-  annonces.addImage(annonceId, req.files[0].filename).then((result) => {
-    res.json(result);
-  });
+app.post("/addBien", upload.array("image"), (req, res) => {
+  annonces
+    .addAnnonce(JSON.parse(req.body.annonce), req.files[0].filename)
+    .then((result) => {
+      res.json(result);
+    });
 });
+app.post("/addService", (req, res) => {
+  console.log(req.body);
+  annonces
+    .addAnnonce(JSON.parse(JSON.stringify(req.body)), "")
+    .then((result) => {
+      res.json(result);
+    });
+});
+
 app.all("/setUserImage", upload.single("image"), (req, res) => {
   userId = req.query.id;
   users.addImage(userId, req.file.filename).then((result) => {
@@ -101,7 +110,7 @@ app.get("/getVilles", (req, res) => {
 
 app.get("/getCategories", (req, res) => {
   categorieModel
-    .find({}, (err, categories) => {
+    .find({ type: JSON.parse(req.query.type) }, (err, categories) => {
       if (err) {
       } else {
         return categories;
