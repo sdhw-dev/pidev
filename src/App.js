@@ -4,8 +4,8 @@ import Inscription from "./components/pages/inscription";
 import "./App.css";
 import React, { Component } from "react";
 import Home from "./components/pages/Home";
-import Services from "./components/pages/Services";
-import Products from "./components/pages/Products";
+import Servicesnc from "./components/pages/Servicesnc";
+import Biensnc from "./components/pages/Biensnc";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AjouterAnnonce from "./components/pages/AjouterAnnonce.jsx";
@@ -21,8 +21,8 @@ export default class App extends Component {
           <Route path="/ajouterAnnonce">
             <AjouterAnnonce />
           </Route>
-          <Route path="/services" component={Services} />
-          <Route path="/products" component={Products} />
+          <Route path="/servicesnc" component={Servicesnc} />
+          <Route path="/biensnc" component={Biensnc} />
           <Route path="/connexion">
             <Connexion />
           </Route>

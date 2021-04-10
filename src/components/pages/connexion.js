@@ -4,7 +4,8 @@ import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import { Component } from "react";
 import axios from "axios";
-
+import React from 'react';
+import '../../App.css';
 const handleConnection = (data) => {
   const url = "/connexion";
   var res = axios
@@ -30,14 +31,15 @@ class Connexion extends Component {
 
   render() {
     return (
+      <div ClassName="connexion">
       <Container maxWidth="sm" style={{}}>
-        <Box
+        <Box 
           border={1}
           display="flex"
           flexDirection="column"
           style={{ borderRadius: 15, borderColor: "#CACACA" }}
         >
-          <header className="header">
+          <header className="header" >
             <Route
               render={({ history }) => (
                 <button
@@ -90,9 +92,10 @@ class Connexion extends Component {
                   className="btn"
                   key="connection"
                   style={{
-                    backgroundColor: "transparent",
+                    backgroundColor: "#008000",
                     color: "#000000",
                     borderColor: "#000000",
+                    
                   }}
                   onClick={async () => {
                     await handleConnection(
@@ -118,6 +121,7 @@ class Connexion extends Component {
           </footer>
         </Box>
       </Container>
+      </div>
     );
   }
 }

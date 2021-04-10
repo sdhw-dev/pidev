@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import Box from "@material-ui/core/Box";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
+import '../../App.css';
 
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
@@ -87,6 +88,7 @@ class Inscription extends Component {
 
   render() {
     return (
+      <div className='inscription'>
       <Box style={{ overflow: "auto" }}>
         <Box
           border={1}
@@ -228,6 +230,7 @@ class Inscription extends Component {
           </li>
         </Box>
       </Box>
+      </div>
     );
   }
 }
