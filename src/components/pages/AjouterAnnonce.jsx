@@ -61,12 +61,8 @@ class AjouterAnnonce extends Component {
       >
         <FormControl component="fieldset">
           <RadioGroup aria-label="type" name="gender1">
-            <FormControlLabel value="bien" control={<Radio />} label="Bien" />
-            <FormControlLabel
-              value="service"
-              control={<Radio />}
-              label="Service"
-            />
+            <FormControlLabel value="0" control={<Radio />} label="Bien" />
+            <FormControlLabel value="1" control={<Radio />} label="Service" />
           </RadioGroup>
         </FormControl>
         <TextField
@@ -81,6 +77,8 @@ class AjouterAnnonce extends Component {
           }}
         />
         <TextareaAutosize
+          rowsMin={5}
+          rowsMax={5}
           aria-label="empty textarea"
           placeholder="Description de l'annonce"
           onChange={(event) =>
