@@ -16,6 +16,7 @@ class AjouterAnnonce extends Component {
     Ville: [],
     Categorie: [],
     annonce: {
+      type: false,
       idVille: 1,
       idCategorie: 1,
       description: "",
@@ -42,6 +43,21 @@ class AjouterAnnonce extends Component {
       .then((res) => this.setState({ Categorie: res.data }));
   };
 
+  input = () => {
+    if (!this.state.annonce.type) {
+      return (
+        <Input
+          type="file"
+          onChange={(e) => {
+            this.state.file = e.target.files[0];
+          }}
+        />
+      );
+    } else {
+      return null;
+    }
+  };
+
   render() {
     return (
       <Box
@@ -60,9 +76,30 @@ class AjouterAnnonce extends Component {
         }}
       >
         <FormControl component="fieldset">
-          <RadioGroup aria-label="type" name="gender1">
-            <FormControlLabel value="0" control={<Radio />} label="Bien" />
-            <FormControlLabel value="1" control={<Radio />} label="Service" />
+          <RadioGroup
+            aria-label="type"
+            value={this.state.annonce.type}
+            name="gender1"
+            style={{ display: "inline " }}
+          >
+            <FormControlLabel
+              value={false}
+              control={<Radio />}
+              label="Bien"
+              onClick={() => {
+                this.state.annonce.type = false;
+                this.setState({});
+              }}
+            />
+            <FormControlLabel
+              value={true}
+              control={<Radio />}
+              label="Service"
+              onClick={() => {
+                this.state.annonce.type = true;
+                this.setState({});
+              }}
+            />
           </RadioGroup>
         </FormControl>
         <TextField
@@ -110,12 +147,7 @@ class AjouterAnnonce extends Component {
           }}
         />
 
-        <Input
-          type="file"
-          onChange={(e) => {
-            this.state.file = e.target.files[0];
-          }}
-        />
+        <this.input />
         <button
           style={{ borderColor: "#000000" }}
           className="btn"
