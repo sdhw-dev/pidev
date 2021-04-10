@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../App.css';
 import CardsServices from '../CardsServices';
-import Navbar from '../Navbar';
+
 
 
 
@@ -43,7 +43,7 @@ render(){
     return(
 
         <div className="biensnc">
-            <Navbar/>
+           
             
             <div className="row">
 

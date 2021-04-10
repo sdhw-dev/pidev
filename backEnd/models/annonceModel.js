@@ -19,7 +19,7 @@ const annoncesSchema = new mongoose.Schema(
     idCategorie: Number,
     description: String,
     titre: String,
-    images: [String],
+    image: String,
     idUser: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
   },
   { collection: "annonces" },

@@ -5,7 +5,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import '../../App.css';
 
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
 const CheckMail = (data) => {
   var res;
@@ -54,36 +54,6 @@ class Inscription extends Component {
     error: false, // erreur mot de passes differents
     erreurMailExitant: false,
     erreurChampsVide: false, // Si un des champs est laissé vide avant clique sur inscription
-  };
-
-  handleCliqueInscription = () => {
-    if (
-      //Si l'un des champs est vide
-      this.state.infosInscription.nom == "" ||
-      this.state.infosInscription.prenom == "" ||
-      this.state.infosInscription.pass == "" ||
-      this.state.infosInscription.contact.mail == "" ||
-      this.state.infosInscription.adresse.idVille == 0 ||
-      this.state.infosInscription.adresse.adresse == ""
-    ) {
-      this.setState({ erreurChampsVide: true });
-      return;
-    } else {
-      this.setState({ erreurChampsVide: false });
-      //si tout les champs son remplies
-      if (this.state.pass2 === this.state.infosInscription.pass) {
-        let res = CheckMail(this.state.infosInscription.contact.mail);
-        res.then((a) => {
-          if (!a) {
-            handleAddUser(this.state.infosInscription);
-          } else {
-            this.setState({ erreurMailExitant: true });
-          }
-        });
-      } else {
-        this.setState({ error: true });
-      }
-    }
   };
 
   render() {
@@ -215,15 +185,52 @@ class Inscription extends Component {
               this.state.infosInscription.adresse.adresse = event.target.value;
             }}
           />
+          <Route
+            render={({ history }) => (
+              <button
+                className="btn"
+                key="inscription"
+                style={{ backgroundColor: "#008000" }}
+                onClick={() => {
+                  if (
+                    //Si l'un des champs est vide
+                    this.state.infosInscription.nom == "" ||
+                    this.state.infosInscription.prenom == "" ||
+                    this.state.infosInscription.pass == "" ||
+                    this.state.infosInscription.contact.mail == "" ||
+                    this.state.infosInscription.adresse.idVille == 0 ||
+                    this.state.infosInscription.adresse.adresse == ""
+                  ) {
+                    this.setState({ erreurChampsVide: true });
+                    return;
+                  } else {
+                    this.setState({ erreurChampsVide: false });
+                    //si tout les champs son remplies
+                    if (this.state.pass2 === this.state.infosInscription.pass) {
+                      let res = CheckMail(
+                        this.state.infosInscription.contact.mail
+                      );
+                      res.then((a) => {
+                        if (!a) {
+                          handleAddUser(this.state.infosInscription);
+                          this.props.onInscription(this.state.infosInscription);
+                          console.log("a" + this.state.infosInscription);
+                          history.push("./espaceP");
+                        } else {
+                          this.setState({ erreurMailExitant: true });
+                        }
+                      });
+                    } else {
+                      this.setState({ error: true });
+                    }
+                  }
+                }}
+              >
+                S'inscrire
+              </button>
+            )}
+          />
 
-          <button
-            className="btn"
-            key="inscription"
-            style={{ backgroundColor: "#008000" }}
-            onClick={this.handleCliqueInscription}
-          >
-            S'inscrire
-          </button>
           <li>
             Si vous avez deja un compte,
             <Link to="/connexion"> Connectez vous ici</Link>{" "}

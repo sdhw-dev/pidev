@@ -1,3 +1,4 @@
+const { ObjectId } = require("bson");
 const annonceModel = require("../models/annonceModel");
 
 const getAnnonce = (filtre) => {
@@ -16,17 +17,16 @@ const addImage = async (annonceId, images) => {
   return annonce;
 };
 
-const addAnnonce = (user, annonce) => {
-  var newImage = new imageModel(image);
-  newImage.save();
-
+const addAnnonce = (annonce, image) => {
+  console.log(annonce);
   const newAnnonce = new annonceModel({
     type: annonce.type,
     idVille: annonce.idVille,
     idCategorie: annonce.idCategorie,
-    description: annonce.desciption,
+    description: annonce.description,
     titre: annonce.titre,
-    idUser: annonce.idUser,
+    idUser: ObjectId(annonce.idUser),
+    image: image,
   });
   return newAnnonce.save();
 };

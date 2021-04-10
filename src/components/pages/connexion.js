@@ -105,12 +105,11 @@ class Connexion extends Component {
                         this.setState({ erreur: true });
                       } else {
                         this.setState({ erreur: false });
+                        console.log(res);
+                        this.props.onConnexion(res);
+                        history.push("./EspaceP");
                       }
                     });
-
-                    if (!this.state.erreur) {
-                      history.push("./EspaceP");
-                    }
                   }}
                 >
                   {" "}
