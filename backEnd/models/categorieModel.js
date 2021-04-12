@@ -14,6 +14,7 @@ mongoose.connection;
 
 const categoriesSchema = new mongoose.Schema(
   {
+    type: Boolean,
     nom: String,
     idCategorie: Number,
   },
