@@ -12,30 +12,29 @@
   justify-content: center;
   font-size: 3rem;
 }
-.inscription{
-  display: flex;
-  height: 90vh;
-  align-items: center;
-  justify-content: center;
-  
-}
+.inscription,
 .connexion{
   display: flex;
   height: 90vh;
   align-items: center;
   justify-content: center;
+  background: url(images/background1.png) no-repeat center center fixed; 
+  background-size: cover;
+  color: #fff;
   
 }
-.btn .form-row{
-  margin-left:200px; 
 
-}
+
 
 .servicesnc,
-.biensnc {
+.biensnc{
   background: url(images/background1.png) no-repeat center center fixed; 
   background-size: cover;
   color: #fff;
   font-size: 3rem;  
+}
+.btn .form-row{
+  margin-left:200px; 
+
 }
 

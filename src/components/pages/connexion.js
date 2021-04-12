@@ -31,8 +31,8 @@ class Connexion extends Component {
 
   render() {
     return (
-      <div ClassName="connexion">
-      <Container maxWidth="sm" style={{}}>
+      <div ClassName='connexion'>
+      <Container maxWidth="sm"   >
         <Box 
           border={1}
           display="flex"
@@ -47,7 +47,7 @@ class Connexion extends Component {
                   key="inscription"
                   style={{ backgroundColor: "#008000", marginLeft: "auto" }}
                   onClick={() => {
-                    history.push("/sign-up");
+                    history.push("/inscription");
                   }}
                 >
                   Créer un compte
