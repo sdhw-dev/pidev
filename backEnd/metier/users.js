@@ -40,6 +40,11 @@ const addImage = async (userId, image) => {
   return user;
 };
 
+const getImage = async (id) => {
+  let user = await userModel.findOne({ _id: id });
+  return user.image;
+};
+
 const addUser = (utilisateur) => {
   const newUser = new userModel({
     nom: utilisateur.nom,
@@ -63,3 +68,4 @@ exports.exists = exists;
 exports.addUser = addUser;
 exports.checkMail = checkMail;
 exports.addImage = addImage;
+exports.getImage = getImage;

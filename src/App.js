@@ -1,17 +1,15 @@
 import Connexion from "./components/pages/connexion";
 import Inscription from "./components/pages/inscription";
 import "./App.css";
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import axios from "axios";
 import Home from "./components/pages/Home";
-import Servicesnc from "./components/pages/Servicesnc";
 import Biensnc from "./components/pages/Biensnc";
 import EspaceP from './components/pages/EspaceP';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AjouterAnnonce from "./components/pages/AjouterAnnonce.jsx";
 import Navbar from "./components/Navbar";
 import NavbarServices from "./components/NavbarServices";
-
 
 export default class App extends Component {
   state = {
@@ -37,13 +35,24 @@ export default class App extends Component {
           <Route path="/ajouterAnnonce">
             <AjouterAnnonce userId={this.state.userId} />
           </Route>
-          <Route path="/servicesnc" component={Servicesnc} />
-          <Route path="/biensnc" component={Biensnc} />
+          <Route path="/servicesnc">
+            <Biensnc type={true} />
+          </Route>
+          <Route path="/biensnc">
+            <Biensnc type={false} />
+          </Route>
+
           <Route path="/connexion">
             <Connexion
-              onConnexion={(user) =>
-                this.setState({ isConnected: true, user: user })
-              }
+              onConnexion={(user) => {
+                this.setState({
+                  isConnected: true,
+                  user: user,
+                  userId: user._id,
+                });
+                console.warn(this.state);
+                localStorage.setItem("user", user);
+              }}
             />
           </Route>
           <Route path="/inscription">

@@ -59,9 +59,8 @@ app.post("/addBien", upload.array("image"), (req, res) => {
     });
 });
 app.post("/addService", (req, res) => {
-  console.log(req.body);
   annonces
-    .addAnnonce(JSON.parse(JSON.stringify(req.body)), "")
+    .addAnnonce(JSON.parse(JSON.stringify(req.body)), -1)
     .then((result) => {
       res.json(result);
     });
@@ -77,7 +76,18 @@ app.all("/setUserImage", upload.single("image"), (req, res) => {
 app.get("/getUser", (req, res) => {});
 
 app.all("/getAnnonces", (req, res) => {
-  annonces.getAnnonce(JSON.parse(req.body.filtre)).then((result) => {
+  let body = JSON.parse(JSON.stringify(req.body));
+  let filtre = {};
+  filtre.type = body.type;
+  if (body.idCategorie != -1) {
+    filtre.idCategorie = body.idCategorie;
+  }
+  if (body.idVille != -1) {
+    filtre.idVille = body.idVille;
+  }
+  console.log(filtre);
+  annonces.getAnnonce(filtre).then((result) => {
+    console.log(result);
     res.json(result);
   });
 });
