@@ -30,7 +30,7 @@ const upload = multer({
 
 app.get("/", (req, res) => {});
 
-app.all("/connection", (req, res) => {
+app.all("/connexion", (req, res) => {
   let user = req.body;
   users.exists(user).then((result) => {
     res.json(result);

@@ -7,7 +7,7 @@ import axios from "axios";
 import EspaceP from './EspaceP';
 
 const handleConnection = (data) => {
-  const url = "/connection";
+  const url = "/connexion";
   var res = axios
     .post(url, data)
     .then((response) => {
@@ -85,37 +85,36 @@ class Connexion extends Component {
             />
           </Box>
           <footer>
-
             <Route
-            render={({history}) => (
-            <button
-              className="btn"
-              key="connection"
-              style={{
-                backgroundColor: "transparent",
-                color: "#000000",
-                borderColor: "#000000",
-              }}
-              onClick={async () => {
-              await  handleConnection(this.state.infoAuthentification).then(
-                  (res) => {
-                    if (!res) {
-                      this.setState({ erreur: true });
-                    } else {
-                      this.setState({ erreur: false });
+              render={({ history }) => (
+                <button
+                  className="btn"
+                  key="connection"
+                  style={{
+                    backgroundColor: "transparent",
+                    color: "#000000",
+                    borderColor: "#000000",
+                  }}
+                  onClick={async () => {
+                    await handleConnection(
+                      this.state.infoAuthentification
+                    ).then((res) => {
+                      if (!res) {
+                        this.setState({ erreur: true });
+                      } else {
+                        this.setState({ erreur: false });
+                      }
+                    });
+
+                    if (!this.state.erreur) {
+                      history.push("./EspaceP");
                     }
-                  }
-                );
-               
-                if(!this.state.erreur)
-                {history.push("./EspaceP"); }
-               
-              }}
-            >
-              {" "}
-              Se connecter{" "}
-            </button>
-            )}
+                  }}
+                >
+                  {" "}
+                  Se connecter{" "}
+                </button>
+              )}
             />
           </footer>
         </Box>

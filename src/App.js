@@ -31,7 +31,7 @@ export default class App extends Component {
           <Route path="/inscription">
             <Inscription onInscription={this.handleAddUser} />
           </Route>
-          <Route path="/EspaceP" component={EspaceP}> </Route>
+          <Route path="/EspaceP" component={EspaceP}  />
         </Switch>
       </Router>
     );
