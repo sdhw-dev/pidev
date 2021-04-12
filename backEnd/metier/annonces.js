@@ -1,6 +1,6 @@
 const { ObjectId } = require("bson");
 const annonceModel = require("../models/annonceModel");
-
+const user = require("./users");
 const getAnnonce = (filtre) => {
   return annonceModel.find(filtre, (err, annonces) => {
     if (err) {
@@ -17,8 +17,14 @@ const addImage = async (annonceId, images) => {
   return annonce;
 };
 
-const addAnnonce = (annonce, image) => {
+const addAnnonce = (annonce, img) => {
   console.log(annonce);
+  var image;
+  if (img == -1) {
+    image = user.getImage(ObjectId(annonce.idUser));
+  } else {
+    image = img;
+  }
   const newAnnonce = new annonceModel({
     type: annonce.type,
     idVille: annonce.idVille,

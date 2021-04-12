@@ -1,63 +1,47 @@
-import React, {Component} from 'react';
-import './Cards.css';
+import React, { Component } from "react";
+import "./Cards.css";
+import axios from "axios";
+import CardItem from "./CardItem";
 
-import CardItem from './CardItem';
+class CardsServices extends Component {
+  state = {
+    annonces: [],
+  };
 
+  componentWillMount = () => {
+    axios.post("/getAnnonces", this.props.filtre).then((res) => {
+      console.log(res.data);
+      this.setState({ annonces: res.data });
+    });
+  };
 
-class CardsServices extends Component{
-  
+  componentWillReceiveProps = (props) => {
+    axios.post("/getAnnonces", props.filtre).then((res) => {
+      console.log("willr");
+      this.setState({ annonces: res.data });
+    });
+  };
 
-
-  
- render(){
-   
-    return( 
+  render() {
+    return (
       <>
-   
-      <div className='cards__container'>
-        <div className='cards__wrapper'>
-          <ul className='cards__items'>
-            <CardItem
-              //src={img1}
-              text='Voir le profil'
-              path='/profil'
-              
-           
-            />
-            <CardItem
-              //src={img1}
-              text='Voir le profil'
-              path='/profil'
-            />
-             <CardItem
-              //src={img1}
-              text='Voir le profil'
-              path='/profil'
-              
-            />
-          </ul>
-          <ul className='cards__items'>
-            <CardItem
-              //src={img1}
-              text='Voir le profil'
-              path='/profil'
-            />
-            <CardItem
-               //src={img1}
-              text='Voir le profil'
-              path='/profil'
-            />
-            <CardItem
-              //src={img1}
-              text='Voir le profil'
-              path='/profil'
-            />
-          </ul>
+        <div className="cards__container">
+          <div className="cards__wrapper">
+            <ul className="cards__items">
+              {this.state.annonces.map((annonce) => {
+                return (
+                  <CardItem
+                    src={"/getImage?path=" + annonce.image}
+                    text="Voir le profil"
+                    path="/profil"
+                  />
+                );
+              })}
+            </ul>
+          </div>
         </div>
-      </div>
-    
-    
       </>
-    ) 
-  } 
-} export default CardsServices;
+    );
+  }
+}
+export default CardsServices;
