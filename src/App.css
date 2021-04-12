@@ -13,12 +13,14 @@
   font-size: 3rem;
 }
 .inscription {
+  background: url(images/background1.png) no-repeat center center fixed;
   display: flex;
   height: 90vh;
   align-items: center;
   justify-content: center;
 }
 .connexion {
+  background: url(images/background1.png) no-repeat center center fixed;
   display: flex;
   height: 90vh;
   align-items: center;
