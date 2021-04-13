@@ -106,7 +106,7 @@ class Biensnc extends React.Component {
             onChange={this.handleInputChangeCategorie}
           >
             <option selected value="-1">
-              Choisir une catégorie
+              Toute les Categories
             </option>
 
             <option value="1">Jardinage</option>
@@ -130,16 +130,16 @@ class Biensnc extends React.Component {
             onChange={this.handleInputChangeCategorie}
           >
             <option selected value="-1">
-              Choisir une catégorie
+              Toute les Categories
             </option>
 
-            <option value="1">Bureaux</option>
-            <option value="2">Salle de bain</option>
-            <option value="3">Cuisine</option>
-            <option value="4">Mobilier de jardin</option>
-            <option value="5">Salon</option>
-            <option value="6">Chambre</option>
-            <option value="7">Salle à manger</option>
+            <option value="8">Bureaux</option>
+            <option value="9">Salle de bain</option>
+            <option value="10">Cuisine</option>
+            <option value="11">Mobilier de jardin</option>
+            <option value="12">Salon</option>
+            <option value="13">Chambre</option>
+            <option value="14">Salle à manger</option>
           </select>
         </div>
       );
@@ -164,7 +164,7 @@ class Biensnc extends React.Component {
                   onChange={this.handleInputChangeVille}
                 >
                   <option selected value="-1">
-                    Choisir une ville
+                    Toute les villes
                   </option>
                   <option value="1">Marrakech</option>
                   <option value="2">Rabat</option>

@@ -32,7 +32,7 @@
 
 .servicesnc,
 .biensnc {
-  background: url(images/background1.png) no-repeat center center fixed;
+  /*background: url(images/background1.png) no-repeat center center fixed;*/
   background-size: cover;
   color: #fff;
   font-size: 3rem;
