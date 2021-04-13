@@ -13,18 +13,23 @@
   font-size: 3rem;
 }
 .inscription {
-  background: url(images/background1.png) no-repeat center center fixed;
+  background-color: rgb(202, 223, 221);
   display: flex;
   height: 90vh;
   align-items: center;
   justify-content: center;
 }
 .connexion {
-  background: url(images/background1.png) no-repeat center center fixed;
+  background-color: rgb(202, 223, 221);
   display: flex;
   height: 90vh;
   align-items: center;
   justify-content: center;
+}
+.modifProfil,
+.EspaceP,
+.mesmessages {
+  background-color: rgb(202, 223, 221);
 }
 .btn .form-row {
   margin-left: 200px;
@@ -32,8 +37,12 @@
 
 .servicesnc,
 .biensnc {
-  /*background: url(images/background1.png) no-repeat center center fixed;*/
+  background-color: rgb(202, 223, 221);
   background-size: cover;
   color: #fff;
   font-size: 3rem;
+}
+.LinkMP {
+  font-size: 20px;
+  color: black;
 }

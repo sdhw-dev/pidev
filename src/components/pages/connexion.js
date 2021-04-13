@@ -6,6 +6,7 @@ import { Component } from "react";
 import axios from "axios";
 import React from "react";
 import "../../App.css";
+import Footer from "../Footer";
 const handleConnection = (data) => {
   const url = "/connexion";
   var res = axios
@@ -31,6 +32,7 @@ class Connexion extends Component {
 
   render() {
     return (
+      <>
       <div className="connexion">
         <Container maxWidth="sm" style={{}}>
           <Box
@@ -119,7 +121,10 @@ class Connexion extends Component {
             </footer>
           </Box>
         </Container>
+        
       </div>
+      <Footer/>
+      </>
     );
   }
 }

@@ -21,7 +21,8 @@ const addAnnonce = (annonce, img) => {
   console.log(annonce);
   var image;
   if (img == -1) {
-    image = user.getImage(ObjectId(annonce.idUser));
+    //image = user.getImage(ObjectId(annonce.idUser));
+    image = "download.png";
   } else {
     image = img;
   }

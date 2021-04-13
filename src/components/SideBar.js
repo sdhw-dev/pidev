@@ -29,7 +29,7 @@ const Sidebar = () => {
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
              <li >
-            <NavLink exact to="/profil" activeClassName="active-link" isActive={checkActive}>
+            <NavLink exact to="/espaceP" activeClassName="active-link" isActive={checkActive}>
               <CDBSidebarMenuItem icon="user">Profil</CDBSidebarMenuItem>
             </NavLink></li>
            
@@ -50,9 +50,7 @@ const Sidebar = () => {
         </CDBSidebarContent>
 
 
-        <CDBSidebarFooter style={{ textAlign: 'center' }}>
-          <div style={{   padding: '20px 5px', }} >   E.TROC </div>
-        </CDBSidebarFooter>
+       
        
       </CDBSidebar>
     </div>
