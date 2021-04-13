@@ -12,6 +12,7 @@ import AjouterAnnonce from "./components/pages/AjouterAnnonce.jsx";
 import Navbar from "./components/Navbar";
 import NavbarServices from "./components/NavbarServices";
 import ModifProfil from "./components/pages/ModifProfil";
+import mesMessages from "./components/pages/mesMessages";
 
 export default class App extends Component {
   state = {
@@ -66,6 +67,7 @@ export default class App extends Component {
           </Route>
           <Route path="/espaceP" component={EspaceP} />
           <Route path="/modifprofil" component={ModifProfil} />
+          <Route path="/mesMessages" component={mesMessages} />
         </Switch>
       </Router>
     );

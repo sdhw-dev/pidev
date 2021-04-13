@@ -27,7 +27,8 @@
   justify-content: center;
 }
 .modifProfil,
-.EspaceP{
+.EspaceP,
+.mesmessages{
   background-color: rgb(202,223,221) ;
  
 
@@ -43,3 +44,9 @@
   color: #fff;
   font-size: 3rem;
 }
+.LinkMP{
+  font-size: 20px; 
+  color: black;
+}
+
+

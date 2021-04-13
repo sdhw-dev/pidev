@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
 import "../../App.css";
 
 function EspaceP() {
+    const [click, setClick] = useState(false);
+    const [button, setButton] = useState(true);
+  
+    const handleClick = () => setClick(!click);
+    const closeMobileMenu = () => setClick(false);
+  
+    const showButton = () => {
+      if (window.innerWidth <= 960) {
+        setButton(false);
+      } else {
+        setButton(true);
+      }
+    };
+  
+    useEffect(() => {
+      showButton();
+    }, []);
+  
+    window.addEventListener('resize', showButton);
   return (
     <div className="EspaceP">
         <div style={{display:'flex', flexDirection:'row'}}>
@@ -35,15 +55,24 @@ function EspaceP() {
                             </ul>
                         </div>
                     </div>
+                    
                     <div class="col-md-2">
-                    <input type="submit" value="Modifier profil" onclick="window.location='../ModifProfil';" /> 
-                        </div>
+                        <Link to='/modifprofil' className='LinkMP' onClick={closeMobileMenu}>
+                            Modifier profil
+                        </Link>
+                     </div>
                 </div>
                 <div class="row">
                 <div class="col-md-4">
                         <div class="profile-work">
                             <h4>Adresse : </h4>
-                            
+                            <ul class="list-group">
+                            <li class="list-group-item text-muted">Activité <i class="fa fa-dashboard fa-1x"></i></li>
+                            <li class="list-group-item text-right"><span class="pull-left"><strong>Trocs complets</strong></span> 10</li>
+                            <li class="list-group-item text-right"><span class="pull-left"><strong>Favoris</strong></span> 13</li>
+                            <li class="list-group-item text-right"><span class="pull-left"><strong>Trocs en cours</strong></span> 5</li>
+                            <li class="list-group-item text-right"><span class="pull-left"><strong>Clients</strong></span> 20</li>
+                            </ul> 
                            
                         </div>
                     </div>
