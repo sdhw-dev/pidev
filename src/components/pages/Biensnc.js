@@ -94,6 +94,57 @@ class Biensnc extends React.Component {
     );
   };
 
+  categories = () => {
+    if (this.state.filtre.type) {
+      return (
+        <div>
+          <label>Catégorie :</label>
+
+          <select
+            className="form-control"
+            name="city"
+            onChange={this.handleInputChangeCategorie}
+          >
+            <option selected value="-1">
+              Choisir une catégorie
+            </option>
+
+            <option value="1">Jardinage</option>
+            <option value="2">Bricolage</option>
+            <option value="3">Coaching sportif</option>
+            <option value="4">carrosserie</option>
+            <option value="5">Electricité</option>
+            <option value="6">Baby sitting</option>
+            <option value="7">Coaching personnel</option>
+          </select>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <label>Catégorie :</label>
+
+          <select
+            className="form-control"
+            name="city"
+            onChange={this.handleInputChangeCategorie}
+          >
+            <option selected value="-1">
+              Choisir une catégorie
+            </option>
+            <option value="1">Bureaux</option>
+            <option value="2">Salle de bain</option>
+            <option value="3">Cuisine</option>
+            <option value="4">Mobilier de jardin</option>
+            <option value="5">Salon</option>
+            <option value="6">Chambre</option>
+            <option value="7">Salle à manger</option>
+          </select>
+        </div>
+      );
+    }
+  };
+
   render() {
     return (
       <div className="biensnc">
@@ -105,7 +156,7 @@ class Biensnc extends React.Component {
             <div className="form-row">
               <div className="form-group col-md-6">
                 <label>Ville :</label>
-
+                
                 <select
                   className="form-control"
                   name="catégorie"
@@ -124,25 +175,7 @@ class Biensnc extends React.Component {
                 </select>
               </div>
               <div className="form-group col-md-6">
-                <label>Catégorie :</label>
-
-                <select
-                  className="form-control"
-                  name="city"
-                  onChange={this.handleInputChangeCategorie}
-                >
-                  <option selected value="-1">
-                    Choisir une catégorie
-                  </option>
-
-                  <option value="1">Jardinage</option>
-                  <option value="2">Bricolage</option>
-                  <option value="3">Coaching sportif</option>
-                  <option value="4">carrosserie</option>
-                  <option value="5">Electricité</option>
-                  <option value="6">Baby sitting</option>
-                  <option value="7">Coaching personnel</option>
-                </select>
+                <this.categories />
               </div>
             </div>
 

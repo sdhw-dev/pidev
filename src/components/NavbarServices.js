@@ -34,18 +34,23 @@ function NavbarServices() {
           </Link>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
               <li className='nav-item'>
-              <Link to='/services' className='nav-links'onClick={closeMobileMenu}>
+              <Link to='/servicesnc' className='nav-links'onClick={closeMobileMenu}>
                 Services
               </Link>
             </li>
             <li className='nav-item'>
-              <Link to='/products' className='nav-links' onClick={closeMobileMenu}>
+              <Link to='/biensnc' className='nav-links' onClick={closeMobileMenu}>
                 Biens
               </Link>
             </li>
             <li className='nav-item'>
-              <Link to='/products' className='nav-links' onClick={closeMobileMenu}>
-                Modification profil
+              <Link to='/espaceP' className='nav-links' onClick={closeMobileMenu}>
+                Profil
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                Deconnexion
               </Link>
             </li>
           </ul>

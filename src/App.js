@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AjouterAnnonce from "./components/pages/AjouterAnnonce.jsx";
 import Navbar from "./components/Navbar";
 import NavbarServices from "./components/NavbarServices";
+import ModifProfil from "./components/pages/ModifProfil";
 
 export default class App extends Component {
   state = {
@@ -62,7 +63,8 @@ export default class App extends Component {
               }
             />
           </Route>
-          <Route path="/EspaceP" component={EspaceP}  />
+          <Route path="/espaceP" component={EspaceP} />
+          <Route path="/modifprofil" component={ModifProfil} />
         </Switch>
       </Router>
     );
