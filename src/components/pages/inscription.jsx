@@ -4,6 +4,7 @@ import Box from "@material-ui/core/Box";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import '../../App.css';
+import Footer from "../Footer";
 
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
@@ -58,6 +59,7 @@ class Inscription extends Component {
 
   render() {
     return (
+      <>
       <div className='inscription'>
       <Box style={{ overflow: "auto" }}>
         <Box
@@ -238,6 +240,8 @@ class Inscription extends Component {
         </Box>
       </Box>
       </div>
+      <Footer/>
+      </>
     );
   }
 }
