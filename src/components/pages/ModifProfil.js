@@ -1,7 +1,27 @@
-import React from 'react';
 import "../../App.css";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function ModifProfil() {
+    const [click, setClick] = useState(false);
+    const [button, setButton] = useState(true);
+  
+    const handleClick = () => setClick(!click);
+    const closeMobileMenu = () => setClick(false);
+  
+    const showButton = () => {
+      if (window.innerWidth <= 960) {
+        setButton(false);
+      } else {
+        setButton(true);
+      }
+    };
+  
+    useEffect(() => {
+      showButton();
+    }, []);
+  
+    window.addEventListener('resize', showButton);
 
   return (
     <>
@@ -24,14 +44,6 @@ function ModifProfil() {
         </div>
         <hr/><br/>
 
-      
-        <ul class="list-group">
-              <li class="list-group-item text-muted">Activité <i class="fa fa-dashboard fa-1x"></i></li>
-              <li class="list-group-item text-right"><span class="pull-left"><strong>Trocs complets</strong></span> 10</li>
-              <li class="list-group-item text-right"><span class="pull-left"><strong>Favoris</strong></span> 13</li>
-              <li class="list-group-item text-right"><span class="pull-left"><strong>Trocs en cours</strong></span> 5</li>
-              <li class="list-group-item text-right"><span class="pull-left"><strong>Clients</strong></span> 20</li>
-            </ul> 
 
             
         </div>
@@ -40,6 +52,7 @@ function ModifProfil() {
               <li><a data-toggle="tab" >Profil/</a></li>
                   <li><a data-toggle="tab" >Modification du profil</a></li>
                 </ul>
+                
 
                 
             <div class="tab-content">
@@ -107,6 +120,10 @@ function ModifProfil() {
                                   <br/>
                                   <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Enregistrer</button>
                                   <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i>Annuler</button>
+                                  <Link to='/espaceP' className='LinkMP' onClick={closeMobileMenu}>
+                                        Retour
+                                  </Link>
+                     
                               </div>
                         </div>
                   </form>
@@ -181,6 +198,7 @@ function ModifProfil() {
                                   <br/>
                                   <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Enregistrer</button>
                                   <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i>Annuler</button>
+                                  
                               </div>
                         </div>
                   </form>
