@@ -2,9 +2,11 @@ import React from "react";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
 import "../../App.css";
+import NavbarServices from "../NavbarServices";
 
 function EspaceP() {
   return (
+      
     <div className="EspaceP">
         <div style={{display:'flex', flexDirection:'row'}}>
             <Sidebar/>
