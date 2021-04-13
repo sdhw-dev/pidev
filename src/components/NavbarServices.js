@@ -44,8 +44,13 @@ function NavbarServices() {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link to='/modifProfil' className='nav-links' onClick={closeMobileMenu}>
-                Modification profil
+              <Link to='/espaceP' className='nav-links' onClick={closeMobileMenu}>
+                Profil
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                Deconnexion
               </Link>
             </li>
           </ul>

@@ -132,7 +132,6 @@ class Biensnc extends React.Component {
             <option selected value="-1">
               Choisir une catégorie
             </option>
-
             <option value="1">Bureaux</option>
             <option value="2">Salle de bain</option>
             <option value="3">Cuisine</option>
@@ -157,7 +156,7 @@ class Biensnc extends React.Component {
             <div className="form-row">
               <div className="form-group col-md-6">
                 <label>Ville :</label>
-
+                
                 <select
                   className="form-control"
                   name="catégorie"
