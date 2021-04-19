@@ -21,11 +21,36 @@ export default class App extends Component {
     userId: "60509c17d5280b4db0720397",
   };
 
+  setUser = (user) => {
+    this.setState({
+      isConnected: true,
+      user: user,
+      userId: user._id,
+    });
+  };
+
+  deconnexion = () => {
+    this.setState({
+      isConnected: false,
+      user: {},
+      userId: "",
+    });
+    localStorage.clear();
+  };
+
   navbar = () => {
     if (this.state.isConnected) {
-      return <NavbarServices />;
+      return <NavbarServices onDeconnexion={this.deconnexion} />;
     } else {
       return <Navbar />;
+    }
+  };
+
+  componentWillMount = () => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      console.log(loggedInUser);
+      this.setUser(loggedInUser);
     }
   };
 
@@ -48,12 +73,7 @@ export default class App extends Component {
           <Route path="/connexion">
             <Connexion
               onConnexion={(user) => {
-                this.setState({
-                  isConnected: true,
-                  user: user,
-                  userId: user._id,
-                });
-                console.warn(this.state);
+                this.setUser(user);
                 localStorage.setItem("user", user);
               }}
             />
@@ -65,7 +85,9 @@ export default class App extends Component {
               }
             />
           </Route>
-          <Route path="/espaceP" component={EspaceP} />
+          <Route path="/espaceP">
+            <EspaceP user={this.state.user} />
+          </Route>
           <Route path="/modifprofil" component={ModifProfil} />
           <Route path="/mesMessages" component={mesMessages} />
         </Switch>
