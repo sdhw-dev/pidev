@@ -49,4 +49,23 @@
   color: black;
 }
 
+.container,
+.my-trocs-liste{
+  margin: 1em 1%;
+  margin-top: 1em;
+  margin-right: 1%;
+  margin-bottom: 1em ;
+  margin-left: 1%;
+  background-color: #fff;
+  padding: 1em;
+  padding-top: 1em;
+  padding-right: 1em;
+}
 
+.my-profile article {
+  white-space: normal;
+}
+label.select.troc-list-filter {
+  margin: 4px auto;
+  max-width: 25em;
+}

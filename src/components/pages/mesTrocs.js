@@ -1,11 +1,14 @@
 import React from 'react';
-
+import "../../App.css";
+import Sidebar from "../SideBar";
+import Footer from "../Footer";
 
 function mesTrocs() {
 
   return (
     <div className='mestrocs'>
-      
+      <div style={{display:'flex', flexDirection:'row'}}>
+		  <Sidebar/>
       <article className="my-trocs-liste" style={{maxwidth : '735px'}}>
 		
 			<nav className="nav-my-trocs">
@@ -90,7 +93,8 @@ function mesTrocs() {
 			<div id="popup-reason-delete-troc"></div>	
 								
 		</article>
-
+		</div>
+		<Footer/>
     </div>
   );
 }

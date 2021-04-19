@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar";
 import NavbarServices from "./components/NavbarServices";
 import ModifProfil from "./components/pages/ModifProfil";
 import mesMessages from "./components/pages/mesMessages";
+import mesTrocs from "./components/pages/mesTrocs";
 
 export default class App extends Component {
   state = {
@@ -67,6 +68,8 @@ export default class App extends Component {
           <Route path="/espaceP" component={EspaceP} />
           <Route path="/modifprofil" component={ModifProfil} />
           <Route path="/mesMessages" component={mesMessages} />
+          <Route path="/mestrocs" component={mesTrocs} />
+
         </Switch>
       </Router>
     );

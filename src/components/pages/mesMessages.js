@@ -14,9 +14,9 @@ function mesMessages() {
           <div class="form-group">
                 <label for="select">Select : </label>
                 <select id="select" class="form-control">
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
+                  <option>Tous mes messages</option>
+                  <option>Messages envoyés</option>
+                  <option>Messages reçus</option>
                 </select>
               </div>
               <div class="form-group">
