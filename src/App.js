@@ -50,7 +50,7 @@ export default class App extends Component {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       console.log(loggedInUser);
-      this.setUser(loggedInUser);
+      this.setUser(JSON.parse(loggedInUser));
     }
   };
 
@@ -74,7 +74,7 @@ export default class App extends Component {
             <Connexion
               onConnexion={(user) => {
                 this.setUser(user);
-                localStorage.setItem("user", user);
+                localStorage.setItem("user", JSON.stringify(user));
               }}
             />
           </Route>
