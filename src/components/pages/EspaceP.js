@@ -1,29 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
 import "../../App.css";
 
 function EspaceP() {
-    const [click, setClick] = useState(false);
-    const [button, setButton] = useState(true);
-  
-    const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false);
-  
-    const showButton = () => {
-      if (window.innerWidth <= 960) {
-        setButton(false);
-      } else {
-        setButton(true);
-      }
-    };
-  
-    useEffect(() => {
-      showButton();
-    }, []);
-  
-    window.addEventListener('resize', showButton);
+   
   return (
     <div className="EspaceP">
         <div style={{display:'flex', flexDirection:'row'}}>
@@ -57,9 +39,7 @@ function EspaceP() {
                     </div>
                     
                     <div class="col-md-2">
-                        <Link to='/modifprofil' className='LinkMP' onClick={closeMobileMenu}>
-                            Modifier profil
-                        </Link>
+                        Modifier profil
                      </div>
                 </div>
                 <div class="row">
