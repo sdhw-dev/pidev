@@ -25,7 +25,7 @@ class EspaceP extends Component {
                   <div class="col-md-4">
                     <div class="profile-img">
                       <img
-                        src={"/getImage?path=" + this.state.user.image}
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
                         alt=""
                       />
                     </div>
