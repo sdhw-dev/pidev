@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
 
-
-function NavbarServices() {
+function NavbarServices(props) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -22,39 +21,57 @@ function NavbarServices() {
     showButton();
   }, []);
 
-  window.addEventListener('resize', showButton);
+  window.addEventListener("resize", showButton);
 
   return (
     <>
-      <nav className='navbar'>
-        <div className='navbar-container'>
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+      <nav className="navbar">
+        <div className="navbar-container">
+          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             E.TROC
-            <i class='fab fa-typo3' />
+            <i class="fab fa-typo3" />
           </Link>
-          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-              <li className='nav-item'>
-              <Link to='/servicesnc' className='nav-links'onClick={closeMobileMenu}>
+          <ul className={click ? "nav-menu active" : "nav-menu"}>
+            <li className="nav-item">
+              <Link
+                to="/servicesnc"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
                 Services
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link to='/biensnc' className='nav-links' onClick={closeMobileMenu}>
+            <li className="nav-item">
+              <Link
+                to="/biensnc"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
                 Biens
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link to='/espaceP' className='nav-links' onClick={closeMobileMenu}>
+            <li className="nav-item">
+              <Link
+                to="/espaceP"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
                 Profil
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+            <li className="nav-item">
+              <Link
+                to="/"
+                className="nav-links"
+                onClick={() => {
+                  closeMobileMenu();
+                  props.onDeconnexion();
+                }}
+              >
                 Deconnexion
               </Link>
             </li>
           </ul>
-          
         </div>
       </nav>
     </>
