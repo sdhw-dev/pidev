@@ -4,9 +4,9 @@ import Footer from "../Footer";
 import "../../App.css";
 
 
+
 class mesTrocs extends React.Component{
-
-
+   
     constructor(){
 
         super();
