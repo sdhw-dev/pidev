@@ -1,5 +1,5 @@
-/*import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
+import { Link, Route } from "react-router-dom";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
 import "../../App.css";
@@ -7,12 +7,7 @@ import "../../App.css";
 class EspaceP extends Component {
   constructor(props) {
     super(props);
-    this.state = { isToggleOn: true, user: props.user };
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    this.setState((state) => ({ isToggleOn: !state.isToggleOn }));
+    this.state = { user: props.user };
   }
 
   render() {
@@ -60,14 +55,19 @@ class EspaceP extends Component {
                   </div>
 
                   <div class="col-md-2">
-                    <button
-                      to="/modifprofil"
-                      className="LinkMP"
-                      onClick={this.handleClick}
-                    >
-                      {this.state.isToggleOn ? "ON" : "OFF"}
-                      Modifier profil
-                    </button>
+                    <Route
+                      render={({ history }) => (
+                        <button
+                          to="/modifprofil"
+                          className="LinkMP"
+                          onClick={() => {
+                            history.push("/modifprofil");
+                          }}
+                        >
+                          Modifier profil
+                        </button>
+                      )}
+                    />
                   </div>
                 </div>
                 <div class="row">
@@ -226,4 +226,4 @@ class EspaceP extends Component {
   }
 }
 
-export default EspaceP;*/
+export default EspaceP;

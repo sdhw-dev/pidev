@@ -14,6 +14,7 @@ import NavbarServices from "./components/NavbarServices";
 import ModifProfil from "./components/pages/ModifProfil";
 import mesMessages from "./components/pages/mesMessages";
 import Calendrier from "./components/pages/Calendrier";
+import mesTrocs from "./components/pages/mesTrocs";
 
 export default class App extends Component {
   state = {
@@ -91,6 +92,7 @@ export default class App extends Component {
           </Route>
           <Route path="/modifprofil" component={ModifProfil} />
           <Route path="/mesMessages" component={mesMessages} />
+          <Route path="/mesTrocs" component={mesTrocs} />
           <Route path="/calendrier" component={Calendrier} />
         </Switch>
       </Router>

@@ -1,4 +1,7 @@
 import React from 'react';
+import Sidebar from "../SideBar";
+import Footer from "../Footer";
+import "../../App.css";
 
 
 class mesTrocs extends React.Component{
@@ -47,32 +50,35 @@ class mesTrocs extends React.Component{
         return(
 
             <div>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                    <Sidebar />
+                    <div style={{ flex: "1", flexDirection: "row" }}>
 
-                <div className="row">
+                        <div className="row">
 
                     <div className="col-md-6 offset-md-3">
-
-                        
-
-                        <h3>Bootstrap Select Box</h3><br />
-
-                        
-
                             <div className="form-row">
 
                                 <div className="form-group col-md-6">
 
-                                    <label>City :</label>
+                                    <label>Filtrer par :</label>
 
-                                    <select className="form-control" name="city" onChange={this.handleInputChange}>
+                                    <select className="form-control" name="tous-mes-trocs" onChange={this.handleInputChange}>
 
-                                        <option selected>Select City</option>
+                                        <option selected>tous mes trocs</option>
 
-                                        <option value="1">city 1</option>
+                                        <option value="2">tous mes demandes</option>
 
-                                        <option value="2">city 2</option>
+                                        <option value="3">tous mes offres</option>
 
-                                        <option value="3">city 3</option>
+                                    </select>
+                                    <select className="form-control" name="catégorie" onChange={this.handleInputChange}>
+
+                                        <option selected>Catégorie</option>
+
+                                        <option value="2">Date</option>
+
+                                        <option value="3">Ville</option>
 
                                     </select>
 
@@ -85,7 +91,7 @@ class mesTrocs extends React.Component{
 
                                 <div className="col-md-12 text-center">
 
-                                    <button type="submit" className="btn btn-primary" onClick={()=>this.submit()}>Submit</button>
+                                    <button type="submit" className="btn btn-primary" onClick={()=>this.submit()}>Filtrer</button>
 
                                 </div>
 
@@ -96,7 +102,9 @@ class mesTrocs extends React.Component{
                     </div>
 
                 </div>
-
+                    </div>
+                </div>
+                <Footer />
             </div>
 
         )  
