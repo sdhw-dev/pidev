@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Side.css";
 import {
   CDBSidebar,
   CDBSidebarContent,
@@ -23,28 +24,28 @@ const Sidebar = () => {
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
       <CDBSidebar textColor="#fff" backgroundColor="linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%)">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-          <a href="/"  className="text-decoration-none" style={{ color: 'inherit' }} >  Menu </a>
+          <a href="/"  className="text-decoration-none" style={{ color: '#55d3e8' }} >  Menu </a>
         </CDBSidebarHeader>
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
              <li >
             <NavLink exact to="/espaceP" activeClassName="active-link" isActive={checkActive}>
-              <CDBSidebarMenuItem icon="user">Profil</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="user" style={{ color: '#55d3e8' }}>Profil</CDBSidebarMenuItem>
             </NavLink></li>
            
             <NavLink exact to="/mesTrocs" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="table">Mes Trocs</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="table" style={{ color: '#55d3e8' }}>Mes Trocs</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/mesMessages" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="envelope">Mes Messages</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="envelope" style={{ color: '#55d3e8' }}>Mes Messages</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/mesFavoris" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="heart">Mes Favoris</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="heart" style={{ color: '#55d3e8' }}>Mes Favoris</CDBSidebarMenuItem>
             </NavLink>
 
             <NavLink exact to="/calendrier" target="_blank"  activeClassName="activeClicked"     >
-              <CDBSidebarMenuItem icon="calculator">    Calendrier  </CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="calculator" style={{ color: '#55d3e8' }}>    Calendrier  </CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
