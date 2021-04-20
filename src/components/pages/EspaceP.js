@@ -5,17 +5,18 @@ import Footer from "../Footer";
 import "../../App.css";
 
 class EspaceP extends Component {
-  state = {
-    user: {},
-  };
+  
   constructor(props) {
-    super(props);
-    this.state = {isToggleOn: true};
+      super(props);
+      this.state = {isToggleOn: true, user:props.user};
 
-    // This binding is necessary to make `this` work in the callback  
-      this.handleClick = this.handleClick.bind(this);  }
+      // This binding is necessary to make `this` work in the callback  
+        this.handleClick = this.handleClick.bind(this);  
+    }
 
-  handleClick() {    this.setState(state => ({      isToggleOn: !state.isToggleOn    }));  }
+  handleClick() { 
+       this.setState(state => ({      isToggleOn: !state.isToggleOn    }));
+  }
 
   render() {
     return (
