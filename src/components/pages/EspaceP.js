@@ -5,17 +5,15 @@ import Footer from "../Footer";
 import "../../App.css";
 
 class EspaceP extends Component {
-  state = {
-    user: {},
-  };
   constructor(props) {
     super(props);
-    this.state = {isToggleOn: true};
+    this.state = { isToggleOn: true, user: props.user };
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-    // This binding is necessary to make `this` work in the callback  
-      this.handleClick = this.handleClick.bind(this);  }
-
-  handleClick() {    this.setState(state => ({      isToggleOn: !state.isToggleOn    }));  }
+  handleClick() {
+    this.setState((state) => ({ isToggleOn: !state.isToggleOn }));
+  }
 
   render() {
     return (
@@ -27,14 +25,12 @@ class EspaceP extends Component {
               <form method="post">
                 <div class="row">
                   <div class="col-md-4">
-                  <div class="profile-img">
+                    <div class="profile-img">
                       <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
                         alt=""
                       />
                     </div>
-                    
-
                   </div>
                   <div class="col-md-6">
                     <div class="profile-head">
@@ -64,10 +60,14 @@ class EspaceP extends Component {
                   </div>
 
                   <div class="col-md-2">
-                  <button to='/modifprofil' className='LinkMP' onClick={this.handleClick}>
-                            {this.state.isToggleOn ? 'ON' : 'OFF'}
-                            Modifier profil
-                  </button>
+                    <button
+                      to="/modifprofil"
+                      className="LinkMP"
+                      onClick={this.handleClick}
+                    >
+                      {this.state.isToggleOn ? "ON" : "OFF"}
+                      Modifier profil
+                    </button>
                   </div>
                 </div>
                 <div class="row">
