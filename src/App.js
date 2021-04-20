@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar";
 import NavbarServices from "./components/NavbarServices";
 import ModifProfil from "./components/pages/ModifProfil";
 import mesMessages from "./components/pages/mesMessages";
+import Calendrier from "./components/pages/Calendrier";
 import mesTrocs from "./components/pages/mesTrocs";
 
 export default class App extends Component {
@@ -50,7 +51,7 @@ export default class App extends Component {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       console.log(loggedInUser);
-      this.setUser(loggedInUser);
+      this.setUser(JSON.parse(loggedInUser));
     }
   };
 
@@ -74,7 +75,7 @@ export default class App extends Component {
             <Connexion
               onConnexion={(user) => {
                 this.setUser(user);
-                localStorage.setItem("user", user);
+                localStorage.setItem("user", JSON.stringify(user));
               }}
             />
           </Route>
@@ -90,8 +91,8 @@ export default class App extends Component {
           </Route>
           <Route path="/modifprofil" component={ModifProfil} />
           <Route path="/mesMessages" component={mesMessages} />
-          <Route path="/mestrocs" component={mesTrocs} />
-
+          <Route path="/mesTrocs" component={mesTrocs} />
+          <Route path="/calendrier" component={Calendrier} />
         </Switch>
       </Router>
     );

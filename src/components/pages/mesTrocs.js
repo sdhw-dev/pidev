@@ -1,102 +1,117 @@
 import React from 'react';
-import "../../App.css";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
+import "../../App.css";
 
-function mesTrocs() {
 
-  return (
-    <div className='mestrocs'>
-      <div style={{display:'flex', flexDirection:'row'}}>
-		  <Sidebar/>
-      <article className="my-trocs-liste" style={{maxwidth : '735px'}}>
-		
-			<nav className="nav-my-trocs">
-				<ul>
-					<li className="tab-my-troc active">
-						<a id="myOffers" href="#myOffersList" className="waves waves-prune" data-no-trigger="true"> 
-							Mes Trocs 
-						</a>
-					</li>
-					<li className="tab-my-troc">
-						<a id="myDemands" href="#myDemandsList" className="waves waves-prune" data-no-trigger="true"> 
-							Les Trocs qui m'interessent						</a>
-					</li>
-					<li className="tab-my-troc">
-						<a id="myTrocTerminated" href="#myTerminatedList" className="waves waves-prune" data-no-trigger="true">
-							Trocs terminés						</a>
-					</li>  
-				<ul>
-			</ul></ul></nav>
-				
-			<div className="container">	
-				<div id="myOffersList" className="nav-my-trocs-target" style={{display: 'block'}}>
-					<label className="select troc-list-filter">
-						<select id="self-troc-filter">
-							<option value="201">Tous mes trocs</option>
-							<option value="202">Mes Offres</option>
-							<option value="203">Mes demandes</option>
-						</select>
-					</label>
-					<div id="offers-content" >
-						<ul className="troc-list"><p><br/><br/>Vous n'avez pas de trocs ici<br/><br/></p></ul>
-						<div id="more-result-offers" className="more-button" style={{display: 'none'}}>
-						  <div className="button">
-			  					Voir plus de trocs 			  				</div>
-				  				  
-						</div>	
-					</div>
-				</div>		
-				
-				<div id="myDemandsList" className="nav-my-trocs-target" style={{display: 'none'}}>				
-					<label className="select troc-list-filter">
-						<select id="others-troc-filter">
-							<option value="204">Tous les Trocs</option>
-							<option value="205">Trocs "il propose"</option>
-							<option value="206">Trocs "il recherche"</option>
-						</select>
-					</label>  
+class mesTrocs extends React.Component{
 
-					<div id="demands-content">
-						<ul className="troc-list"></ul>
-						<div id="more-result-demands" className="more-button">
-						  <div className="button">
-			  					Voir plus de trocs  
-			  				</div>
-				  			<a href="" className="infiniScroll">&nbsp;</a>		  
-						</div>
-					</div>
-				</div> 
-			
-				<div id="myTerminatedList" className="nav-my-trocs-target" style={{display: 'none'}}>
-					<label className="select troc-list-filter">
-						<select id="terminated-troc-filter">
-							<option value="207">Tous les trocs terminés</option>
-							<option value="208">Tous mes propres trocs terminés</option>
-							<option value="209">Autres trocs terminés</option>
-						</select>
-					</label>
-				
-					<div id="terminated-content">
-						<ul className="troc-list"></ul>
-						<div id="more-result-terminated" className="more-button">
-						  <div className="button">
-			  					Voir plus de trocs  
-			  				</div>
-				  			<a href="" className="infiniScroll">&nbsp;</a>		  
-						</div>
-					</div>
-				</div>
-			</div>
-							
-			<div id="popup-confirm-delete-troc"></div>
-			<div id="popup-reason-delete-troc"></div>	
-								
-		</article>
-		</div>
-		<Footer/>
-    </div>
-  );
+
+    constructor(){
+
+        super();
+
+        this.state = {
+
+            city:null,
+
+        }
+
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+
+    }
+
+
+    handleInputChange(event) {
+
+        
+
+        this.setState({
+
+            city: event.target.value
+
+        });
+
+        
+
+    }
+
+
+    submit(){
+
+        console.warn(this.state)
+
+    }
+
+
+    render(){
+
+        return(
+
+            <div>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                    <Sidebar />
+                    <div style={{ flex: "1", flexDirection: "row" }}>
+
+                        <div className="row">
+
+                    <div className="col-md-6 offset-md-3">
+                            <div className="form-row">
+
+                                <div className="form-group col-md-6">
+
+                                    <label>Filtrer par :</label>
+
+                                    <select className="form-control" name="tous-mes-trocs" onChange={this.handleInputChange}>
+
+                                        <option selected>tous mes trocs</option>
+
+                                        <option value="2">tous mes demandes</option>
+
+                                        <option value="3">tous mes offres</option>
+
+                                    </select>
+                                    <select className="form-control" name="catégorie" onChange={this.handleInputChange}>
+
+                                        <option selected>Catégorie</option>
+
+                                        <option value="2">Date</option>
+
+                                        <option value="3">Ville</option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <div className="form-row">
+
+                                <div className="col-md-12 text-center">
+
+                                    <button type="submit" className="btn btn-primary" onClick={()=>this.submit()}>Filtrer</button>
+
+                                </div>
+
+                            </div>
+
+                        
+
+                    </div>
+
+                </div>
+                    </div>
+                </div>
+                <Footer />
+            </div>
+
+        )  
+
+    }
+
 }
+
 
 export default mesTrocs;
