@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Link, Route } from "react-router-dom";
+import {  Route } from "react-router-dom";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
 import "../../App.css";
-import NavbarServices from "../NavbarServices";
+
 
 class EspaceP extends Component {
   constructor(props) {
