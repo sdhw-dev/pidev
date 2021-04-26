@@ -5,11 +5,13 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Input from "@material-ui/core/Input";
-
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
+import Sidebar from "../SideBar";
 
 class AjouterAnnonce extends Component {
   state = {
@@ -74,9 +76,9 @@ class AjouterAnnonce extends Component {
         flexDirection="column"
         maxWidth="sm"
         style={{
-          maxInlineSize: 600,
+          maxInlineSize: 800,
           marginLeft: "auto",
-          marginRight: 15,
+          marginRight: 150,
           marginTop: 15,
           marginBottom: 15,
           alignItems: "baselineposition",
