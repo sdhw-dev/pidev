@@ -14,7 +14,8 @@ import ModifProfil from "./components/pages/ModifProfil";
 import mesMessages from "./components/pages/mesMessages";
 import Calendrier from "./components/pages/Calendrier";
 import mesTrocs from "./components/pages/mesTrocs";
-import EventCalendar from "./components/pages/EventCalendar";
+import profilTroqueur from "./components/pages/profilTroqueur";
+
 export default class App extends Component {
   state = {
     isConnected: false,
@@ -60,7 +61,6 @@ export default class App extends Component {
       <Router>
         <this.navbar />
         <Switch>
-        <Route path="/calendrier" exact component={EventCalendar} />
           <Route path="/" exact component={Home} />
           <Route path="/ajouterAnnonce">
             <AjouterAnnonce userId={this.state.userId} />
@@ -94,6 +94,7 @@ export default class App extends Component {
           <Route path="/mesMessages" component={mesMessages} />
           <Route path="/mesTrocs" component={mesTrocs} />
           <Route path="/calendrier" component={Calendrier} />
+          <Route path="/profilTroqueur" component={profilTroqueur} />
         </Switch>
       </Router>
     );

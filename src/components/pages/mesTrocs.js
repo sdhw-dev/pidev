@@ -9,47 +9,30 @@ class mesTrocs extends React.Component{
    
     constructor(){
 
-        super();
-
-        this.state = {
-
-            city:null,
-
-        }
-
-
-        this.handleInputChange = this.handleInputChange.bind(this);
-
-    }
-
-
-    handleInputChange(event) {
-
-        
-
-        this.setState({
-
-            city: event.target.value
-
-        });
-
-        
+        super();   
 
     }
 
 
     submit(){
+        console.log("salut")
+        const option=document.getElementById("id")
+        console.log(option)
 
+        if(option==1){
+            <div>Salut id=1</div>
+        }
         console.warn(this.state)
 
     }
+    
 
 
     render(){
-
+        
         return(
-
-            <div>
+            
+            <div >
                 <div style={{ display: "flex", flexDirection: "row" }}>
                     <Sidebar />
                     <div style={{ flex: "1", flexDirection: "row" }}>
@@ -65,20 +48,17 @@ class mesTrocs extends React.Component{
 
                                     <select className="form-control" name="tous-mes-trocs" onChange={this.handleInputChange}>
 
-                                        <option selected>tous mes trocs</option>
-
-                                        <option value="2">tous mes demandes</option>
-
-                                        <option value="3">tous mes offres</option>
+                                        <option id="1">Mes trocs</option>
+                                        <option id="2">Mes trocs en cours d'exécution</option>
+                                        <option id="3">Mes trocs terminés</option>
+                                        <option id="4">Mes demandes</option>
+                                        <option id="5">Mes offres</option>
 
                                     </select>
                                     <select className="form-control" name="catégorie" onChange={this.handleInputChange}>
 
-                                        <option selected>Catégorie</option>
-
-                                        <option value="2">Date</option>
-
-                                        <option value="3">Ville</option>
+                                        <option value="1">Catégorie</option>
+                                        <option value="2">Ville</option>
 
                                     </select>
 
@@ -102,8 +82,18 @@ class mesTrocs extends React.Component{
                     </div>
 
                 </div>
+                <h2>Mes trocs :</h2>
+                <div class="form-group">
+                <label for="textarea"></label>
+                <textarea id="textarea" class="form-control"></textarea>
+              </div>
+             
+          
                     </div>
+        
                 </div>
+            
+               
                 <Footer />
             </div>
 
