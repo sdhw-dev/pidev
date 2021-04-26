@@ -1,3 +1,4 @@
+const user = require("../models/userModel");
 const userModel = require("../models/userModel");
 
 const exists = (utilisateur) => {
@@ -13,6 +14,10 @@ const exists = (utilisateur) => {
       return user;
     }
   );
+};
+
+const getUser = async (userId) => {
+  return userModel.findOne({ _id: userId });
 };
 
 const checkMail = (mail) => {
@@ -69,3 +74,4 @@ exports.addUser = addUser;
 exports.checkMail = checkMail;
 exports.addImage = addImage;
 exports.getImage = getImage;
+exports.getUser = getUser;
