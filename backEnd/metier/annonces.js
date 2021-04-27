@@ -1,7 +1,7 @@
 const { ObjectId } = require("bson");
 const annonceModel = require("../models/annonceModel");
 const user = require("./users");
-const getAnnonce = (filtre) => {
+const getAnnonces = (filtre) => {
   return annonceModel.find(filtre, (err, annonces) => {
     if (err) {
     } else {
@@ -15,6 +15,10 @@ const addImage = async (annonceId, images) => {
   annonce.set("images", images);
   annonce.save();
   return annonce;
+};
+
+const getAnnonce = async (annonceId) => {
+  return annonceModel.findOne({ _id: annonceId });
 };
 
 const addAnnonce = (annonce, img) => {
@@ -40,4 +44,5 @@ const addAnnonce = (annonce, img) => {
 
 exports.addAnnonce = addAnnonce;
 exports.addImage = addImage;
+exports.getAnnonces = getAnnonces;
 exports.getAnnonce = getAnnonce;

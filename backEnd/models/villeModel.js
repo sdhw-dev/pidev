@@ -3,7 +3,10 @@ mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
 
 mongoose
-  .connect("mongodb+srv://wissal:wissalsidihida@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority", { useNewUrlParser: true })
+  .connect(
+    "mongodb+srv://wissal:wissalsidihida@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority",
+    { useNewUrlParser: true }
+  )
   .then(() => {
     console.log("connected to db");
   })
@@ -15,7 +18,7 @@ mongoose.connection;
 const villesSchema = new mongoose.Schema(
   {
     nom: String,
-    idville: Number,
+    id: Number,
   },
   { collection: "villes" },
   { timestamps: true }
