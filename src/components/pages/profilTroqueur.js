@@ -43,7 +43,6 @@ class profilTroqueur extends Component {
                             <h5>
                             
 
-
                             </h5>
                           </div>
                         </div>
@@ -90,7 +89,7 @@ class profilTroqueur extends Component {
                             history.push("/");
                           }}
                         >
-                          Retour
+                          Retour 
                         </button>
                       )}
                     />
