@@ -11,6 +11,7 @@ const villeModel = require("./models/villeModel");
 const categorieModel = require("./models/categorieModel");
 const annonces = require("./metier/annonces");
 const users = require("./metier/users");
+const categories = require("./metier/categories");
 const { json } = require("body-parser");
 const categorie = require("./models/categorieModel");
 const user = require("./models/userModel");
@@ -81,6 +82,19 @@ app.get("/getUser", async (req, res) => {
   });
 });
 
+app.get("/getAnnonceInfo", (req, res) => {
+  let annonceId = req.query.id;
+  let annonceInfo = { troc: {}, adresse: "", categorie: "" };
+  annonces.getAnnonce(annonceId).then(async (annonce) => {
+    annonceInfo.troc = annonce;
+    let categ = await categories.getCategorie(annonce.idCategorie);
+    let user = await users.getUser(annonce.idUser);
+    annonceInfo.adresse = user.adresse.adresse;
+    annonceInfo.categorie = categ;
+    res.json(annonceInfo);
+  });
+});
+
 app.all("/getAnnonces", (req, res) => {
   let body = JSON.parse(JSON.stringify(req.body));
   let filtre = {};
@@ -92,7 +106,7 @@ app.all("/getAnnonces", (req, res) => {
     filtre.idVille = body.idVille;
   }
   console.log(filtre);
-  annonces.getAnnonce(filtre).then((result) => {
+  annonces.getAnnonces(filtre).then((result) => {
     console.log(result);
     res.json(result);
   });

@@ -3,6 +3,7 @@ import "../../App.css";
 import axios from "axios";
 import "../Cards.css";
 import CardItem from "../CardItem";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 class Biensnc extends React.Component {
   constructor() {
     super();
@@ -57,11 +58,13 @@ class Biensnc extends React.Component {
       <ul className="cards__items">
         {L.map((annonce) => {
           return (
-            <CardItem
-              src={"/getImage?path=" + annonce.image}
-              text={annonce.titre}
-              path="/profil"
-            />
+            <Route>
+              <CardItem
+                src={"/getImage?path=" + annonce.image}
+                text={annonce.titre}
+                path={"/MyTroc/" + annonce._id}
+              />
+            </Route>
           );
         })}
       </ul>

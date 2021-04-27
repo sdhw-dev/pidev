@@ -1,21 +1,24 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import axios from "axios";
 
 import Footer from "../Footer";
 import "../../App.css";
 import "./profilTroqueur.css";
-
+import axios from "axios";
 class profilTroqueur extends Component {
   constructor(props) {
     super(props);
+    this.state = { user: {} };
+  }
+
+  componentWillMount = () => {
     axios
-      .get("/getUser?id=" + props.userId)
+      .get("/getUser?id=" + this.props.match.params.id)
       .then((res) => {
-        this.state = { user: res.data };
+        this.setState({ user: res.data });
       })
       .catch((error) => console.log(error));
-  }
+  };
 
   render() {
     return (
