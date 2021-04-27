@@ -28,8 +28,8 @@
 }
 .modifProfil,
 .EspaceP,
-.mesmessages
- {
+.mesmessages,
+.profilTroqueur{
   background-color: rgb(202, 223, 221);
 }
 .btn .form-row {
