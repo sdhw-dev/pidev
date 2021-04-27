@@ -5,7 +5,7 @@ import React, { Component, useEffect } from "react";
 import axios from "axios";
 import Home from "./components/pages/Home";
 import Biensnc from "./components/pages/Biensnc";
-import EspaceP from './components/pages/EspaceP';
+import EspaceP from "./components/pages/EspaceP";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AjouterAnnonce from "./components/pages/AjouterAnnonce.jsx";
 import Navbar from "./components/Navbar";
@@ -14,7 +14,7 @@ import ModifProfil from "./components/pages/ModifProfil";
 import mesMessages from "./components/pages/mesMessages";
 import Calendrier from "./components/pages/Calendrier";
 import mesTrocs from "./components/pages/mesTrocs";
-import profilTroqueur from "./components/pages/profilTroqueur";
+import ProfilTroqueur from "./components/pages/profilTroqueur";
 
 export default class App extends Component {
   state = {
@@ -94,7 +94,9 @@ export default class App extends Component {
           <Route path="/mesMessages" component={mesMessages} />
           <Route path="/mesTrocs" component={mesTrocs} />
           <Route path="/calendrier" component={Calendrier} />
-          <Route path="/profilTroqueur" component={profilTroqueur} />
+          <Route path="/profilTroqueur">
+            <ProfilTroqueur userId={this.state.userId} />
+          </Route>
         </Switch>
       </Router>
     );

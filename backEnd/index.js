@@ -13,6 +13,7 @@ const annonces = require("./metier/annonces");
 const users = require("./metier/users");
 const { json } = require("body-parser");
 const categorie = require("./models/categorieModel");
+const user = require("./models/userModel");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -73,7 +74,12 @@ app.all("/setUserImage", upload.single("image"), (req, res) => {
   });
 });
 
-app.get("/getUser", (req, res) => {});
+app.get("/getUser", async (req, res) => {
+  let userId = req.query.id;
+  users.getUser(userId).then((user) => {
+    res.json(user);
+  });
+});
 
 app.all("/getAnnonces", (req, res) => {
   let body = JSON.parse(JSON.stringify(req.body));

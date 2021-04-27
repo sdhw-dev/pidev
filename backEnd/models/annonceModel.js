@@ -4,7 +4,14 @@ mongoose.Promise = global.Promise;
 
 /*mongodb+srv://yassine:yassinenaciri@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority*/
 mongoose
+<<<<<<< HEAD
+  .connect(
+    "mongodb+srv://oumaima:oumaimatahiri@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority",
+    { useNewUrlParser: true }
+  )
+=======
   .connect("mongodb+srv://wissal:wissalsidihida@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority", { useNewUrlParser: true })
+>>>>>>> ff3a9365b01132df5c66870e0ea3a1cfef782036
   .then(() => {
     console.log("connected to db");
   })
