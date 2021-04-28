@@ -43,6 +43,7 @@ export default class MyTroc extends React.Component {
                       />
                     </div>
                   </div>
+                  
                   <div class="col-md-6">
                     <div className="profile-head">
                       <h4> {this.state.troc.titre} </h4>
@@ -85,6 +86,7 @@ export default class MyTroc extends React.Component {
                         </Ripples>
                       )}
                     />
+                  </div>
                   </div>
                 </div>
               </form>
@@ -147,7 +149,7 @@ export default class MyTroc extends React.Component {
         </div>
         <Footer />
       </div>
-      </div>
+      
     );
   }
 }

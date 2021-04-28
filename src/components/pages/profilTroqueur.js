@@ -8,14 +8,15 @@ import axios from "axios";
 class profilTroqueur extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: {} };
+    this.state = { user: { contact: {}, adresse: {} } };
   }
 
   componentWillMount = () => {
     axios
-      .get("/getUser?id=" + this.props.match.params.id)
+      .get("/getUser?" + this.props.match.params.id)
       .then((res) => {
         this.setState({ user: res.data });
+        console.log(this.state.user);np 
       })
       .catch((error) => console.log(error));
   };
@@ -41,49 +42,40 @@ class profilTroqueur extends Component {
                       <h2 id="profilTroqueur">Profil du troqueur</h2>
                     </div>
                     <div class="row">
-                          <div class="col-md-6">
-                            <h5>Nom et prénom : </h5>
-                          </div>
-                          <div class="col-md-6">
-                            <h5>
-                            
-                              
-                            </h5>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-6">
-                            <h5>Email : </h5>
-                          </div>
-                          <div class="col-md-6">
-                            <h5>
-                            
-                             
-                            </h5>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-6">
-                            <h5>Tél :</h5>
-                          </div>
-                          <div class="col-md-6">
-                            <h5>
-                            
-                            </h5>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-6">
-                            <h5>Adresse : </h5>
-                          </div>
-                          <div class="col-md-6">
-                            <h5>
-                            
-                            </h5>
-                          </div>
-                        </div>
-                 
-                     
+                      <div class="col-md-6">
+                        <h5>
+                          Nom et prénom :
+                          {this.state.user.nom + " " + this.state.user.prenom}{" "}
+                        </h5>
+                      </div>
+                      <div class="col-md-6">
+                        <h5></h5>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h5>Email :{this.state.user.contact.mail} </h5>
+                      </div>
+                      <div class="col-md-6">
+                        <h5></h5>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h5>Tél :{this.state.user.contact.tel}</h5>
+                      </div>
+                      <div class="col-md-6">
+                        <h5></h5>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h5>Adresse : {this.state.user.adresse.adresse}</h5>
+                      </div>
+                      <div class="col-md-6">
+                        <h5></h5>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-2">
                     <Route
