@@ -77,7 +77,9 @@ export default class MyTroc extends React.Component {
                               overflow: "hidden",
                             }}
                             onClick={() => {
-                              history.push("/contactertroqueur");
+                              history.push(
+                                "/ProfilTroqueur/" + this.state.troc.idUser
+                              );
                             }}
                           >
                             Contacter le troqueur

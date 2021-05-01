@@ -63,6 +63,7 @@ const addUser = (utilisateur) => {
       idVille: utilisateur.adresse.idVille,
       adresse: utilisateur.adresse.adresse,
     },
+    description: "",
   });
   newUser.save();
 
