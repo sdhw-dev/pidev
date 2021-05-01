@@ -82,10 +82,10 @@ class profilTroqueur extends Component {
                     <Route
                       render={({ history }) => (
                         <button
-                          to="/"
+                          to="/MyTroc/:id"
                           className="LinkMP"
                           onClick={() => {
-                            history.push("/");
+                            history.push("/MyTroc/:id");
                           }}
                         >
                           Retour 
@@ -102,7 +102,7 @@ class profilTroqueur extends Component {
                         <i class="fa fa-dashboard fa-1x"></i>
                       </li>
                       <div class="form-group">
-                        <textarea id="textarea" class="form-control"></textarea>
+                       
                       </div>
                     </ul>
                   </div>
