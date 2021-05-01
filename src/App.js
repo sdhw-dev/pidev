@@ -16,6 +16,7 @@ import Calendrier from "./components/pages/Calendrier";
 import mesTrocs from "./components/pages/mesTrocs";
 import ProfilTroqueur from "./components/pages/profilTroqueur";
 import Troc from "./components/pages/MyTroc";
+import Avis from "./components/pages/Avis";
 
 export default class App extends Component {
   state = {
@@ -96,6 +97,7 @@ export default class App extends Component {
           <Route path="/calendrier" component={Calendrier} />
           <Route path="/ProfilTroqueur/:id" component={ProfilTroqueur} />
           <Route path="/MyTroc/:id" component={Troc} />
+          <Route path="/Avis" component={Avis} />
         </Switch>
       </Router>
     );

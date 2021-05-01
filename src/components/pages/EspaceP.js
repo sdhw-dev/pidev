@@ -21,37 +21,20 @@ class EspaceP extends Component {
               <form method="post">
                 <div class="row">
                   <div class="col-md-4">
-                    <div class="profile-img">
-                      <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                        alt=""
-                      />
-                    </div>
+                 
+                     <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar"/>
+          
                   </div>
                   <div class="col-md-6">
                     <div class="profile-head">
-                      <h5>
+                      <h2>
                         {this.state.user.nom + " " + this.state.user.prenom}
-                      </h5>
-                      <h6>Troqueur</h6>
-                      <p class="proile-rating">
+                      </h2>
+                      
+                      <p class="profile-rating">
                         Moyenne des appréciations : <span>8/10</span>
                       </p>
-                      <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                          <a
-                            class="nav-link active"
-                            id="home-tab"
-                            data-toggle="tab"
-                            href="#home"
-                            role="tab"
-                            aria-controls="home"
-                            aria-selected="true"
-                          >
-                            A propos
-                          </a>
-                        </li>
-                      </ul>
+                
                     </div>
                   </div>
 
@@ -74,7 +57,7 @@ class EspaceP extends Component {
                 <div class="row">
                   <div class="col-md-4">
                     <div class="profile-work">
-                      <h4>Adresse : </h4>
+                      
                       <ul class="list-group">
                         <li class="list-group-item text-muted">
                           Activité <i class="fa fa-dashboard fa-1x"></i>
@@ -114,9 +97,10 @@ class EspaceP extends Component {
                         role="tabpanel"
                         aria-labelledby="home-tab"
                       >
+                        <br/>
                         <div class="row">
                           <div class="col-md-6">
-                            <label>Nom et prénom</label>
+                            <label>Nom et prénom : </label>
                           </div>
                           <div class="col-md-6">
                             <p>
@@ -128,7 +112,7 @@ class EspaceP extends Component {
                         </div>
                         <div class="row">
                           <div class="col-md-6">
-                            <label>Email</label>
+                            <label>Email :</label>
                           </div>
                           <div class="col-md-6">
                             <p>{this.state.user.contact.mail}</p>
@@ -136,7 +120,7 @@ class EspaceP extends Component {
                         </div>
                         <div class="row">
                           <div class="col-md-6">
-                            <label>Tél</label>
+                            <label>Tél :</label>
                           </div>
                           <div class="col-md-6">
                             <p>{this.state.user.contact.tel}</p>
@@ -144,7 +128,16 @@ class EspaceP extends Component {
                         </div>
                         <div class="row">
                           <div class="col-md-6">
-                            <label>Description</label>
+                            <label>Adresse : </label>
+                          </div>
+                          <div class="col-md-6">
+                            <p>{}</p>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label>Description :</label>
                           </div>
                           <div class="col-md-6">
                             <p>Spécialiste jardinage</p>

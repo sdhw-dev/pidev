@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "../Footer";
-import "../../myTroc.css";
+import "./myTroc.css";
 import { Route } from "react-router-dom";
 import Ripples from "react-ripples";
 import axios from "axios";
@@ -34,17 +34,17 @@ export default class MyTroc extends React.Component {
             >
               <form method="post">
                 <div class="row">
-                  <div class="col-md-4">
-                    <div className="profile-img">
+                  <div class="col-md-6">
+                    
                       <img
                         src="https://www.viepratique.fr/wp-content/uploads/sites/4/2019/04/bricolage-et-diy-quels-outils-avoir-chez-soi.jpg"
                         alt=""
-                        style={{ height: "350", width: "400" }}
+                        
                       />
-                    </div>
+                   
                   </div>
                   
-                  <div class="col-md-6">
+                <div class="col-md-6">
                     <div className="profile-head">
                       <h4> {this.state.troc.titre} </h4>
                       <h6>
@@ -58,92 +58,131 @@ export default class MyTroc extends React.Component {
                         }{" "}
                       </h6>
                       <h6> {"date d'ajout: " /*date*/} </h6>
+                     
+                    </div>
+                    <br/>
+                    <div className="description">
                       <h4>Description de l'annonce: </h4>
 
                       <h6>{this.state.troc.description} </h6>
                     </div>
-                    <h3>Pour plus d'informations :</h3>
-                    <div class="col-md-2">
-                     
-                    <Route
-                      render={({ history }) => (
-                        <Ripples color="yellow">
-                          <button
-                            to="/contactertroqueur"
-                            type="button"
-                            className="btn btn-primary"
-                            style={{
-                              display: "inline-flex",
-                              borderRadius: 25,
-                              overflow: "hidden",
-                            }}
-                            onClick={() => {
-                              history.push("/contactertroqueur");
-                            }}
-                          >
-                            Contacter le troqueur
-                          </button>
-                        </Ripples>
-                      )}
-                    />
-                  </div>
+          
                   </div>
                 </div>
+              
+              <br/>
+              <br/>
+              <div class="row">
+                
+                <div
+                  className=" col-md-3 "
+                  style={{
+                    display: "inline-flex",
+                    borderRadius: 25,
+                    overflow: "hidden",
+                    backgroundcolor :"cadetblue",
+                  }}
+                >
+                  <Route
+                    render={({ history }) => (
+                      <Ripples color={"yellow"}>
+                        <button
+                          to="/demandertroc"
+                          type="button"
+                          className="btn btn-primary"
+                          style={{ width: "350px", height: "50px" }}
+                          onClick={() => {
+                            history.push("/demandertroc");
+                          }}
+                        >
+                          Demander
+                        </button>
+                      </Ripples>
+                    )}
+                  />
+                </div>
+
+                <div
+                  className="col-md-3 "
+                  style={{
+                    display: "inline-flex",
+                    borderRadius: 25,
+                    overflow: "hidden",
+                    
+                  }}
+                >
+                  <Route
+                    render={({ history }) => (
+                      <Ripples color={"yellow"}>
+                        <button
+                          to="/proposertroc"
+                          type="button"
+                          className="btn btn-primary"
+                          style={{ width: "350px", height: "50px" }}
+                          onClick={() => {
+                            history.push("/proposertroc");
+                          }}
+                        >
+                          Proposer
+                        </button>
+                      </Ripples>
+                    )}
+                  />
+                </div>
+                <div
+                className=" col-md-3"
+                style={{
+                  display: "inline-flex",
+                  borderRadius: 25,
+                  overflow: "hidden",
+                }}
+              >
+                <Route
+                  render={({ history }) => (
+                    <Ripples color={"yellow"}>
+                      <button
+                        to="/Avis"
+                        type="button"
+                        className="btn btn-primary"
+                        style={{ width: "350px", height: "50px" }}
+                        onClick={() => {
+                          history.push("/Avis");
+                        }}
+                      >
+                        Avis 
+                      </button>
+                    </Ripples>
+                  )}
+                />
+              </div>
+              <div
+                className=" col-md-3"
+                style={{
+                  display: "inline-flex",
+                  borderRadius: 25,
+                  overflow: "hidden",
+                }}
+              >
+                <Route
+                  render={({ history }) => (
+                    <Ripples color={"yellow"}>
+                      <button
+                        to="/profilTroqueur"
+                        type="button"
+                        className="btn btn-primary"
+                        style={{ width: "350px", height: "50px" }}
+                        onClick={() => {
+                          history.push("/profilTroqueur");
+                        }}
+                      >
+                        Consulter le profil du troqueur
+                      </button>
+                    </Ripples>
+                  )}
+                />
+              </div>
+              </div>
               </form>
-
-              <div
-                className="button-dem"
-                style={{
-                  display: "inline-flex",
-                  borderRadius: 25,
-                  overflow: "hidden",
-                }}
-              >
-                <Route
-                  render={({ history }) => (
-                    <Ripples color={"yellow"}>
-                      <button
-                        to="/demandertroc"
-                        type="button"
-                        className="btn btn-primary"
-                        style={{ width: "350px", height: "50px" }}
-                        onClick={() => {
-                          history.push("/demandertroc");
-                        }}
-                      >
-                        Demander
-                      </button>
-                    </Ripples>
-                  )}
-                />
-              </div>
-
-              <div
-                className="button-prop"
-                style={{
-                  display: "inline-flex",
-                  borderRadius: 25,
-                  overflow: "hidden",
-                }}
-              >
-                <Route
-                  render={({ history }) => (
-                    <Ripples color={"yellow"}>
-                      <button
-                        to="/proposertroc"
-                        type="button"
-                        className="btn btn-primary"
-                        style={{ width: "350px", height: "50px" }}
-                        onClick={() => {
-                          history.push("/proposertroc");
-                        }}
-                      >
-                        Proposer
-                      </button>
-                    </Ripples>
-                  )}
-                />
-              </div>
             </div>
           </div>
         </div>
