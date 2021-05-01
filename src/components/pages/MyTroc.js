@@ -43,6 +43,7 @@ export default class MyTroc extends React.Component {
                       />
                     </div>
                   </div>
+                  
                   <div class="col-md-6">
                     <div className="profile-head">
                       <h4> {this.state.troc.titre} </h4>
@@ -61,9 +62,9 @@ export default class MyTroc extends React.Component {
 
                       <h6>{this.state.troc.description} </h6>
                     </div>
-                  </div>
-                  <h3>Pour plus d'nformations :</h3>
-                  <div class="col-md-2">
+                    <h3>Pour plus d'informations :</h3>
+                    <div class="col-md-2">
+                     
                     <Route
                       render={({ history }) => (
                         <Ripples color="yellow">
@@ -87,6 +88,7 @@ export default class MyTroc extends React.Component {
                         </Ripples>
                       )}
                     />
+                  </div>
                   </div>
                 </div>
               </form>
@@ -149,6 +151,7 @@ export default class MyTroc extends React.Component {
         </div>
         <Footer />
       </div>
+      
     );
   }
 }
