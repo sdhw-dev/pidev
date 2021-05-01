@@ -12,8 +12,9 @@ class profilTroqueur extends Component {
   }
 
   componentWillMount = () => {
+    console.log(this.props.match);
     axios
-      .get("/getUser?" + this.props.match.params.id)
+      .get("/getUser?id=" + this.props.match.params.id)
       .then((res) => {
         this.setState({ user: res.data });
         console.log(this.state.user);
@@ -97,7 +98,7 @@ class profilTroqueur extends Component {
                   <div class="col-md-12">
                     <ul class="list-group">
                       <li class="list-group-item text-muted">
-                        <h4>Description :</h4>{" "}
+                        <h4>Description :{this.state.user.description}</h4>{" "}
                         <i class="fa fa-dashboard fa-1x"></i>
                       </li>
                       <div class="form-group">

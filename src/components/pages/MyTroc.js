@@ -167,12 +167,12 @@ export default class MyTroc extends React.Component {
                   render={({ history }) => (
                     <Ripples color={"yellow"}>
                       <button
-                        to="/profilTroqueur"
+                        to="/ProfilTroqueur/:id"
                         type="button"
                         className="btn btn-primary"
                         style={{ width: "350px", height: "50px" }}
                         onClick={() => {
-                          history.push("/profilTroqueur");
+                          history.push("/ProfilTroqueur/:id");
                         }}
                       >
                         Consulter le profil du troqueur

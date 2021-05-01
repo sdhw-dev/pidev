@@ -77,6 +77,7 @@ app.all("/setUserImage", upload.single("image"), (req, res) => {
 
 app.get("/getUser", async (req, res) => {
   let userId = req.query.id;
+  console.log(userId);
   users.getUser(userId).then((user) => {
     res.json(user);
   });

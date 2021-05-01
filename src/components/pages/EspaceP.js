@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import {  Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
 import "../../App.css";
-
 
 class EspaceP extends Component {
   constructor(props) {
@@ -140,7 +139,7 @@ class EspaceP extends Component {
                             <label>Description :</label>
                           </div>
                           <div class="col-md-6">
-                            <p>Spécialiste jardinage</p>
+                            <p>{this.state.user.description}</p>
                           </div>
                         </div>
                       </div>
@@ -149,10 +148,7 @@ class EspaceP extends Component {
                         id="profile"
                         role="tabpanel"
                         aria-labelledby="profile-tab"
-                      >
-                    
-                        
-                      </div>
+                      ></div>
                     </div>
                   </div>
                 </div>
