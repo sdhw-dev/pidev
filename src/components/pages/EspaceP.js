@@ -25,7 +25,7 @@ class EspaceP extends Component {
           
                   </div>
                   <div class="col-md-6">
-                    <div class="profile-head">
+                    <div class="profileHead">
                       <h2>
                         {this.state.user.nom + " " + this.state.user.prenom}
                       </h2>
@@ -42,7 +42,7 @@ class EspaceP extends Component {
                       render={({ history }) => (
                         <button
                           to="/modifprofil"
-                          className="LinkMP"
+                          className="btn btn-sm btn-primary pull-right"
                           onClick={() => {
                             history.push("/modifprofil");
                           }}

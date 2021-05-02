@@ -70,7 +70,8 @@ class AjouterAnnonce extends Component {
 
   render() {
     return (
-      <Box
+      < div className="AjouterAnnonce" >
+        <Box
         border={1}
         display="flex"
         flexDirection="column"
@@ -83,6 +84,7 @@ class AjouterAnnonce extends Component {
           marginBottom: 15,
           alignItems: "baselineposition",
           borderRadius: 15,
+          
         }}
       >
         <FormControl component="fieldset">
@@ -174,6 +176,7 @@ class AjouterAnnonce extends Component {
           Enregistrer l'annonce
         </button>
       </Box>
+      </div>
     );
   }
 }

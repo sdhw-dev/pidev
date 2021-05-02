@@ -17,7 +17,7 @@ import mesTrocs from "./components/pages/mesTrocs";
 import ProfilTroqueur from "./components/pages/profilTroqueur";
 import Troc from "./components/pages/MyTroc";
 import Avis from "./components/pages/Avis";
-
+import EnvoyerMessage from "./components/pages/EnvoyerMessage";
 export default class App extends Component {
   state = {
     isConnected: false,
@@ -98,6 +98,7 @@ export default class App extends Component {
           <Route path="/ProfilTroqueur/:id" component={ProfilTroqueur} />
           <Route path="/MyTroc/:id" component={Troc} />
           <Route path="/Avis" component={Avis} />
+          <Route path="/EnvoyerMessage" component={EnvoyerMessage} />
         </Switch>
       </Router>
     );

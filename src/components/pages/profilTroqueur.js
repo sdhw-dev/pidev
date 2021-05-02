@@ -83,7 +83,7 @@ class profilTroqueur extends Component {
                       render={({ history }) => (
                         <button
                           to="/MyTroc/:id"
-                          className="LinkMP"
+                          className="btn btn-sm btn-primary pull-right"
                           onClick={() => {
                             history.push("/MyTroc/:id");
                           }}
