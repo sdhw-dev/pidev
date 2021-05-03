@@ -39,7 +39,7 @@ export default class MyTroc extends React.Component {
                       <img
                         src="https://www.viepratique.fr/wp-content/uploads/sites/4/2019/04/bricolage-et-diy-quels-outils-avoir-chez-soi.jpg"
                         alt=""
-                        
+                        style={{height:"350px", width:"500px"}}
                       />
                    
                   </div>
