@@ -4,6 +4,7 @@ import "./myTroc.css";
 import { Route } from "react-router-dom";
 import Ripples from "react-ripples";
 import axios from "axios";
+import Avis from "./Avis";
 
 export default class MyTroc extends React.Component {
   constructor(props) {
@@ -16,7 +17,6 @@ export default class MyTroc extends React.Component {
       .get("/getAnnonceInfo?id=" + this.props.match.params.id)
       .then((res) => {
         this.setState(res.data);
-        console.log(this.state);
       })
       .catch((error) => console.log(error));
   };
@@ -35,16 +35,13 @@ export default class MyTroc extends React.Component {
               <form method="post">
                 <div class="row">
                   <div class="col-md-6">
-                    
-                      <img
-                        src="https://www.viepratique.fr/wp-content/uploads/sites/4/2019/04/bricolage-et-diy-quels-outils-avoir-chez-soi.jpg"
-                        alt=""
-                        
-                      />
-                   
+                    <img
+                      src="https://www.viepratique.fr/wp-content/uploads/sites/4/2019/04/bricolage-et-diy-quels-outils-avoir-chez-soi.jpg"
+                      alt=""
+                    />
                   </div>
-                  
-                <div class="col-md-6">
+
+                  <div class="col-md-6">
                     <div className="profile-head">
                       <h4> {this.state.troc.titre} </h4>
                       <h6>
@@ -58,137 +55,135 @@ export default class MyTroc extends React.Component {
                         }{" "}
                       </h6>
                       <h6> {"date d'ajout: " /*date*/} </h6>
-                     
                     </div>
-                    <br/>
+                    <br />
                     <div className="description">
                       <h4>Description de l'annonce: </h4>
 
                       <h6>{this.state.troc.description} </h6>
                     </div>
-          
                   </div>
                 </div>
-              
-              <br/>
-              <br/>
-              <div class="row">
-                
-                <div
-                  className=" col-md-3 "
-                  style={{
-                    display: "inline-flex",
-                    borderRadius: 25,
-                    overflow: "hidden",
-                    backgroundcolor :"cadetblue",
-                  }}
-                >
-                  <Route
-                    render={({ history }) => (
-                      <Ripples color={"yellow"}>
-                        <button
-                          to="/demandertroc"
-                          type="button"
-                          className="btn btn-primary"
-                          style={{ width: "350px", height: "50px" }}
-                          onClick={() => {
-                            history.push("/demandertroc");
-                          }}
-                        >
-                          Demander
-                        </button>
-                      </Ripples>
-                    )}
-                  />
-                </div>
 
-                <div
-                  className="col-md-3 "
-                  style={{
-                    display: "inline-flex",
-                    borderRadius: 25,
-                    overflow: "hidden",
-                    
-                  }}
-                >
-                  <Route
-                    render={({ history }) => (
-                      <Ripples color={"yellow"}>
-                        <button
-                          to="/proposertroc"
-                          type="button"
-                          className="btn btn-primary"
-                          style={{ width: "350px", height: "50px" }}
-                          onClick={() => {
-                            history.push("/proposertroc");
-                          }}
-                        >
-                          Proposer
-                        </button>
-                      </Ripples>
-                    )}
-                  />
+                <br />
+                <br />
+                <div class="row">
+                  <div
+                    className=" col-md-3 "
+                    style={{
+                      display: "inline-flex",
+                      borderRadius: 25,
+                      overflow: "hidden",
+                      backgroundcolor: "cadetblue",
+                    }}
+                  >
+                    <Route
+                      render={({ history }) => (
+                        <Ripples color={"yellow"}>
+                          <button
+                            to="/demandertroc"
+                            type="button"
+                            className="btn btn-primary"
+                            style={{ width: "350px", height: "50px" }}
+                            onClick={() => {
+                              history.push("/demandertroc");
+                            }}
+                          >
+                            Demander
+                          </button>
+                        </Ripples>
+                      )}
+                    />
+                  </div>
+
+                  <div
+                    className="col-md-3 "
+                    style={{
+                      display: "inline-flex",
+                      borderRadius: 25,
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Route
+                      render={({ history }) => (
+                        <Ripples color={"yellow"}>
+                          <button
+                            to="/proposertroc"
+                            type="button"
+                            className="btn btn-primary"
+                            style={{ width: "350px", height: "50px" }}
+                            onClick={() => {
+                              history.push("/proposertroc");
+                            }}
+                          >
+                            Proposer
+                          </button>
+                        </Ripples>
+                      )}
+                    />
+                  </div>
+                  <div
+                    className=" col-md-3"
+                    style={{
+                      display: "inline-flex",
+                      borderRadius: 25,
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Route
+                      render={({ history }) => (
+                        <Ripples color={"yellow"}>
+                          <button
+                            to="/Avis"
+                            type="button"
+                            className="btn btn-primary"
+                            style={{ width: "350px", height: "50px" }}
+                            onClick={() => {
+                              history.push("/Avis");
+                            }}
+                          >
+                            Avis
+                          </button>
+                        </Ripples>
+                      )}
+                    />
+                  </div>
+                  <div
+                    className=" col-md-3"
+                    style={{
+                      display: "inline-flex",
+                      borderRadius: 25,
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Route
+                      render={({ history }) => (
+                        <Ripples color={"yellow"}>
+                          <button
+                            to="/ProfilTroqueur/:id"
+                            type="button"
+                            className="btn btn-primary"
+                            style={{ width: "350px", height: "50px" }}
+                            onClick={() => {
+                              history.push(
+                                "/ProfilTroqueur/" + this.state.troc.idUser
+                              );
+                            }}
+                          >
+                            Consulter le profil du troqueur
+                          </button>
+                        </Ripples>
+                      )}
+                    />
+                  </div>
                 </div>
-                <div
-                className=" col-md-3"
-                style={{
-                  display: "inline-flex",
-                  borderRadius: 25,
-                  overflow: "hidden",
-                }}
-              >
-                <Route
-                  render={({ history }) => (
-                    <Ripples color={"yellow"}>
-                      <button
-                        to="/Avis"
-                        type="button"
-                        className="btn btn-primary"
-                        style={{ width: "350px", height: "50px" }}
-                        onClick={() => {
-                          history.push("/Avis");
-                        }}
-                      >
-                        Avis 
-                      </button>
-                    </Ripples>
-                  )}
-                />
-              </div>
-              <div
-                className=" col-md-3"
-                style={{
-                  display: "inline-flex",
-                  borderRadius: 25,
-                  overflow: "hidden",
-                }}
-              >
-                <Route
-                  render={({ history }) => (
-                    <Ripples color={"yellow"}>
-                      <button
-                        to="/ProfilTroqueur/:id"
-                        type="button"
-                        className="btn btn-primary"
-                        style={{ width: "350px", height: "50px" }}
-                        onClick={() => {
-                          history.push("/ProfilTroqueur/:id");
-                        }}
-                      >
-                        Consulter le profil du troqueur
-                      </button>
-                    </Ripples>
-                  )}
-                />
-              </div>
-              </div>
               </form>
             </div>
           </div>
         </div>
+
         <Footer />
       </div>
-      
     );
   }
 }

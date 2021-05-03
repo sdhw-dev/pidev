@@ -152,4 +152,14 @@ app.get("/getCategories", (req, res) => {
     });
 });
 
+app.post("/ajouterImage", upload.single("image"), (req, res) => {
+  res.json(req.file.filename);
+});
+
+app.post("/updateUser", (req, res) => {
+  users.updateUser(req.body).then((user) => {
+    res.json(user);
+  });
+});
+
 app.listen(PORT, () => console.log("server started"));

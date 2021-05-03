@@ -3,11 +3,12 @@ import { Route } from "react-router-dom";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
 import "../../App.css";
+import axios from "axios";
 
 class EspaceP extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: props.user };
+    this.state = { user: JSON.parse(localStorage.getItem("user")) };
   }
 
   render() {
@@ -20,20 +21,25 @@ class EspaceP extends Component {
               <form method="post">
                 <div class="row">
                   <div class="col-md-4">
-                 
-                     <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar"/>
-          
+                    <img
+                      src={
+                        this.state.user.image
+                          ? "/getImage?path=" + this.state.user.image
+                          : "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                      }
+                      class="avatar img-circle img-thumbnail"
+                      alt="avatar"
+                    />
                   </div>
                   <div class="col-md-6">
                     <div class="profileHead">
                       <h2>
                         {this.state.user.nom + " " + this.state.user.prenom}
                       </h2>
-                      
+
                       <p class="profile-rating">
                         Moyenne des appréciations : <span>8/10</span>
                       </p>
-                
                     </div>
                   </div>
 
@@ -56,7 +62,6 @@ class EspaceP extends Component {
                 <div class="row">
                   <div class="col-md-4">
                     <div class="profile-work">
-                      
                       <ul class="list-group">
                         <li class="list-group-item text-muted">
                           Activité <i class="fa fa-dashboard fa-1x"></i>
@@ -96,7 +101,7 @@ class EspaceP extends Component {
                         role="tabpanel"
                         aria-labelledby="home-tab"
                       >
-                        <br/>
+                        <br />
                         <div class="row">
                           <div class="col-md-6">
                             <label>Nom et prénom : </label>
@@ -130,7 +135,7 @@ class EspaceP extends Component {
                             <label>Adresse : </label>
                           </div>
                           <div class="col-md-6">
-                            <p>{}</p>
+                            <p>{this.state.user.adresse.adresse}</p>
                           </div>
                         </div>
 
