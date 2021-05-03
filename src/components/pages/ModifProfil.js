@@ -28,14 +28,7 @@ class ModifProfil extends React.Component {
     });
   };
 
-  handleClickAnnuler = () => {
-    axios
-      .get("/getUser?id=" + this.props.user._id)
-      .then((res) => {
-        this.setState({ user: res.data });
-      })
-      .catch((error) => console.log(error));
-  };
+  handleClickAnnuler = () => {};
 
   render() {
     return (
