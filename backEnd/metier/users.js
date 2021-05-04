@@ -70,9 +70,18 @@ const addUser = (utilisateur) => {
   return newUser;
 };
 
+const updateUser = async (newUser) => {
+  console.log(newUser);
+  let user = await userModel.findOneAndUpdate({ _id: newUser._id }, newUser, {
+    new: true,
+  });
+  return user;
+};
+
 exports.exists = exists;
 exports.addUser = addUser;
 exports.checkMail = checkMail;
 exports.addImage = addImage;
 exports.getImage = getImage;
 exports.getUser = getUser;
+exports.updateUser = updateUser;

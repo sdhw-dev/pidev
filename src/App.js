@@ -2,7 +2,6 @@ import Connexion from "./components/pages/connexion";
 import Inscription from "./components/pages/inscription";
 import "./App.css";
 import React, { Component, useEffect } from "react";
-import axios from "axios";
 import Home from "./components/pages/Home";
 import Biensnc from "./components/pages/Biensnc";
 import EspaceP from "./components/pages/EspaceP";
@@ -18,6 +17,8 @@ import ProfilTroqueur from "./components/pages/profilTroqueur";
 import Troc from "./components/pages/MyTroc";
 import Avis from "./components/pages/Avis";
 import EnvoyerMessage from "./components/pages/EnvoyerMessage";
+import demander from "./components/pages/demander";
+import proposer from "./components/pages/proposer";
 export default class App extends Component {
   state = {
     isConnected: false,
@@ -91,7 +92,15 @@ export default class App extends Component {
           <Route path="/espaceP">
             <EspaceP user={this.state.user} />
           </Route>
-          <Route path="/modifprofil" component={ModifProfil} />
+          <Route path="/modifprofil">
+            <ModifProfil
+              user={this.state.user}
+              updateUser={(user) => {
+                this.setUser(user);
+                localStorage.setItem("user", JSON.stringify(user));
+              }}
+            />
+          </Route>
           <Route path="/mesMessages" component={mesMessages} />
           <Route path="/mesTrocs" component={mesTrocs} />
           <Route path="/calendrier" component={Calendrier} />
@@ -99,6 +108,8 @@ export default class App extends Component {
           <Route path="/MyTroc/:id" component={Troc} />
           <Route path="/Avis" component={Avis} />
           <Route path="/EnvoyerMessage" component={EnvoyerMessage} />
+          <Route path="/demandertroc" exact component={demander}/>
+          <Route path="/proposertroc" exact component={proposer}/>
         </Switch>
       </Router>
     );
