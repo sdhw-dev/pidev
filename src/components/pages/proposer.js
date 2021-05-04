@@ -27,7 +27,7 @@ class Proposer extends  Component {
                             <h6 style={{marginLeft:"15px"}}>
                                 Pour son troc : Brikolage
                             </h6>
-                            <h6 style={{marginLeft:"15px" , color:"red"}}>
+                            <h6 style={{marginLeft:"15px" }}>
                                 Troc en échange : jardinage
                             </h6>  
                             </div>
