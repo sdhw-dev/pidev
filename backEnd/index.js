@@ -85,13 +85,14 @@ app.get("/getUser", async (req, res) => {
 
 app.get("/getAnnonceInfo", (req, res) => {
   let annonceId = req.query.id;
-  let annonceInfo = { troc: {}, adresse: "", categorie: "" };
+  let annonceInfo = { troc: {}, adresse: "", categorie: "", nom: "" };
   annonces.getAnnonce(annonceId).then(async (annonce) => {
     annonceInfo.troc = annonce;
     let categ = await categories.getCategorie(annonce.idCategorie);
     let user = await users.getUser(annonce.idUser);
     annonceInfo.adresse = user.adresse.adresse;
     annonceInfo.categorie = categ;
+    annonceInfo.nom = user.nom + " " + user.prenom;
     res.json(annonceInfo);
   });
 });

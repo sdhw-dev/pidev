@@ -67,7 +67,7 @@ class mesTrocs extends React.Component {
         break;
 
       default:
-        return <h1>erreur choix impossible</h1>;
+        return <h1>lerreur choix impossible</h1>;
         break;
     }
   };
