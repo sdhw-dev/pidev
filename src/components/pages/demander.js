@@ -25,7 +25,7 @@ class demander extends  Component {
                                 Troqueur : Ahmed Tawfik
                             </h6>
                             <h6 style={{marginLeft:"15px"}}>
-                                Pour son troc : Brikolage
+                                Pour son troc : Bricolage
                             </h6>
                                 
                             </div>

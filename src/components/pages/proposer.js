@@ -25,7 +25,7 @@ class Proposer extends  Component {
                                 Troqueur : Hayat Mayssir
                             </h6>
                             <h6 style={{marginLeft:"15px"}}>
-                                Pour son troc : Brikolage
+                                Pour son troc : Bricolage
                             </h6>
                             <h6 style={{marginLeft:"15px" }}>
                                 Troc en échange : jardinage

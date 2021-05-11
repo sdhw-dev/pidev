@@ -78,7 +78,9 @@ class profilTroqueur extends Component {
                         <h5></h5>
                       </div>
                     </div>
+
                   </div>
+                  
                   <div class="col-md-2">
                     <Route
                       render={({ history }) => (

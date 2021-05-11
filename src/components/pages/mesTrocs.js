@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
 import "../../App.css";
-import { isThisHour } from "date-fns";
+
 
 class mesTrocs extends React.Component {
   constructor(props) {
@@ -29,7 +29,11 @@ class mesTrocs extends React.Component {
         return (
           <div>
             {" "}
-            <h1>hjdkzh</h1>
+            <h2>Mes trocs :</h2>
+            <div class="form-group">
+              <label for="textarea"></label>
+              <textarea id="textarea" class="form-control"></textarea>
+            </div>
           </div>
         );
         break;
@@ -72,7 +76,7 @@ class mesTrocs extends React.Component {
     }
   };
 
-  //<this.component/>
+ 
 
   render() {
     return (
@@ -85,11 +89,11 @@ class mesTrocs extends React.Component {
                 <br />
                 <br />
                 <div className="form-row">
-                  <div className="col-md-3">
+                  <div className="col-md-4">
                     <label>Filtrer par :</label>
                   </div>
 
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-md-8">
                     <select
                       className="form-control"
                       name="tous-mes-trocs"
@@ -107,25 +111,11 @@ class mesTrocs extends React.Component {
                     </select>
                   </div>
 
-                  <div className="form-row col-md-3">
-                    <div className="text-center">
-                      <button
-                        type="submit"
-                        className="btn btn-primary"
-                        onClick={() => this.submit()}
-                      >
-                        Filtrer
-                      </button>
-                    </div>
-                  </div>
+                  <this.component/>
                 </div>
               </div>
             </div>
-            <h2>Mes trocs :</h2>
-            <div class="form-group">
-              <label for="textarea"></label>
-              <textarea id="textarea" class="form-control"></textarea>
-            </div>
+          
           </div>
         </div>
 

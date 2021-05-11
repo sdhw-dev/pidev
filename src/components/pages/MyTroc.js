@@ -183,7 +183,6 @@ export default class MyTroc extends React.Component {
             </div>
           </div>
         </div>
-
         <Footer />
       </div>
     );
