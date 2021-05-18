@@ -82,7 +82,9 @@ class profilTroqueur extends Component {
                         <h5></h5>
                       </div>
                     </div>
+
                   </div>
+                  
                   <div class="col-md-2">
                     <Route
                       render={({ history }) => (
@@ -94,6 +96,21 @@ class profilTroqueur extends Component {
                           }}
                         >
                           Retour
+                        </button>
+                      )}
+                    />
+                    <Route
+                      render={({ history }) => (
+                        <button
+                          to="/EnvoyerMessage"
+                          className="btn btn-sm btn-primary pull-right"
+                          onClick={() => {
+                            history.push(
+                              "/EnvoyerMessage/" + this.state.user._id
+                            );
+                          }}
+                        >
+                          Envoyer un message
                         </button>
                       )}
                     />

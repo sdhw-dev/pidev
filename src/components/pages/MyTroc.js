@@ -152,7 +152,7 @@ export default class MyTroc extends React.Component {
                               history.push("/Avis");
                             }}
                           >
-                            Avis
+                            Ajouter aux favoris
                           </button>
                         </Ripples>
                       )}

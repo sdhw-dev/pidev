@@ -5,13 +5,12 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Input from "@material-ui/core/Input";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import Footer from "../Footer";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import Sidebar from "../SideBar";
+
 
 class AjouterAnnonce extends Component {
   state = {
@@ -70,8 +69,11 @@ class AjouterAnnonce extends Component {
 
   render() {
     return (
+      
       < div className="AjouterAnnonce" >
-        <Box
+        <Box style={{ position: "absolute",top:"0",bottom: "0", width: "800px",height: "600px",
+          left: "0",right: "0",margin: "auto" }}>
+          <Box 
         border={1}
         display="flex"
         flexDirection="column"
@@ -176,7 +178,11 @@ class AjouterAnnonce extends Component {
           Enregistrer l'annonce
         </button>
       </Box>
+        </Box>
+        
       </div>
+     
+
     );
   }
 }
