@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 
 mongoose
   .connect(
-    "mongodb+srv://yassine:yassinenaciri@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority",
+    "mongodb+srv://wissal:wissalsidihida@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority",
     { useNewUrlParser: true }
   )
   .then(() => {
