@@ -1,4 +1,3 @@
-const user = require("../models/userModel");
 const userModel = require("../models/userModel");
 
 const exists = (utilisateur) => {
@@ -64,6 +63,7 @@ const addUser = (utilisateur) => {
       adresse: utilisateur.adresse.adresse,
     },
     description: "",
+    messages: [],
   });
   newUser.save();
 
@@ -78,6 +78,29 @@ const updateUser = async (newUser) => {
   return user;
 };
 
+const ajouterFavoris = async (idTroc, idUser) => {
+  let user = await userModel.findOne({ _id: idUser });
+  user.favoris;
+};
+
+const ajouterMessage = async (message, userSending, userId) => {
+  let user = await userModel.findOne({ _id: userId });
+  user.messages.push({
+    message: message,
+    user: userSending._id,
+    nomUser: userSending.prenom + " " + userSending.nom,
+  });
+  user.save();
+};
+
+const getMessages = async (userId) => {
+  let user = await userModel.findOne({ _id: userId });
+  return user.messages;
+};
+
+exports.ajouterFavoris = ajouterFavoris;
+exports.ajouterMessage = ajouterMessage;
+exports.getMessages = getMessages;
 exports.exists = exists;
 exports.addUser = addUser;
 exports.checkMail = checkMail;
