@@ -75,7 +75,7 @@ export default class MyTroc extends React.Component {
                 <br />
                 <div class="row">
                   <div
-                    className=" col-md-3 "
+                    className=" col-md-2 "
                     style={{
                       display: "inline-flex",
                       borderRadius: 25,
@@ -105,7 +105,7 @@ export default class MyTroc extends React.Component {
                   </div>
 
                   <div
-                    className="col-md-3 "
+                    className="col-md-2 "
                     style={{
                       display: "inline-flex",
                       borderRadius: 25,
@@ -133,7 +133,7 @@ export default class MyTroc extends React.Component {
                     />
                   </div>
                   <div
-                    className=" col-md-3"
+                    className=" col-md-2"
                     style={{
                       display: "inline-flex",
                       borderRadius: 25,
@@ -157,6 +157,38 @@ export default class MyTroc extends React.Component {
                         </Ripples>
                       )}
                     />
+                  </div>
+                  <div
+                    className=" col-md-3"
+                    style={{
+                      display: "inline-flex",
+                      borderRadius: 25,
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Route
+                      render={({ history }) => (
+                        <Ripples color={"yellow"}>
+                          <button
+                            to="/ProfilTroqueur/:id"
+                            type="button"
+                            className="btn btn-primary"
+                            style={{ width: "350px", height: "50px" }}
+                            onClick={() => {
+                              history.push(
+                                "/ProfilTroqueur/" + this.state.troc.idUser
+                              );
+                            }}
+                          >
+                            Ajouter aux contactes
+                          </button>
+                        </Ripples>
+                      )}
+                    />
+
+                  
+
+
                   </div>
                   <div
                     className=" col-md-3"
