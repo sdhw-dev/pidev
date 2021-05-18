@@ -163,4 +163,13 @@ app.post("/updateUser", (req, res) => {
   });
 });
 
+app.post("/sendMessage", (req, res) => {
+  users.ajouterMessage(req.body.message, req.body.userSending, req.body.userId);
+});
+
+app.get("/getMessages", async (req, res) => {
+  let messages = await users.getMessages(req.query.id);
+  res.json(messages);
+});
+
 app.listen(PORT, () => console.log("server started"));

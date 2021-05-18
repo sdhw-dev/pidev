@@ -109,7 +109,9 @@ export default class App extends Component {
           <Route path="/ProfilTroqueur/:id" component={ProfilTroqueur} />
           <Route path="/MyTroc/:id" component={Troc} />
           <Route path="/Avis" component={Avis} />
-          <Route path="/EnvoyerMessage" component={EnvoyerMessage} />
+          <Route path="/EnvoyerMessage">
+            <EnvoyerMessage userSending={this.state.user} />
+          </Route>
           <Route path="/demandertroc/:id" component={demander} />
           <Route path="/proposertroc/:id" component={proposer} />
           <Route path="/DemandesReçues" component={DemandesReçues} />

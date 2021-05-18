@@ -1,18 +1,60 @@
-import React from 'react';
+import React from "react";
 import "../../App.css";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
 import { Route } from "react-router-dom";
+import { Component } from "react";
+import { isThisHour } from "date-fns";
+import axios from "axios";
 
-function mesMessages() {
-  return (
-    <div className='mesmessages'>
-      <div style={{display:'flex', flexDirection:'row'}}>
-        <Sidebar/>
-        <div style={{flex:'1', flexDirection:'row'}}>
-          <h1>Mes messages</h1>
-          <form>
-          <div class="form-group">
+class mesMessages extends Component {
+  state = {
+    listeMessages: [],
+  };
+
+  componentDidMount = async () => {
+    await axios
+      .get("/getMessages?id=" + "6050b84ae0aba24ab82793ec")
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ listeMessages: res.data });
+        console.log(this.state.listeMessages);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  messages = () => {
+    return (
+      <div>
+        {this.state.listeMessages.map((message) => {
+          return (
+            <div class="form-group">
+              <li>
+                {" "}
+                <label>Reçu le : 01/08/2020</label>
+              </li>
+              <li>
+                <label>du troqueur : {message.nomUser}</label>
+              </li>
+              <li>
+                <label>contenu : {message.message}</label>
+              </li>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  render() {
+    return (
+      <div className="mesmessages">
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <Sidebar />
+          <div style={{ flex: "1", flexDirection: "row" }}>
+            <h1>Mes messages</h1>
+            <form>
+              <div class="form-group">
                 <label for="select">Select : </label>
                 <select id="select" class="form-control">
                   <option>Tous mes messages</option>
@@ -20,38 +62,15 @@ function mesMessages() {
                   <option>Messages reçus</option>
                 </select>
               </div>
-              <div class="form-group">
-                <label for="textarea">Reçu le : 01/08/2020</label>
-                <textarea id="textarea" class="form-control">De troqueur : anonyme1247</textarea>
-              </div>
-              <div class="form-group">
-                <label for="textarea">Reçu le : 05/07/2020</label>
-                <textarea id="textarea" class="form-control">De troqueur : webDesigner47785</textarea>
-              </div>
-              <div class="form-group">
-                <label for="textarea">Reçu le : 02/03/2021</label>
-                <textarea id="textarea" class="form-control">De troqueur : Coach5899</textarea>
-              </div>
-              <Route
-                      render={({ history }) => (
-                        <button
-                          to="/EnvoyerMessage"
-                          className="btn btn-sm btn-primary pull-right"
-                          onClick={() => {
-                            history.push("/EnvoyerMessage");
-                          }}
-                        >
-                          Envoyer un message 
-                        </button>
-                      )}
-              />
-              
-          </form>
+
+              <this.messages />
+            </form>
+          </div>
         </div>
+        <Footer />
       </div>
-      <Footer/>
-    </div>
-  );
+    );
+  }
 }
 
 export default mesMessages;

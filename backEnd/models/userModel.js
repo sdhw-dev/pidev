@@ -1,12 +1,10 @@
+const { ObjectId } = require("bson");
 const mongoose = require("mongoose");
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
 
 mongoose
-  .connect(
-    "mongodb+srv://wissal:wissalsidihida@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority",
-    { useNewUrlParser: true }
-  )
+  .connect("mongodb://localhost:27017/app", { useNewUrlParser: true })
   .then(() => {
     console.log("connected to db");
   })
@@ -30,6 +28,8 @@ const userSchema = new mongoose.Schema(
     },
     image: String,
     description: String,
+    favoris: [String],
+    messages: [{ message: String, user: ObjectId, nomUser: String }],
   },
   { collection: "users" },
   { timestamps: true }
