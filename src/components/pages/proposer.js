@@ -3,6 +3,9 @@ import "../demander.css";
 import Footer from "../Footer";
 import { Route } from "react-router-dom";
 import axios from "axios";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import TextField from "@material-ui/core/TextField";
+
 
 class Proposer extends Component {
   constructor(props) {
@@ -51,8 +54,28 @@ class Proposer extends Component {
                 Pour son troc : {this.state.troc.titre}
               </h6>
               <h6 style={{ marginLeft: "15px" }}>
-                Troc en échange : jardinage
+                Troc en échange : 
               </h6>
+              <Autocomplete id="combo-box-demo"
+                            options={Trocs}
+                            getOptionLabel={(option) => option.nom}
+                           style={{ margin: 8 , width:"820px" }}
+                             renderInput={(params) => (
+                           <TextField {...params} label="Trocs" variant="outlined" />
+                                )}
+                             onChange={(event, value) => {
+                           this.state.troqueur.idTrocs = value.id;
+                             }}
+                            />
+
+                            <form>
+                         <h6 style={{marginLeft:"15px"}}>
+                            En échange de :
+                       <input type="text" name="name" />  points
+                         </h6>
+                    
+                            </form>
+            
             </div>
 
             <div class="form-group">
@@ -110,5 +133,10 @@ class Proposer extends Component {
     );
   }
 }
-
+const Trocs = [
+  { nom: "troc1", id: 1 },
+  { nom: "troc2", id: 2 },
+  { nom: "troc3", id: 3 },
+  { nom: "troc4", id: 4 },
+];
 export default Proposer;
