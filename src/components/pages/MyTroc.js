@@ -10,7 +10,7 @@ import Avis from "./Avis";
 export default class MyTroc extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { troc: {}, adresse: "", categorie: "", date: "" };
+    this.state = { troc: {}, adresse: "", categorie: "", date: "", nom: "" };
   }
 
   componentWillMount = () => {
@@ -37,9 +37,13 @@ export default class MyTroc extends React.Component {
                 <div class="row">
                   <div class="col-md-6">
                     <img
-                      src="https://www.viepratique.fr/wp-content/uploads/sites/4/2019/04/bricolage-et-diy-quels-outils-avoir-chez-soi.jpg"
+                      src={
+                        this.state.troc.image
+                          ? "/getImage?path=" + this.state.troc.image
+                          : "https://www.viepratique.fr/wp-content/uploads/sites/4/2019/04/bricolage-et-diy-quels-outils-avoir-chez-soi.jpg"
+                      }
                       alt=""
-                      style={{height:"350px" , width:"400px"}}
+                      style={{ height: "350px", width: "400px" }}
                     />
                   </div>
 
@@ -88,7 +92,9 @@ export default class MyTroc extends React.Component {
                             className="btn btn-primary"
                             style={{ width: "350px", height: "50px" }}
                             onClick={() => {
-                              history.push("/demandertroc");
+                              history.push(
+                                "/demandertroc/" + this.state.troc._id
+                              );
                             }}
                           >
                             Demander
@@ -115,7 +121,9 @@ export default class MyTroc extends React.Component {
                             className="btn btn-primary"
                             style={{ width: "350px", height: "50px" }}
                             onClick={() => {
-                              history.push("/proposertroc");
+                              history.push(
+                                "/proposertroc/" + this.state.troc._id
+                              );
                             }}
                           >
                             Proposer
@@ -144,7 +152,7 @@ export default class MyTroc extends React.Component {
                               history.push("/Avis");
                             }}
                           >
-                            Avis
+                            Ajouter aux favoris
                           </button>
                         </Ripples>
                       )}
@@ -183,6 +191,7 @@ export default class MyTroc extends React.Component {
             </div>
           </div>
         </div>
+        <Avis />
         <Footer />
       </div>
     );

@@ -19,6 +19,8 @@ import Avis from "./components/pages/Avis";
 import EnvoyerMessage from "./components/pages/EnvoyerMessage";
 import demander from "./components/pages/demander";
 import proposer from "./components/pages/proposer";
+import DemandesReçues from "./components/pages/DemandesReçues";
+import mesFavoris from "./components/pages/mesFavoris";
 export default class App extends Component {
   state = {
     isConnected: false,
@@ -108,8 +110,10 @@ export default class App extends Component {
           <Route path="/MyTroc/:id" component={Troc} />
           <Route path="/Avis" component={Avis} />
           <Route path="/EnvoyerMessage" component={EnvoyerMessage} />
-          <Route path="/demandertroc" exact component={demander}/>
-          <Route path="/proposertroc" exact component={proposer}/>
+          <Route path="/demandertroc/:id" component={demander} />
+          <Route path="/proposertroc/:id" component={proposer} />
+          <Route path="/DemandesReçues" component={DemandesReçues} />
+          <Route path="/mesFavoris" component={mesFavoris} />
         </Switch>
       </Router>
     );

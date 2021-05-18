@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../../App.css";
 import "./Avis.css";
-import { Route } from "react-router-dom";
+
 class Avis extends React.Component {
     render(){
         return(
@@ -14,19 +14,7 @@ class Avis extends React.Component {
                                 <textarea class="form-control" rows="2" placeholder="Que pensez-vous?"></textarea>
                                 <div class="mar-top clearfix">
                                 <button class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i>Partager</button>
-                                <Route
-                                    render={({ history }) => (
-                                        <button
-                                        to="/MyTroc/:id"
-                                        className="btn btn-sm btn-primary pull-right"
-                                        onClick={() => {
-                                            history.push("/MyTroc/:id");
-                                        }}
-                                        >
-                                        Retour 
-                                        </button>
-                                    )}
-                                />
+                              
                               
                             </div>
                             </div>

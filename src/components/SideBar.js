@@ -64,6 +64,11 @@ const Sidebar = () => {
                 Mes Messages
               </CDBSidebarMenuItem>
             </NavLink>
+            <NavLink exact to="/DemandesReçues" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="envelope" style={{ color: "#55d3e8" }}>
+                Demandes Reçues
+              </CDBSidebarMenuItem>
+            </NavLink>
             <NavLink exact to="/mesFavoris" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="heart" style={{ color: "#55d3e8" }}>
                 Mes Favoris
