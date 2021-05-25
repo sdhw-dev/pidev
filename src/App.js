@@ -21,6 +21,7 @@ import demander from "./components/pages/demander";
 import proposer from "./components/pages/proposer";
 import DemandesReçues from "./components/pages/DemandesReçues";
 import mesFavoris from "./components/pages/mesFavoris";
+import mesContacts from "./components/pages/mesContacts";
 export default class App extends Component {
   state = {
     isConnected: false,
@@ -119,6 +120,7 @@ export default class App extends Component {
           <Route path="/proposertroc/:id" component={proposer} />
           <Route path="/DemandesReçues" component={DemandesReçues} />
           <Route path="/mesFavoris" component={mesFavoris} />
+          <Route path="/mesContacts" component={mesContacts} />
         </Switch>
       </Router>
     );
