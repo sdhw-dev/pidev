@@ -5,36 +5,42 @@ import "../../App.css";
 import { Component } from "react";
 import axios from "axios";
 
-class mesFavoris extends Component {
+class mesContacts extends Component {
     state = {
-      getListeFavoris: [],
+      getListeContacts: [],
     };
   
     componentDidMount = async () => {
       await axios
       .get(
-        "/getListeFavoris?id=" + JSON.parse(localStorage.getItem("user"))._id
+        "/getListeContacts?id=" + JSON.parse(localStorage.getItem("user"))._id
       )
         .then((res) => {
           console.log(res.data);
-          this.setState({ getListeFavoris: res.data });
-          console.log(this.state.getListeFavoris);
+          this.setState({ getListeContacts: res.data });
+          console.log(this.state.getListeContacts);
         })
         .catch((error) => console.log(error));
     };
   
-    services = () => {
+    contacts = () => {
       return (
         <div>
-          {this.state.getListeFavoris.map((service) => {
+          {this.state.getListeContacts.map((contact) => {
             return (
               <div class="form-group">
                
                 <li>
-                  <label>Titre :  {service.titre}</label>
+                  <label>Nom :  {contact.nom}</label>
                 </li>
                 <li>
-                  <label>Description : {service.description}</label>
+                  <label>Prenom : {contact.prenom}</label>
+                </li>
+                <li>
+                  <label>tel : {contact.tel}</label>
+                </li>
+                <li>
+                  <label>adresse : {contact.adresse}</label>
                 </li>
               </div>
             );
@@ -45,13 +51,13 @@ class mesFavoris extends Component {
   
     render() {
       return (
-        <div className="mesFavoris">
+        <div className="meContacts">
           <div style={{ display: "flex", flexDirection: "row" }}>
             <Sidebar />
             <div style={{ flex: "1", flexDirection: "row" }}>
-              <h1>Mes Favoris</h1>
+              <h1>Mes contacts</h1>
   
-              <this.mesFavoris />
+              <this.contacts/>
             </div>
           </div>
           <Footer />
@@ -60,5 +66,5 @@ class mesFavoris extends Component {
     }
   }
   
-  export default mesFavoris;
+  export default mesContacts;
   

@@ -14,7 +14,7 @@ class mesMessages extends Component {
 
   componentDidMount = async () => {
     await axios
-      .get("/getMessages?id=" + "6050b84ae0aba24ab82793ec")
+      .get("/getMessages?id=" + JSON.parse(localStorage.getItem("user"))._id)
       .then((res) => {
         console.log(res.data);
         this.setState({ listeMessages: res.data });
@@ -53,18 +53,8 @@ class mesMessages extends Component {
           <Sidebar />
           <div style={{ flex: "1", flexDirection: "row" }}>
             <h1>Mes messages</h1>
-            <form>
-              <div class="form-group">
-                <label for="select">Select : </label>
-                <select id="select" class="form-control">
-                  <option>Tous mes messages</option>
-                  <option>Messages envoyés</option>
-                  <option>Messages reçus</option>
-                </select>
-              </div>
 
-              <this.messages />
-            </form>
+            <this.messages />
           </div>
         </div>
         <Footer />

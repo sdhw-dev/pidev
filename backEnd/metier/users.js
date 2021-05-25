@@ -80,7 +80,13 @@ const updateUser = async (newUser) => {
 
 const ajouterFavoris = async (idTroc, idUser) => {
   let user = await userModel.findOne({ _id: idUser });
-  user.favoris;
+  user.favoris.push(idTroc);
+  user.save();
+};
+const ajouterContact = async (idContact, idUser) => {
+  let user = await userModel.findOne({ _id: idUser });
+  user.contacts.push(idContact);
+  user.save();
 };
 
 const ajouterMessage = async (message, userSending, userId) => {
@@ -97,7 +103,15 @@ const getMessages = async (userId) => {
   let user = await userModel.findOne({ _id: userId });
   return user.messages;
 };
-
+const getListeContacts = async (liste) => {
+  let l = [];
+  for (let i = 0; i < liste.length; i++) {
+    l.push(await userModel.findById(liste[i]));
+  }
+  return l;
+};
+exports.getListeContacts = getListeContacts;
+exports.ajouterContact = ajouterContact;
 exports.ajouterFavoris = ajouterFavoris;
 exports.ajouterMessage = ajouterMessage;
 exports.getMessages = getMessages;

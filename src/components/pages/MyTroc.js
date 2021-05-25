@@ -10,7 +10,15 @@ import Avis from "./Avis";
 export default class MyTroc extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { troc: {}, adresse: "", categorie: "", date: "", nom: "" };
+    this.state = {
+      troc: {},
+      adresse: "",
+      categorie: "",
+      date: "",
+      nom: "",
+      idAnnonce: "",
+      idTroqueur: "",
+    };
   }
 
   componentWillMount = () => {
@@ -149,7 +157,11 @@ export default class MyTroc extends React.Component {
                             className="btn btn-primary"
                             style={{ width: "350px", height: "50px" }}
                             onClick={() => {
-                              history.push("/Avis");
+                              axios.post("/ajouterAuxFavoris", {
+                                idAnnonce: this.state.idAnnonce,
+                                idUser: JSON.parse(localStorage.getItem("user"))
+                                  ._id,
+                              });
                             }}
                           >
                             Ajouter aux favoris
@@ -175,9 +187,11 @@ export default class MyTroc extends React.Component {
                             className="btn btn-primary"
                             style={{ width: "350px", height: "50px" }}
                             onClick={() => {
-                              history.push(
-                                "/ProfilTroqueur/" + this.state.troc.idUser
-                              );
+                              axios.post("/ajouterAuxContacts", {
+                                idContact: this.state.idTroqueur,
+                                idUser: JSON.parse(localStorage.getItem("user"))
+                                  ._id,
+                              });
                             }}
                           >
                             Ajouter aux contactes
@@ -185,10 +199,6 @@ export default class MyTroc extends React.Component {
                         </Ripples>
                       )}
                     />
-
-                  
-
-
                   </div>
                   <div
                     className=" col-md-3"
@@ -217,10 +227,6 @@ export default class MyTroc extends React.Component {
                         </Ripples>
                       )}
                     />
-
-                  
-
-
                   </div>
                 </div>
               </form>

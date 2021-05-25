@@ -82,9 +82,8 @@ class profilTroqueur extends Component {
                         <h5></h5>
                       </div>
                     </div>
-
                   </div>
-                  
+
                   <div class="col-md-2">
                     <Route
                       render={({ history }) => (
@@ -120,12 +119,9 @@ class profilTroqueur extends Component {
                   <div class="col-md-12">
                     <ul class="list-group">
                       <li class="list-group-item text-muted">
-                        <h4>Description :</h4>{" "}
+                        <h4>Description :{this.state.user.description}</h4>{" "}
                         <i class="fa fa-dashboard fa-1x"></i>
                       </li>
-                      <div class="form-group">
-                        {this.state.user.description}
-                      </div>
                     </ul>
                   </div>
                 </div>

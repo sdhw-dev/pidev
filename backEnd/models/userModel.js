@@ -30,6 +30,9 @@ const userSchema = new mongoose.Schema(
     description: String,
     favoris: [String],
     messages: [{ message: String, user: ObjectId, nomUser: String }],
+    favoris: [ObjectId],
+    contacts: [ObjectId],
+    points: Number,
   },
   { collection: "users" },
   { timestamps: true }

@@ -19,7 +19,7 @@ class EspaceP extends Component {
           <div style={{ flex: "1", flexDirection: "row" }}>
             <div class="container emp-profile">
               <form method="post">
-                <div class="row">
+                <div class="row" style={{ marginTop: "70px" }}>
                   <div class="col-md-4">
                     <img
                       src={
@@ -29,7 +29,7 @@ class EspaceP extends Component {
                       }
                       class="avatar img-circle img-thumbnail"
                       alt="avatar"
-                      style={{height:"350" , width:"400"}}
+                      style={{ height: "350", width: "400" }}
                     />
                   </div>
                   <div class="col-md-6">
@@ -60,7 +60,7 @@ class EspaceP extends Component {
                     />
                   </div>
                 </div>
-                <div class="row">
+                <div class="row" style={{ marginTop: "40px" }}>
                   <div class="col-md-4">
                     <div class="profile-work">
                       <ul class="list-group">

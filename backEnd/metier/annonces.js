@@ -20,6 +20,17 @@ const addImage = async (annonceId, images) => {
 const getAnnonce = async (annonceId) => {
   return annonceModel.findOne({ _id: annonceId });
 };
+const getUserAnnonces = (userId) => {
+  return annonceModel.find({ idUser: userId });
+};
+
+const getListeAnnonces = async (liste) => {
+  let l = [];
+  for (let i = 0; i < liste.length; i++) {
+    l.push(await annonceModel.findById(liste[i]));
+  }
+  return l;
+};
 
 const addAnnonce = (annonce, img) => {
   console.log(annonce);
@@ -46,3 +57,5 @@ exports.addAnnonce = addAnnonce;
 exports.addImage = addImage;
 exports.getAnnonces = getAnnonces;
 exports.getAnnonce = getAnnonce;
+exports.getUserAnnonces = getUserAnnonces;
+exports.getListeAnnonces = getListeAnnonces;
