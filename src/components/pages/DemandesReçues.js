@@ -40,10 +40,10 @@ function DemandesReçues() {
               
               <Route
                       render={({ history }) => (
-                        <button
+                        <button style={{marginLeft:"50px"}}
                           to="/EnvoyerMessage"
                           className="btn btn-sm btn-primary pull-right"
-                          onClick={() => {
+                          onClick={() => {  
                             history.push("/EnvoyerMessage");
                           }}
                         >

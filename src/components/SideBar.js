@@ -74,7 +74,7 @@ const Sidebar = () => {
                 Mes Favoris
               </CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/mesFavoris" activeClassName="activeClicked">
+            <NavLink exact to="/mesContacts" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user" style={{ color: "#55d3e8" }}>
                 Mes Contactes
               </CDBSidebarMenuItem>

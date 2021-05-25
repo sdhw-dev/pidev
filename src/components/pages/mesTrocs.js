@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
 import "../../App.css";
-import { List } from 'semantic-ui-react'
+
 
 
 class mesTrocs extends React.Component {
