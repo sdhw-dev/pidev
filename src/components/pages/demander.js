@@ -7,7 +7,15 @@ import axios from "axios";
 class demander extends Component {
   constructor(props) {
     super(props);
-    this.state = { troc: {}, adresse: "", categorie: "", date: "", nom: "" };
+    this.state = {
+      troc: {},
+      adresse: "",
+      categorie: "",
+      date: "",
+      nom: "",
+      idAnnonce: "",
+      idTroqueur: "",
+    };
   }
 
   componentWillMount = () => {

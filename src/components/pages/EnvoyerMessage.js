@@ -7,9 +7,13 @@ import axios from "axios";
 import { isThisSecond } from "date-fns";
 class EnvoyerMessage extends Component {
   state = {
-    userSending: this.props.userSending,
-    userReceiving: "606331c9ee19b235b038d3b7",
+    userSending: JSON.parse(localStorage.getItem("user")), //this.props.userSending,
+    userReceiving: this.props.match.params.id,
     message: "",
+  };
+
+  componentDidMount = () => {
+    console.log(this.state);
   };
   render() {
     return (

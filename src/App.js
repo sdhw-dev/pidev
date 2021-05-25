@@ -26,6 +26,7 @@ export default class App extends Component {
     isConnected: false,
     user: {},
     userId: "60509c17d5280b4db0720397",
+    userDestinaire: "",
   };
 
   setUser = (user) => {
@@ -34,6 +35,10 @@ export default class App extends Component {
       user: user,
       userId: user._id,
     });
+  };
+
+  setDestinataire = (user) => {
+    this.setState({ userDestinaire: user });
   };
 
   deconnexion = () => {
@@ -109,9 +114,7 @@ export default class App extends Component {
           <Route path="/ProfilTroqueur/:id" component={ProfilTroqueur} />
           <Route path="/MyTroc/:id" component={Troc} />
           <Route path="/Avis" component={Avis} />
-          <Route path="/EnvoyerMessage">
-            <EnvoyerMessage userSending={this.state.user} />
-          </Route>
+          <Route path="/EnvoyerMessage/:id" component={EnvoyerMessage} />
           <Route path="/demandertroc/:id" component={demander} />
           <Route path="/proposertroc/:id" component={proposer} />
           <Route path="/DemandesReçues" component={DemandesReçues} />

@@ -2,18 +2,14 @@ import React from "react";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
 import "../../App.css";
-import { List } from 'semantic-ui-react'
-
+import { List } from "semantic-ui-react";
 
 class mesTrocs extends React.Component {
-
- 
-
   constructor(props) {
     super(props);
     this.state = {
       valeurChoisie: 1,
-     
+      listeTroc: [],
     };
   }
 
@@ -35,43 +31,34 @@ class mesTrocs extends React.Component {
           <div>
             <h2>Mes trocs </h2>
             {}
-
           </div>
         );
         break;
       case 2:
         return (
           <div>
-      
-            <h1>Trocs en cours d'exécution</h1>
-            {" "}
+            <h1>Trocs en cours d'exécution</h1>{" "}
           </div>
         );
         break;
       case 3:
         return (
           <div>
-            
-            <h1>Trocs terminés</h1>
-            {" "}
+            <h1>Trocs terminés</h1>{" "}
           </div>
         );
         break;
       case 4:
         return (
           <div>
-            
-            <h1>Mes demandes</h1>
-            {" "}
+            <h1>Mes demandes</h1>{" "}
           </div>
         );
         break;
       case 5:
         return (
           <div>
-            
-            <h1>Mes offres</h1>
-            {" "}
+            <h1>Mes offres</h1>{" "}
           </div>
         );
         break;
@@ -81,8 +68,6 @@ class mesTrocs extends React.Component {
         break;
     }
   };
-
- 
 
   render() {
     return (
@@ -105,7 +90,7 @@ class mesTrocs extends React.Component {
                       name="tous-mes-trocs"
                       onChange={(event) => {
                         this.setState({
-                          valuerChoisie: Number(event.target.value),
+                          valeurChoisie: event.target.selectedIndex + 1,
                         });
                       }}
                     >
@@ -117,11 +102,10 @@ class mesTrocs extends React.Component {
                     </select>
                   </div>
 
-                  <this.component/>
+                  <this.component />
                 </div>
               </div>
             </div>
-          
           </div>
         </div>
 
@@ -137,6 +121,5 @@ class mesTrocs extends React.Component {
 //     <List.Item></List.Item>
 //   </List>
 // )
-
 
 export default mesTrocs;

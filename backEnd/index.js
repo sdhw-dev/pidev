@@ -13,8 +13,7 @@ const annonces = require("./metier/annonces");
 const users = require("./metier/users");
 const categories = require("./metier/categories");
 const { json } = require("body-parser");
-const categorie = require("./models/categorieModel");
-const user = require("./models/userModel");
+const demandes = require("./metier/demandes");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -85,7 +84,14 @@ app.get("/getUser", async (req, res) => {
 
 app.get("/getAnnonceInfo", (req, res) => {
   let annonceId = req.query.id;
-  let annonceInfo = { troc: {}, adresse: "", categorie: "", nom: "" };
+  let annonceInfo = {
+    troc: {},
+    adresse: "",
+    categorie: "",
+    nom: "",
+    idAnnonce: "",
+    idTroqueur: "",
+  };
   annonces.getAnnonce(annonceId).then(async (annonce) => {
     annonceInfo.troc = annonce;
     let categ = await categories.getCategorie(annonce.idCategorie);
@@ -93,6 +99,8 @@ app.get("/getAnnonceInfo", (req, res) => {
     annonceInfo.adresse = user.adresse.adresse;
     annonceInfo.categorie = categ;
     annonceInfo.nom = user.nom + " " + user.prenom;
+    annonceInfo.idAnnonce = annonceId;
+    annonceInfo.idTroqueur = user._id;
     res.json(annonceInfo);
   });
 });
@@ -170,6 +178,49 @@ app.post("/sendMessage", (req, res) => {
 app.get("/getMessages", async (req, res) => {
   let messages = await users.getMessages(req.query.id);
   res.json(messages);
+});
+
+app.post("/ajouterAuxFavoris", async (req, res) => {
+  users.ajouterFavoris(req.body.idAnnonce, req.body.idUser);
+});
+
+app.post("/ajouterAuxContacts", async (req, res) => {
+  users.ajouterContact(req.body.idContact, req.body.idUser);
+});
+
+app.get("/getListeTrocs", (req, res) => {
+  let userId = req.query.id;
+  annonces.getUserAnnonces(userId).then((result) => {
+    res.json(result);
+  });
+});
+
+app.get("/getListeDemandes", (req, res) => {
+  let userId = req.query.id;
+  let infosDemandes = [];
+  demandes.getDemandesUser(userId).then((result) => {
+    res.json(result);
+  });
+});
+
+app.post("/enregistrerDemande", (req, res) => {
+  demandes.ajouterDemande(JSON.parse(JSON.stringify(req.body)));
+});
+
+app.get("/getListeFavoris", (req, res) => {
+  let userId = req.query.id;
+  users.getUser(userId).then(async (result) => {
+    let l = await annonces.getListeAnnonces(result.favoris);
+    res.json(l);
+  });
+});
+
+app.get("/getListeContacts", (req, res) => {
+  let userId = req.query.id;
+  users.getUser(userId).then(async (result) => {
+    let l = await users.getListeContacts(result.contacts);
+    res.json(l);
+  });
 });
 
 app.listen(PORT, () => console.log("server started"));

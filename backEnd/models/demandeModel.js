@@ -4,10 +4,7 @@ mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
 
 mongoose
-  .connect(
-    "mongodb+srv://wissal:wissalsidihida@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority",
-    { useNewUrlParser: true }
-  )
+  .connect("mongodb://localhost:27017/app", { useNewUrlParser: true })
   .then(() => {
     console.log("connected to db");
   })
@@ -18,14 +15,19 @@ mongoose.connection;
 
 const demandeSchema = new mongoose.Schema(
   {
+    idAnnonceConcerné: ObjectId,
+    idAnnonceProposé: ObjectId,
+    idProposeur: ObjectId,
+    idDemandeur: ObjectId,
     message: String,
-    nombrePoints: Number,
-    annonceOfferte: ObjectId,
-    annonce: ObjectId,
+    nbrePoints: Number,
+    titreAnnonceDemandé: String,
+    titreAnnonceProposé: String,
+    nomDemandeur: String,
   },
   { collection: "demandes" },
   { timestamps: true }
 );
 
-const demande = mongoose.model("demandes", categoriesSchema);
+const demande = mongoose.model("demandes", demandeSchema);
 module.exports = demande;
