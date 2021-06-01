@@ -4,6 +4,7 @@ mongoose.Promise = global.Promise;
 
 /*mongodb+srv://yassine:yassinenaciri@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority*/
 /* "mongodb+srv://wissal:wissalsidihida@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority"*/
+/* "mongodb+srv://oumaima:oumaimatahiri@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority"*/
 mongoose
   .connect("mongodb://localhost:27017/app", { useNewUrlParser: true })
   .then(() => {

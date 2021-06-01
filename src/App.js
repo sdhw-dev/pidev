@@ -116,6 +116,7 @@ export default class App extends Component {
           <Route path="/MyTroc/:id" component={Troc} />
           <Route path="/Avis" component={Avis} />
           <Route path="/EnvoyerMessage/:id" component={EnvoyerMessage} />
+
           <Route path="/demandertroc/:id" component={demander} />
           <Route path="/proposertroc/:id" component={proposer} />
           <Route path="/DemandesReçues" component={DemandesReçues} />

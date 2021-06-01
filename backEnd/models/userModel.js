@@ -2,7 +2,7 @@ const { ObjectId } = require("bson");
 const mongoose = require("mongoose");
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
-
+/*mongodb://localhost:27017/app*/
 mongoose
   .connect("mongodb://localhost:27017/app", { useNewUrlParser: true })
   .then(() => {

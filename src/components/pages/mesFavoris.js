@@ -1,10 +1,9 @@
 import React from "react";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
-import "../../App.css";
 import { Component } from "react";
 import axios from "axios";
-
+import "./mesFavorisT.css";
 class mesFavoris extends Component {
   state = {
     getListeFavoris: [],
@@ -25,16 +24,16 @@ class mesFavoris extends Component {
 
   services = () => {
     return (
-      <div>
+      <div className="wrapper">
         {this.state.getListeFavoris.map((service) => {
           return (
-            <div class="form-group">
-              <li>
-                <label>Titre : {service.titre}</label>
-              </li>
-              <li>
-                <label>Description : {service.description}</label>
-              </li>
+            <div className="card">
+              <div className="card">
+                <img src={"/getImage?path=" + service.image} />
+                <h2 className="card__title">{service.titre}</h2>
+                <p className="card__description">{service.description}</p>
+              </div>
+              <button className="card__btn">Supprimer</button>
             </div>
           );
         })}
