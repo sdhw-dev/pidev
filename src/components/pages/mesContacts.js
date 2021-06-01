@@ -37,10 +37,10 @@ class mesContacts extends Component {
                   <label>Prenom : {contact.prenom}</label>
                 </li>
                 <li>
-                  <label>tel : {contact.tel}</label>
+                  <label>tel : {contact.contact.tel}</label>
                 </li>
                 <li>
-                  <label>adresse : {contact.adresse}</label>
+                  <label>adresse : {contact.adresse.adresse}</label>
                 </li>
               </div>
             );

@@ -4,11 +4,19 @@ import Footer from "../Footer";
 import { Component } from "react";
 import axios from "axios";
 import "./mesFavorisT.css";
+import DeleteIcon from '@material-ui/icons/Delete';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+
+
+
 class mesFavoris extends Component {
+ 
     state = {
       getListeFavoris: [],
     };
-  
+   
     componentDidMount = async () => {
       await axios
       .get(
@@ -21,7 +29,10 @@ class mesFavoris extends Component {
         })
         .catch((error) => console.log(error));
     };
-  
+    
+
+   
+
     services = () => {
       return (
         <div className="wrapper">
@@ -35,7 +46,9 @@ class mesFavoris extends Component {
                   <h2 className="card__title">{service.titre}</h2>
                   <p className="card__description">{service.description}</p>
                   </div>
-                  <button className="card__btn" >Supprimer</button>
+                  <IconButton aria-label="delete" >
+                      <DeleteIcon fontSize="small" />
+                   </IconButton>
                 </div>
                
             );
@@ -44,7 +57,7 @@ class mesFavoris extends Component {
     
       );
     };
-  
+    
     render() {
       return (
         <div className="mesFavoris">
@@ -62,5 +75,6 @@ class mesFavoris extends Component {
     }
   }
   
+ 
   export default mesFavoris;
   
