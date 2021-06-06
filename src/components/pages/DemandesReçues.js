@@ -34,7 +34,7 @@ class DemandesReçues extends Component {
                 <div style={{ fontSize: "25px" }} for="textarea">
                   Demande reçue par :
                   <Link
-                    style={{ fontSize: "25px", color: "gray" }}
+                    style={{ fontSize: "25px", color: "blue" }}
                     to={"/ProfilTroqueur/" + demande.idDemandeur}
                   >
                     {demande.nomDemandeur}

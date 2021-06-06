@@ -77,7 +77,7 @@ class EspaceP extends Component {
                           <span class="pull-left">
                             <strong>Favoris</strong>
                           </span>{" "}
-                          13
+                          {}
                         </li>
                         <li class="list-group-item text-right">
                           <span class="pull-left">
@@ -87,9 +87,9 @@ class EspaceP extends Component {
                         </li>
                         <li class="list-group-item text-right">
                           <span class="pull-left">
-                            <strong>Clients</strong>
+                            <strong>Contacts</strong>
                           </span>{" "}
-                          20
+                          {}
                         </li>
                       </ul>
                     </div>

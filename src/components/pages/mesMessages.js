@@ -2,10 +2,11 @@ import React from "react";
 import "../../App.css";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
-import { Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { Component } from "react";
 import { isThisHour } from "date-fns";
 import axios from "axios";
+import { user } from "firebase-functions/lib/providers/auth";
 
 class mesMessages extends Component {
   state = {
@@ -34,27 +35,20 @@ class mesMessages extends Component {
                   <img
                     class="img-circle img-sm"
                     alt="Profile Picture"
-                    src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                    src={"/getImageUser?id=" + message.user}
                   />
                 </a>
                 <div class="media-body">
                   <div class="mar-btm">
-                    <a
-                      href="#"
-                      class="btn-link text-semibold media-heading box-inline"
-                    >
+                    <Link to={"/ProfilTroqueur/" + message.user}>
                       {message.nomUser}
-                    </a>
-                    <a> Reçu le : 01/08/2020</a>
+                    </Link>
+
+                    <a> {"Reçu le :" + message.date}</a>
                   </div>
                   <p>{message.message}</p>
                   <div class="pad-ver">
-                    <a
-                      class="btn btn-sm btn-default btn-hover-primary"
-                      href="#"
-                    >
-                      Repondre
-                    </a>
+                    <Link to={"/EnvoyerMessage/" + message.user}>Repondre</Link>
                   </div>
                   <hr />
                 </div>

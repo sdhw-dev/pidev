@@ -41,6 +41,8 @@ const addAnnonce = (annonce, img) => {
   } else {
     image = img;
   }
+  let date = new Date();
+  date = date.toLocaleString();
   const newAnnonce = new annonceModel({
     type: annonce.type,
     idVille: annonce.idVille,
@@ -49,6 +51,7 @@ const addAnnonce = (annonce, img) => {
     titre: annonce.titre,
     idUser: ObjectId(annonce.idUser),
     image: image,
+    date: date,
   });
   return newAnnonce.save();
 };

@@ -17,6 +17,7 @@ const messageSchema = new mongoose.Schema(
   {
     message: String,
     user: ObjectId,
+    date: String,
   },
   { collection: "messages" },
   { timestamps: true }

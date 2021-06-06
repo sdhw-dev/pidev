@@ -128,6 +128,14 @@ app.get("/getImage", (req, res) => {
   res.end(file);
 });
 
+app.get("/getImageUser", (req, res) => {
+  users.getUser(req.query.id).then((user) => {
+    (path = user.image), (file = fs.readFileSync("./uploads/" + path));
+    res.writeHead(200, { "Content-Type": "image/jpeg" });
+    res.end(file);
+  });
+});
+
 app.all("/addAnnonce", (req, res) => {
   annonces.addAnnonce(JSON.parse(req.body.annonce)).then((result) => {
     res.json(result);
@@ -197,8 +205,14 @@ app.get("/getListeTrocs", (req, res) => {
 
 app.get("/getListeDemandes", (req, res) => {
   let userId = req.query.id;
-  let infosDemandes = [];
   demandes.getDemandesUser(userId).then((result) => {
+    res.json(result);
+  });
+});
+
+app.get("/getTrocs", (req, res) => {
+  let userId = req.query.id;
+  demandes.getTrocsUser(userId).then((result) => {
     res.json(result);
   });
 });

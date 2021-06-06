@@ -64,6 +64,7 @@ const addUser = (utilisateur) => {
       idVille: utilisateur.adresse.idVille,
       adresse: utilisateur.adresse.adresse,
     },
+    image: "",
     description: "",
     messages: [],
   });
@@ -93,10 +94,13 @@ const ajouterContact = async (idContact, idUser) => {
 
 const ajouterMessage = async (message, userSending, userId) => {
   let user = await userModel.findOne({ _id: userId });
+  let date = new Date();
+  date = date.toLocaleString();
   user.messages.push({
     message: message,
     user: userSending._id,
     nomUser: userSending.prenom + " " + userSending.nom,
+    date: date,
   });
   user.save();
 };

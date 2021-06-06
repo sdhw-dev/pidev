@@ -24,6 +24,7 @@ const annoncesSchema = new mongoose.Schema(
     titre: String,
     image: String,
     idUser: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
+    date: String,
   },
   { collection: "annonces" },
   { timestamps: true }

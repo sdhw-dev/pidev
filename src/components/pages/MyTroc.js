@@ -68,7 +68,10 @@ export default class MyTroc extends React.Component {
                             this.state.adresse /*addrTroq*/
                         }{" "}
                       </h6>
-                      <h6> {"date d'ajout: 03/20/21 " /*date*/} </h6>
+                      <h6>
+                        {" "}
+                        {"date d'ajout: " + this.state.troc.date /*date*/}{" "}
+                      </h6>
                     </div>
                     <br />
                     <div className="description">
