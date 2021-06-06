@@ -1,3 +1,5 @@
+const { ObjectId } = require("bson");
+const { ObjectID } = require("bson");
 const userModel = require("../models/userModel");
 
 const exists = (utilisateur) => {
@@ -110,6 +112,23 @@ const getListeContacts = async (liste) => {
   }
   return l;
 };
+const supprimerFavoris = async (userId, annonceId) => {
+  let user = await userModel.findOne({ _id: userId });
+  let c = -1;
+  console.log(JSON.stringify(annonceId));
+  for (let i = 0; i < user.favoris.length; i++) {
+    console.log(JSON.stringify(user.favoris[i]));
+    if (JSON.stringify(user.favoris[i]) === JSON.stringify(annonceId)) {
+      c = i;
+    }
+  }
+  if (c >= 0) {
+    user.favoris.splice(c, 1);
+    user.save();
+  }
+};
+
+exports.supprimerFavoris = supprimerFavoris;
 exports.getListeContacts = getListeContacts;
 exports.ajouterContact = ajouterContact;
 exports.ajouterFavoris = ajouterFavoris;

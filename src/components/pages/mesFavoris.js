@@ -48,7 +48,6 @@ class mesFavoris extends Component {
           <Sidebar />
           <div style={{ flex: "1", flexDirection: "row" }}>
             <h1>Mes Favoris</h1>
-
             <this.services />
           </div>
         </div>

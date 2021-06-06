@@ -223,4 +223,10 @@ app.get("/getListeContacts", (req, res) => {
   });
 });
 
+app.get("/supprimerFavoris", async (req, res) => {
+  let userId = req.query.id;
+  let annonceId = req.query.annonceId;
+  await users.supprimerFavoris(userId, annonceId);
+});
+
 app.listen(PORT, () => console.log("server started"));

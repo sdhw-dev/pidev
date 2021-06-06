@@ -28,17 +28,37 @@ class mesMessages extends Component {
       <div>
         {this.state.listeMessages.map((message) => {
           return (
-            <div class="form-group">
-              <li>
-                {" "}
-                <label>Reçu le : 01/08/2020</label>
-              </li>
-              <li>
-                <label>du troqueur : {message.nomUser}</label>
-              </li>
-              <li>
-                <label>contenu : {message.message}</label>
-              </li>
+            <div>
+              <div class="media-block">
+                <a class="media-left" href="#">
+                  <img
+                    class="img-circle img-sm"
+                    alt="Profile Picture"
+                    src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                  />
+                </a>
+                <div class="media-body">
+                  <div class="mar-btm">
+                    <a
+                      href="#"
+                      class="btn-link text-semibold media-heading box-inline"
+                    >
+                      {message.nomUser}
+                    </a>
+                    <a> Reçu le : 01/08/2020</a>
+                  </div>
+                  <p>{message.message}</p>
+                  <div class="pad-ver">
+                    <a
+                      class="btn btn-sm btn-default btn-hover-primary"
+                      href="#"
+                    >
+                      Repondre
+                    </a>
+                  </div>
+                  <hr />
+                </div>
+              </div>
             </div>
           );
         })}
