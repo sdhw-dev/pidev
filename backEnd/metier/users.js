@@ -132,6 +132,22 @@ const supprimerFavoris = async (userId, annonceId) => {
   }
 };
 
+const ajouterNote = async (id, note) => {
+  let user = await userModel.findOne({ _id: id });
+  if (user.note) {
+    user.note =
+      (Number(user.note * user.nbreNotes) + Number(note)) /
+      (user.nbreNotes + 1);
+    user.nbreNotes += 1;
+  } else {
+    user.note = note;
+    user.nbreNotes = 1;
+  }
+
+  user.save();
+};
+
+exports.ajouterNote = ajouterNote;
 exports.supprimerFavoris = supprimerFavoris;
 exports.getListeContacts = getListeContacts;
 exports.ajouterContact = ajouterContact;

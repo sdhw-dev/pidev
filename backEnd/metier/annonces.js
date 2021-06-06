@@ -56,6 +56,25 @@ const addAnnonce = (annonce, img) => {
   return newAnnonce.save();
 };
 
+const ajouterNote = async (idAnnonce, commentaire, note) => {
+  let annonce = await annonceModel.findOne({ _id: idAnnonce });
+  if (annonce.note) {
+    let a = Number(annonce.note * annonce.notes.length) + Number(note);
+    let b = annonce.notes.length + 1;
+    console.log(a);
+    console.log(b);
+    annonce.note = a / b;
+  } else {
+    annonce.note = note;
+  }
+
+  annonce.notes.push({ note: note, commentaire: commentaire });
+  let user = annonce.idUser;
+  annonce.save();
+  return user;
+};
+
+exports.ajouterNote = ajouterNote;
 exports.addAnnonce = addAnnonce;
 exports.addImage = addImage;
 exports.getAnnonces = getAnnonces;

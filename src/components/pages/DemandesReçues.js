@@ -60,33 +60,24 @@ class DemandesReçues extends Component {
                   {demande.message}
                 </div>
               </div>
-
-              <Route
-                render={({ history }) => (
-                  <button
-                    to="/EnvoyerMessage"
-                    className="btn btn-sm btn-primary pull-right"
-                    onClick={() => {
-                      history.push("/EnvoyerMessage");
-                    }}
-                  >
-                    Accepter
-                  </button>
-                )}
-              />
-              <Route
-                render={({ history }) => (
-                  <button
-                    to="/EnvoyerMessage"
-                    className="btn btn-sm btn-primary pull-right"
-                    onClick={() => {
-                      history.push("/EnvoyerMessage");
-                    }}
-                  >
-                    Refuser
-                  </button>
-                )}
-              />
+              <button
+                className="btn btn-sm btn-primary pull-right"
+                onClick={() => {
+                  axios.get("/accepterDemande?id=" + demande._id);
+                }}
+              >
+                Accepter
+              </button>
+              )
+              <button
+                className="btn btn-sm btn-primary pull-right"
+                onClick={() => {
+                  axios.get("/refuserDemande?id=" + demande._id);
+                }}
+              >
+                Refuser
+              </button>
+              )
             </div>
           );
         })}

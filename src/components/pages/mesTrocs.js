@@ -70,10 +70,8 @@ class mesTrocs extends React.Component {
                                 <img
                                   class=" img-fluid"
                                   src={
-                                    this.state.troc.image
-                                      ? "/getImage?path=" +
-                                        this.state.troc.image
-                                      : "https://www.viepratique.fr/wp-content/uploads/sites/4/2019/04/bricolage-et-diy-quels-outils-avoir-chez-soi.jpg"
+                                    "/getImageAnnonce?id=" +
+                                    troc.idAnnonceConcerné
                                   }
                                 />
                               </p>
@@ -101,21 +99,15 @@ class mesTrocs extends React.Component {
                                 <img
                                   class=" img-fluid"
                                   src={
-                                    this.state.troc.image
-                                      ? "/getImage?path=" +
-                                        this.state.troc.image
-                                      : "https://www.viepratique.fr/wp-content/uploads/sites/4/2019/04/bricolage-et-diy-quels-outils-avoir-chez-soi.jpg"
+                                    "/getImageAnnonce?id=" +
+                                    troc.idAnnonceProposé
                                   }
                                 />
                               </p>
                               <h4 class="card-title">
                                 {troc.titreAnnonceDemandé}
                               </h4>
-                              <p class="card-text">
-                                Description du troc:
-                                {this.state.troc.description}Lorem ipsum dolor
-                                sit amet, consectetur adipiscing elit
-                              </p>
+                              <p class="card-text">{"description"}</p>
                               <a
                                 href="https://www.fiverr.com/share/qb8D02"
                                 class="btn btn-primary btn-sm"
@@ -165,8 +157,6 @@ class mesTrocs extends React.Component {
                       <option id="1">Mes trocs</option>
                       <option id="2">Mes trocs en cours d'exécution</option>
                       <option id="3">Mes trocs terminés</option>
-                      <option id="4">Mes demandes</option>
-                      <option id="5">Mes offres</option>
                     </select>
                   </div>
 

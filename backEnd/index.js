@@ -136,6 +136,14 @@ app.get("/getImageUser", (req, res) => {
   });
 });
 
+app.get("/getImageAnnonce", (req, res) => {
+  annonces.getAnnonce(req.query.id).then((annonce) => {
+    (path = annonce.image), (file = fs.readFileSync("./uploads/" + path));
+    res.writeHead(200, { "Content-Type": "image/jpeg" });
+    res.end(file);
+  });
+});
+
 app.all("/addAnnonce", (req, res) => {
   annonces.addAnnonce(JSON.parse(req.body.annonce)).then((result) => {
     res.json(result);
@@ -241,6 +249,32 @@ app.get("/supprimerFavoris", async (req, res) => {
   let userId = req.query.id;
   let annonceId = req.query.annonceId;
   await users.supprimerFavoris(userId, annonceId);
+});
+
+app.get("/getDescriptionAnnonce", (req, res) => {
+  annonces.getAnnonce(req.query.id).then((annonce) => {
+    console.log(annonce.description);
+    res.send(annonce.description);
+  });
+});
+
+app.get("/accepterDemande", (req, res) => {
+  demandes.accepterDemande(req.query.id);
+  res.send();
+});
+app.get("/refuserDemande", (req, res) => {
+  demandes.refuserDemande(req.query.id);
+  res.send();
+});
+
+app.post("/noterTroc", (req, res) => {
+  let idAnnonce = req.body.id;
+  let commentaire = req.body.commentaire;
+  let note = req.body.note;
+  annonces.ajouterNote(idAnnonce, commentaire, note).then((user) => {
+    users.ajouterNote(user, note);
+  });
+  res.send();
 });
 
 app.listen(PORT, () => console.log("server started"));

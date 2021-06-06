@@ -28,6 +28,17 @@ const getTrocsUser = (userId) => {
   return demandeModel.find({ idProposeur: userId, etat: 1 });
 };
 
+const accepterDemande = async (idDemande) => {
+  let demande = await demandeModel.findOne({ _id: idDemande });
+  demande.etat = 1;
+  demande.save();
+};
+const refuserDemande = async (idDemande) => {
+  await demandeModel.deleteOne({ _id: idDemande });
+};
+
+exports.refuserDemande = refuserDemande;
+exports.accepterDemande = accepterDemande;
 exports.ajouterDemande = ajouterDemande;
 exports.getDemandesUser = getDemandesUser;
 exports.getTrocsUser = getTrocsUser;
