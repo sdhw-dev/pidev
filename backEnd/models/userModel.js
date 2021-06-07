@@ -2,7 +2,7 @@ const { ObjectId } = require("bson");
 const mongoose = require("mongoose");
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
-/*mongodb://localhost:27017/app*/ 
+/*mongodb://localhost:27017/app*/
 mongoose
   .connect("mongodb+srv://oumaima:oumaimatahiri@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority", { useNewUrlParser: true })
   .then(() => {

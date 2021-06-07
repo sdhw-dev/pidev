@@ -27,7 +27,7 @@ export default class App extends Component {
     isConnected: false,
     user: {},
     userId: "60509c17d5280b4db0720397",
-    userDestinaire:"",
+    userDestinaire: "",
   };
 
   setUser = (user) => {
@@ -116,13 +116,12 @@ export default class App extends Component {
           <Route path="/MyTroc/:id" component={Troc} />
           <Route path="/Avis" component={Avis} />
           <Route path="/EnvoyerMessage/:id" component={EnvoyerMessage} />
-           
+
           <Route path="/demandertroc/:id" component={demander} />
           <Route path="/proposertroc/:id" component={proposer} />
           <Route path="/DemandesReçues" component={DemandesReçues} />
           <Route path="/mesFavoris" component={mesFavoris} />
           <Route path="/mesContacts" component={mesContacts} />
-
         </Switch>
       </Router>
     );
