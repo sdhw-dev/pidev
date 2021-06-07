@@ -2,10 +2,11 @@ import React from "react";
 import "../../App.css";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
-import { Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { Component } from "react";
 import { isThisHour } from "date-fns";
 import axios from "axios";
+import { user } from "firebase-functions/lib/providers/auth";
 
 class mesMessages extends Component {
   state = {
@@ -28,17 +29,30 @@ class mesMessages extends Component {
       <div>
         {this.state.listeMessages.map((message) => {
           return (
-            <div class="form-group">
-              <li>
-                {" "}
-                <label>Reçu le : 01/08/2020</label>
-              </li>
-              <li>
-                <label>du troqueur : {message.nomUser}</label>
-              </li>
-              <li>
-                <label>contenu : {message.message}</label>
-              </li>
+            <div>
+              <div class="media-block">
+                <a class="media-left" href="#">
+                  <img
+                    class="img-circle img-sm"
+                    alt="Profile Picture"
+                    src={"/getImageUser?id=" + message.user}
+                  />
+                </a>
+                <div class="media-body">
+                  <div class="mar-btm">
+                    <Link to={"/ProfilTroqueur/" + message.user}>
+                      {message.nomUser}
+                    </Link>
+
+                    <a> {"Reçu le :" + message.date}</a>
+                  </div>
+                  <p>{message.message}</p>
+                  <div class="pad-ver">
+                    <Link to={"/EnvoyerMessage/" + message.user}>Repondre</Link>
+                  </div>
+                  <hr />
+                </div>
+              </div>
             </div>
           );
         })}

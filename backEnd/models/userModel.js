@@ -29,10 +29,14 @@ const userSchema = new mongoose.Schema(
     image: String,
     description: String,
     favoris: [String],
-    messages: [{ message: String, user: ObjectId, nomUser: String }],
+    messages: [
+      { message: String, user: ObjectId, nomUser: String, date: String },
+    ],
     favoris: [ObjectId],
     contacts: [ObjectId],
     points: Number,
+    note: Number,
+    nbreNotes: Number,
   },
   { collection: "users" },
   { timestamps: true }

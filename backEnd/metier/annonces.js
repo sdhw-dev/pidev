@@ -41,6 +41,8 @@ const addAnnonce = (annonce, img) => {
   } else {
     image = img;
   }
+  let date = new Date();
+  date = date.toLocaleString();
   const newAnnonce = new annonceModel({
     type: annonce.type,
     idVille: annonce.idVille,
@@ -49,10 +51,30 @@ const addAnnonce = (annonce, img) => {
     titre: annonce.titre,
     idUser: ObjectId(annonce.idUser),
     image: image,
+    date: date,
   });
   return newAnnonce.save();
 };
 
+const ajouterNote = async (idAnnonce, commentaire, note) => {
+  let annonce = await annonceModel.findOne({ _id: idAnnonce });
+  if (annonce.note) {
+    let a = Number(annonce.note * annonce.notes.length) + Number(note);
+    let b = annonce.notes.length + 1;
+    console.log(a);
+    console.log(b);
+    annonce.note = a / b;
+  } else {
+    annonce.note = note;
+  }
+
+  annonce.notes.push({ note: note, commentaire: commentaire });
+  let user = annonce.idUser;
+  annonce.save();
+  return user;
+};
+
+exports.ajouterNote = ajouterNote;
 exports.addAnnonce = addAnnonce;
 exports.addImage = addImage;
 exports.getAnnonces = getAnnonces;
