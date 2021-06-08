@@ -4,6 +4,7 @@ import Footer from "../Footer";
 import "../../App.css";
 import { Component } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 class mesContacts extends Component {
   state = {
@@ -83,162 +84,19 @@ class mesContacts extends Component {
                                 <p class="card-text">
                                   Adresse : {contact.adresse.adresse}
                                 </p>
+                                <Link to={'/ProfilTroqueur/'+contact._id} className='nav-links' >
+                                      Consulter le profil du troqueur
+                                </Link>
+                              
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                      <div class="image-flip">
-                        <div class="mainflip flip-0">
-                          <div class="frontside">
-                            <div class="card">
-                              <div class="card-body text-center">
-                                <p>
-                                  <img
-                                    class=" img-fluid"
-                                    src={
-                                      contact.image
-                                        ? "/getImage?path=" + contact.image
-                                        : "https://www.viepratique.fr/wp-content/uploads/sites/4/2019/04/bricolage-et-diy-quels-outils-avoir-chez-soi.jpg"
-                                    }
-                                  />
-                                </p>
-                                <h4 class="card-title">Nom : {contact.nom} </h4>
-                                <h4 class="card-title">
-                                  Prenom : {contact.prenom}
-                                </h4>
-
-                                <a
-                                  href="https://www.fiverr.com/share/qb8D02"
-                                  class="btn btn-primary btn-sm"
-                                >
-                                  <i class="fa fa-plus"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="backside">
-                            <div class="card">
-                              <div class="card-body text-center mt-4">
-                                <h4 class="card-title">Nom : {contact.nom} </h4>
-                                <h4 class="card-title">
-                                  Prenom : {contact.prenom}
-                                </h4>
-                                <p class="card-text">
-                                  Tel : {contact.contact.tel}
-                                </p>
-                                <p class="card-text">
-                                  Adresse : {contact.adresse.adresse}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+               
                   </div>
-                  <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                      <div class="image-flip">
-                        <div class="mainflip flip-0">
-                          <div class="frontside">
-                            <div class="card">
-                              <div class="card-body text-center">
-                                <p>
-                                  <img
-                                    class=" img-fluid"
-                                    src={
-                                      contact.image
-                                        ? "/getImage?path=" + contact.image
-                                        : "https://www.viepratique.fr/wp-content/uploads/sites/4/2019/04/bricolage-et-diy-quels-outils-avoir-chez-soi.jpg"
-                                    }
-                                  />
-                                </p>
-                                <h4 class="card-title">Nom : {contact.nom} </h4>
-                                <h4 class="card-title">
-                                  Prenom : {contact.prenom}
-                                </h4>
-
-                                <a
-                                  href="https://www.fiverr.com/share/qb8D02"
-                                  class="btn btn-primary btn-sm"
-                                >
-                                  <i class="fa fa-plus"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="backside">
-                            <div class="card">
-                              <div class="card-body text-center mt-4">
-                                <h4 class="card-title">Nom : {contact.nom} </h4>
-                                <h4 class="card-title">
-                                  Prenom : {contact.prenom}
-                                </h4>
-                                <p class="card-text">
-                                  Tel : {contact.contact.tel}
-                                </p>
-                                <p class="card-text">
-                                  Adresse : {contact.adresse.adresse}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6">
-                      <div class="image-flip">
-                        <div class="mainflip flip-0">
-                          <div class="frontside">
-                            <div class="card">
-                              <div class="card-body text-center">
-                                <p>
-                                  <img
-                                    class=" img-fluid"
-                                    src={
-                                      contact.image
-                                        ? "/getImage?path=" + contact.image
-                                        : "https://www.viepratique.fr/wp-content/uploads/sites/4/2019/04/bricolage-et-diy-quels-outils-avoir-chez-soi.jpg"
-                                    }
-                                  />
-                                </p>
-                                <h4 class="card-title">Nom : {contact.nom} </h4>
-                                <h4 class="card-title">
-                                  Prenom : {contact.prenom}
-                                </h4>
-
-                                <a
-                                  href="https://www.fiverr.com/share/qb8D02"
-                                  class="btn btn-primary btn-sm"
-                                >
-                                  <i class="fa fa-plus"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="backside">
-                            <div class="card">
-                              <div class="card-body text-center mt-4">
-                                <h4 class="card-title">Nom : {contact.nom} </h4>
-                                <h4 class="card-title">
-                                  Prenom : {contact.prenom}
-                                </h4>
-                                <p class="card-text">
-                                  Tel : {contact.contact.tel}
-                                </p>
-                                <p class="card-text">
-                                  Adresse : {contact.adresse.adresse}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                
                 </div>
               </section>
             </div>
