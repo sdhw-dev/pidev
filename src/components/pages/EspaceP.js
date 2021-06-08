@@ -39,7 +39,12 @@ class EspaceP extends Component {
                       </h2>
 
                       <p class="profile-rating">
-                        Moyenne des appréciations : <span>8/10</span>
+                        Moyenne des appréciations :{" "}
+                        <span>
+                          {this.state.user.note
+                            ? this.state.user.note + "/10"
+                            : "aucune note"}
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -77,7 +82,9 @@ class EspaceP extends Component {
                           <span class="pull-left">
                             <strong>Favoris</strong>
                           </span>{" "}
-                          13
+                          {this.state.user.favoris
+                            ? this.state.user.favoris.length
+                            : "0"}
                         </li>
                         <li class="list-group-item text-right">
                           <span class="pull-left">
@@ -87,9 +94,11 @@ class EspaceP extends Component {
                         </li>
                         <li class="list-group-item text-right">
                           <span class="pull-left">
-                            <strong>Clients</strong>
+                            <strong>Contacts</strong>
                           </span>{" "}
-                          20
+                          {this.state.user.contacts
+                            ? this.state.user.contacts.length
+                            : "0"}
                         </li>
                       </ul>
                     </div>

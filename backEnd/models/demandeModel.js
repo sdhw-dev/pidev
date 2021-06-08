@@ -24,6 +24,8 @@ const demandeSchema = new mongoose.Schema(
     titreAnnonceDemandé: String,
     titreAnnonceProposé: String,
     nomDemandeur: String,
+    date: String,
+    etat:Number,
   },
   { collection: "demandes" },
   { timestamps: true }

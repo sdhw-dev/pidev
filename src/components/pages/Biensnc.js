@@ -12,9 +12,8 @@ class Biensnc extends React.Component {
       filtre: { type: false, idCategorie: -1, idVille: -1 },
     };
 
-    this.handleInputChangeCategorie = this.handleInputChangeCategorie.bind(
-      this
-    );
+    this.handleInputChangeCategorie =
+      this.handleInputChangeCategorie.bind(this);
     this.handleInputChangeVille = this.handleInputChangeVille.bind(this);
   }
 
@@ -68,6 +67,41 @@ class Biensnc extends React.Component {
           );
         })}
       </ul>
+    );
+  };
+
+  cards = () => {
+    return (
+      <div className="mesFavoris">
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <div style={{ flex: "1", flexDirection: "row" }}>
+            <div className="wrapper">
+              {this.state.annonces.map((service) => {
+                return (
+                  <div className="card">
+                    <div className="card">
+                      <img src={"/getImage?path=" + service.image} />
+                      <h2 className="card__title">{service.titre}</h2>
+                      <p className="card__description">{service.description}</p>
+                    </div>
+                    <Route
+                      render={({ history }) => (
+                        <button
+                          className="card__btn"
+                          to={"/MyTroc/" + service._id}
+                          onClick={() => history.push("/MyTroc/" + service._id)}
+                        >
+                          plus d'informations{" "}
+                        </button>
+                      )}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
     );
   };
   cardServices = () => {
@@ -151,7 +185,7 @@ class Biensnc extends React.Component {
 
   render() {
     return (
-      <div className="biensnc">
+      <div>
         <div className="row">
           <div className="col-md-6 offset-md-3">
             <h3>Accueil/{this.state.filtre.type ? "service" : "bien"}</h3>
@@ -196,7 +230,7 @@ class Biensnc extends React.Component {
             </div>
           </div>
         </div>
-        <this.cardServices />
+        <this.cards />
       </div>
     );
   }

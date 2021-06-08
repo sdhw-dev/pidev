@@ -33,7 +33,28 @@ class mesFavoris extends Component {
                 <h2 className="card__title">{service.titre}</h2>
                 <p className="card__description">{service.description}</p>
               </div>
-              <button className="card__btn">Supprimer</button>
+              <button
+                className="card__btn"
+                onClick={() => {
+                  axios.get(
+                    "/supprimerFavoris?id=" +
+                      JSON.parse(localStorage.getItem("user"))._id +
+                      "&annonceId=" +
+                      service._id
+                  );
+                  const index = this.state.getListeFavoris.indexOf(service);
+                  if (index > -1) {
+                    let liste = this.state.getListeFavoris;
+                    liste.splice(index, 1);
+                    console.log(liste);
+                    this.setState({
+                      getListeFavoris: liste,
+                    });
+                  }
+                }}
+              >
+                Supprimer{" "}
+              </button>
             </div>
           );
         })}
@@ -48,7 +69,6 @@ class mesFavoris extends Component {
           <Sidebar />
           <div style={{ flex: "1", flexDirection: "row" }}>
             <h1>Mes Favoris</h1>
-
             <this.services />
           </div>
         </div>
