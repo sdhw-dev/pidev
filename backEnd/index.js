@@ -7,7 +7,7 @@ app.use(express.urlencoded());
 var fs = require("fs");
 const multer = require("multer");
 app.use(cors());
-app.use(express.static(path.join(__dirname + "/..", "build")));
+//app.use(express.static(path.join(__dirname + "/..", "build")));
 
 const villeModel = require("./models/villeModel");
 const categorieModel = require("./models/categorieModel");
@@ -282,7 +282,7 @@ app.post("/noterTroc", (req, res) => {
   res.send();
 });
 
-app.get("/*", (req, res) => {
+/*app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname + "/..", "build", "index.html"));
-});
+});*/
 app.listen(PORT, () => console.log("server started"));

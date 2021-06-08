@@ -87,6 +87,13 @@ class mesContacts extends Component {
                                 <Link to={'/ProfilTroqueur/'+contact._id} className='nav-links' >
                                       Consulter le profil du troqueur
                                 </Link>
+                                <button
+                          className="card__btn"
+                         
+                          
+                        >
+                          Supprimer{" "}
+                    </button>
                               
                               </div>
                             </div>
