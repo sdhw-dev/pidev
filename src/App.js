@@ -93,9 +93,10 @@ export default class App extends Component {
           </Route>
           <Route path="/inscription">
             <Inscription
-              onInscription={(user) =>
-                this.setState({ isConnected: true, user: user })
-              }
+              onInscription={(user) => {
+                this.setUser(user);
+                localStorage.setItem("user", JSON.stringify(user));
+              }}
             />
           </Route>
           <Route path="/espaceP">

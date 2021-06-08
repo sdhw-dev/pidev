@@ -84,9 +84,17 @@ class Biensnc extends React.Component {
                       <h2 className="card__title">{service.titre}</h2>
                       <p className="card__description">{service.description}</p>
                     </div>
-                    <button className="card__btn" to={"/MyTroc/" + service._id}>
-                      plus d'informations{" "}
-                    </button>
+                    <Route
+                      render={({ history }) => (
+                        <button
+                          className="card__btn"
+                          to={"/MyTroc/" + service._id}
+                          onClick={() => history.push("/MyTroc/" + service._id)}
+                        >
+                          plus d'informations{" "}
+                        </button>
+                      )}
+                    />
                   </div>
                 );
               })}
@@ -177,7 +185,7 @@ class Biensnc extends React.Component {
 
   render() {
     return (
-      <div className="biensnc">
+      <div>
         <div className="row">
           <div className="col-md-6 offset-md-3">
             <h3>Accueil/{this.state.filtre.type ? "service" : "bien"}</h3>

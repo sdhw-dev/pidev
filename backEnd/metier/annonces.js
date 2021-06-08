@@ -35,7 +35,7 @@ const getListeAnnonces = async (liste) => {
 const addAnnonce = (annonce, img) => {
   console.log(annonce);
   var image;
-  if (img == -1) {
+  if (!img) {
     //image = user.getImage(ObjectId(annonce.idUser));
     image = "download.png";
   } else {

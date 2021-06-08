@@ -2,10 +2,12 @@ const express = require("express");
 const app = express();
 var cors = require("cors");
 app.use(express.json());
+const path = require("path");
 app.use(express.urlencoded());
 var fs = require("fs");
 const multer = require("multer");
 app.use(cors());
+app.use(express.static(path.join(__dirname + "/..", "build")));
 
 const villeModel = require("./models/villeModel");
 const categorieModel = require("./models/categorieModel");
@@ -41,6 +43,7 @@ app.all("/connexion", (req, res) => {
 app.all("/addUser", (req, res) => {
   let newUser = req.body;
   users.addUser(newUser);
+  users.exists(user).then((result) => res.json(result));
 });
 const PORT = process.env.PORT || 6700;
 
@@ -130,7 +133,7 @@ app.get("/getImage", (req, res) => {
 
 app.get("/getImageUser", (req, res) => {
   users.getUser(req.query.id).then((user) => {
-    (path = user.image), (file = fs.readFileSync("./uploads/" + path));
+    /*(path = user.image),*/ file = fs.readFileSync("./uploads/" + user.image);
     res.writeHead(200, { "Content-Type": "image/jpeg" });
     res.end(file);
   });
@@ -138,7 +141,9 @@ app.get("/getImageUser", (req, res) => {
 
 app.get("/getImageAnnonce", (req, res) => {
   annonces.getAnnonce(req.query.id).then((annonce) => {
-    (path = annonce.image), (file = fs.readFileSync("./uploads/" + path));
+    /*(path = annonce.image),*/ file = fs.readFileSync(
+      "./uploads/" + annonce.image
+    );
     res.writeHead(200, { "Content-Type": "image/jpeg" });
     res.end(file);
   });
@@ -277,4 +282,7 @@ app.post("/noterTroc", (req, res) => {
   res.send();
 });
 
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/..", "build", "index.html"));
+});
 app.listen(PORT, () => console.log("server started"));
