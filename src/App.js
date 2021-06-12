@@ -23,6 +23,7 @@ import Note from "./components/pages/Note";
 import DemandesReçues from "./components/pages/DemandesReçues";
 import mesFavoris from "./components/pages/mesFavoris";
 import mesContacts from "./components/pages/mesContacts";
+import axios from "axios";
 export default class App extends Component {
   state = {
     isConnected: false,
@@ -64,7 +65,10 @@ export default class App extends Component {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       console.log(loggedInUser);
-      this.setUser(JSON.parse(loggedInUser));
+      //this.setUser(JSON.parse(loggedInUser));
+      axios.get("/getUser?id=" + JSON.parse(loggedInUser)._id).then((res) => {
+        this.setUser(res.data);
+      });
     }
   };
 

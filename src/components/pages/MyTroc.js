@@ -93,27 +93,7 @@ export default class MyTroc extends React.Component {
                       overflow: "hidden",
                       backgroundcolor: "cadetblue",
                     }}
-                  >
-                    <Route
-                      render={({ history }) => (
-                        <Ripples color={"yellow"}>
-                          <button
-                            to="/demandertroc"
-                            type="button"
-                            className="btn btn-primary"
-                            style={{ width: "350px", height: "50px" }}
-                            onClick={() => {
-                              history.push(
-                                "/demandertroc/" + this.state.troc._id
-                              );
-                            }}
-                          >
-                            Demander
-                          </button>
-                        </Ripples>
-                      )}
-                    />
-                  </div>
+                  ></div>
 
                   <div
                     className="col-md-2 "
@@ -137,7 +117,7 @@ export default class MyTroc extends React.Component {
                               );
                             }}
                           >
-                            Proposer
+                            Demander
                           </button>
                         </Ripples>
                       )}
