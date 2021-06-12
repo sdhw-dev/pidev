@@ -61,7 +61,7 @@ class AjouterAnnonce extends Component {
         <Box
           style={{
             position: "absolute",
-            top: "0",
+            top: "90px",
             bottom: "0",
             width: "800px",
             height: "600px",

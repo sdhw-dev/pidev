@@ -293,12 +293,14 @@ app.post("/noterTroc", (req, res) => {
 });
 
 app.get("/supprimerAnnonce", (req, res) => {
-  let idAnnonce = req.body.id;
+  let idAnnonce = req.query.id;
   annonces.supprimerAnnonce(idAnnonce);
 });
 
-app.all("/getAnnoncesUser", (req, res) => {
-  let body = JSON.parse(JSON.stringify(req.body));
+app.get("/getAnnoncesUser", (req, res) => {
+  let filtre = {
+    idUser: req.query.id,
+  };
   annonces.getAnnonces(filtre).then((result) => {
     res.json(result);
   });

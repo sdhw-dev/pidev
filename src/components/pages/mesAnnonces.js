@@ -14,12 +14,12 @@ class mesAnnonces extends Component {
     componentDidMount = async () => {
         await axios
           .get(
-            "/getAnnonces?id=" + JSON.parse(localStorage.getItem("user"))._id
+            "/getAnnoncesUser?id=" + JSON.parse(localStorage.getItem("user"))._id
           )
           .then((res) => {
             console.log(res.data);
             this.setState({ getListeAnnonces: res.data });
-            console.log(this.state.getListeFavoris);
+            console.log(this.state.getListeAnnonces);
           })
           .catch((error) => console.log(error));
       };
@@ -35,8 +35,28 @@ class mesAnnonces extends Component {
                           <h2 className="card__title">{annonce.titre}</h2>
                           <p className="card__description">{annonce.description}</p>
                         </div>
-                        <button className="card__btn">
-                           Supprimer
+                        <button 
+                        className="card__btn"
+                        onClick={() => {
+                          axios.get(
+                            "/supprimerAnnonce?id=" +
+                              JSON.parse(localStorage.getItem("user"))._id +
+                              "&annonceId=" +
+                              annonce._id
+                          );
+                          const index = this.state.getListeAnnonces.indexOf(annonce);
+                          if (index > -1) {
+                            let liste = this.state.getListeAnnonces;
+                            liste.splice(index, 1);
+                            console.log(liste);
+                            this.setState({
+                              getListeAnnonces: liste,
+                            });
+                          }
+                        }}
+                      >
+                        Supprimer{" "}
+                           
                         </button>
                       </div>
                       );
