@@ -286,6 +286,18 @@ app.post("/noterTroc", (req, res) => {
   res.send();
 });
 
+app.get("/supprimerAnnonce", (req, res) => {
+  let idAnnonce = req.body.id;
+  annonces.supprimerAnnonce(idAnnonce);
+});
+
+app.all("/getAnnoncesUser", (req, res) => {
+  let body = JSON.parse(JSON.stringify(req.body));
+  annonces.getAnnonces(filtre).then((result) => {
+    res.json(result);
+  });
+});
+
 /*app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname + "/..", "build", "index.html"));
 });*/

@@ -74,6 +74,11 @@ const ajouterNote = async (idAnnonce, commentaire, note) => {
   return user;
 };
 
+const supprimerAnnonce = (annonceId) => {
+  annonceModel.deleteOne({ _id: annonceId });
+};
+
+exports.supprimerAnnonce = supprimerAnnonce;
 exports.ajouterNote = ajouterNote;
 exports.addAnnonce = addAnnonce;
 exports.addImage = addImage;
