@@ -11,6 +11,12 @@ class EspaceP extends Component {
     this.state = { user: JSON.parse(localStorage.getItem("user")) };
   }
 
+  componentDidMount = () => {
+    axios.get("/getUser?id=" + this.state.user._id).then((res) => {
+      this.setState({ user: res.data });
+    });
+  };
+
   render() {
     return (
       <div className="EspaceP">

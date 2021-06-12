@@ -40,10 +40,10 @@ app.all("/connexion", (req, res) => {
   });
 });
 
-app.all("/addUser", (req, res) => {
+app.all("/addUser", async (req, res) => {
   let newUser = req.body;
-  users.addUser(newUser);
-  users.exists(user).then((result) => res.json(result));
+  await users.addUser(newUser);
+  users.exists(newUser).then((result) => res.json(result));
 });
 const PORT = process.env.PORT || 6700;
 

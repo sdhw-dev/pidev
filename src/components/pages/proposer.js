@@ -96,22 +96,6 @@ class Proposer extends Component {
                   console.log(this.state);
                 }}
               />
-
-              <form>
-                <h6 style={{ marginLeft: "15px" }}>
-                  En échange de :
-                  <input
-                    type="text"
-                    name="name"
-                    onChange={(event) =>
-                      Number(
-                        (this.state.demande.nbrePoints = event.target.value)
-                      )
-                    }
-                  />{" "}
-                  points
-                </h6>
-              </form>
             </div>
 
             <div class="form-group">

@@ -7,13 +7,17 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import TextField from "@material-ui/core/TextField";
 
 class Note extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       commentaire: "",
       note: 10,
+      id: "",
     };
   }
+  componentDidMount = () => {
+    this.setState({ id: this.props.match.params.id });
+  };
 
   render() {
     return (
@@ -77,7 +81,9 @@ class Note extends Component {
                   name="submit"
                   value="Envoyer"
                   class="btn btn-primary"
-                  onClick={() => {}}
+                  onClick={() => {
+                    axios.post("/noterTroc", this.state);
+                  }}
                   style={{ marginLeft: "450px" }}
                 />
               </div>

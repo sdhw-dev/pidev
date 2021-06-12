@@ -29,6 +29,7 @@ const handleAddUser = (utilisateur) => {
   axios
     .post(url, data)
     .then((response) => {
+      console.log(response);
       return response.data;
     })
     .catch((error) => {
@@ -221,9 +222,8 @@ class Inscription extends Component {
                           );
                           res.then((a) => {
                             if (!a) {
-                              handleAddUser(this.state.infosInscription);
                               this.props.onInscription(
-                                this.state.infosInscription
+                                handleAddUser(this.state.infosInscription)
                               );
                               console.log("a" + this.state.infosInscription);
                               history.push("./espaceP");

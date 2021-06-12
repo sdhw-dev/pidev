@@ -68,7 +68,9 @@ const addUser = (utilisateur) => {
     description: "",
     messages: [],
   });
-  newUser.save();
+  newUser.save().then(() => {
+    return newUser;
+  });
 
   return newUser;
 };
