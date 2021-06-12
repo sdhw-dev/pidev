@@ -3,6 +3,7 @@ import "../../App.css";
 import axios from "axios";
 import "../Cards.css";
 import CardItem from "../CardItem";
+import "./mesFavorisT.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 class Biensnc extends React.Component {
   constructor() {
@@ -52,6 +53,8 @@ class Biensnc extends React.Component {
     console.warn(this.state);
   }
 
+ 
+
   ligneOfCards = (L) => {
     return (
       <ul className="cards__items">
@@ -72,28 +75,35 @@ class Biensnc extends React.Component {
 
   cards = () => {
     return (
-      <div className="mesFavoris">
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <div style={{ flex: "1", flexDirection: "row" }}>
+    
             <div className="wrapper">
               {this.state.annonces.map((service) => {
                 return (
                   <div className="card">
-                    <div className="card">
+                    <div className="card" style={{height:"380px"}}>
                       <img src={"/getImage?path=" + service.image} />
                       <h2 className="card__title">{service.titre}</h2>
                       <p className="card__description">{service.description}</p>
                     </div>
-                    <button className="card__btn" to={"/MyTroc/" + service._id}>
+
+                    <Route
+                  render={({ history }) => (
+                    <button className="card__btn"
+                      onClick={() => {
+                        history.push("/MyTroc/" + service._id);
+                      }}
+                    >
                       plus d'informations{" "}
                     </button>
+                  )}
+                />
+                    
                   </div>
                 );
               })}
             </div>
-          </div>
-        </div>
-      </div>
+       
+      
     );
   };
   cardServices = () => {
@@ -127,15 +137,15 @@ class Biensnc extends React.Component {
     if (this.state.filtre.type) {
       return (
         <div>
-          <label>Catégorie :</label>
+          <label style={{color:"black"}}>Catégorie :</label>
 
-          <select
+          <select style={{width:"375px"}}
             className="form-control"
             name="city"
             onChange={this.handleInputChangeCategorie}
           >
             <option selected value="-1">
-              Toute les Categories
+              Toutes les Catégories
             </option>
 
             <option value="1">Jardinage</option>
@@ -151,15 +161,15 @@ class Biensnc extends React.Component {
     } else {
       return (
         <div>
-          <label>Catégorie :</label>
+          <label style={{color :"black"}}>Catégorie :</label>
 
-          <select
+          <select style={{width:"375px" }}
             className="form-control"
             name="city"
             onChange={this.handleInputChangeCategorie}
           >
             <option selected value="-1">
-              Toute les Categories
+              Toutes les Catégories
             </option>
 
             <option value="8">Bureaux</option>
@@ -175,25 +185,26 @@ class Biensnc extends React.Component {
     }
   };
 
+
   render() {
     return (
-      <div className="biensnc">
-        <div className="row">
+      <div className="biensnc" >
+        <div className="row" >
           <div className="col-md-6 offset-md-3">
-            <h3>Accueil/{this.state.filtre.type ? "service" : "bien"}</h3>
+          
             <br />
 
-            <div className="form-row">
+            <div className="form-row" style={{width:"1000px"}}>
               <div className="form-group col-md-6">
-                <label>Ville :</label>
+                <label style={{color :"black" }}>Ville :</label>
 
-                <select
+                <select style={{width:"375px" }}
                   className="form-control"
                   name="catégorie"
                   onChange={this.handleInputChangeVille}
                 >
                   <option selected value="-1">
-                    Toute les villes
+                    Toutes les villes
                   </option>
                   <option value="1">Marrakech</option>
                   <option value="2">Rabat</option>
@@ -220,9 +231,12 @@ class Biensnc extends React.Component {
                 </button>
               </div>
             </div>
+            
           </div>
         </div>
-        <this.cards />
+       
+        <div > <this.cards /> </div>
+         
       </div>
     );
   }

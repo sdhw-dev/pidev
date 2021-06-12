@@ -10,7 +10,7 @@ import { isThisHour } from "date-fns";
 
 class DemandesReçues extends Component {
   state = {
-    listeDemandes: [1, 1, 1],
+    listeDemandes: [],
     infosDemandes: [],
   };
   componentDidMount = async () => {

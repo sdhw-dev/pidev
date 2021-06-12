@@ -23,6 +23,7 @@ import Note from "./components/pages/Note";
 import DemandesReçues from "./components/pages/DemandesReçues";
 import mesFavoris from "./components/pages/mesFavoris";
 import mesContacts from "./components/pages/mesContacts";
+import mesAnnonces from "./components/pages/mesAnnonces";
 export default class App extends Component {
   state = {
     isConnected: false,
@@ -112,7 +113,7 @@ export default class App extends Component {
           </Route>
           <Route path="/mesMessages" component={mesMessages} />
           <Route path="/mesTrocs" component={mesTrocs} />
-          <Route path="/calendrier" component={Calendrier} />
+          <Route path="/mesAnnonces" component={mesAnnonces} />
           <Route path="/ProfilTroqueur/:id" component={ProfilTroqueur} />
           <Route path="/MyTroc/:id" component={Troc} />
           <Route path="/Avis" component={Avis} />
@@ -124,6 +125,7 @@ export default class App extends Component {
           <Route path="/DemandesReçues" component={DemandesReçues} />
           <Route path="/mesFavoris" component={mesFavoris} />
           <Route path="/mesContacts" component={mesContacts} />
+         
         </Switch>
       </Router>
     );

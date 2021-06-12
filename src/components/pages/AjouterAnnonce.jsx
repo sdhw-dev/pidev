@@ -71,7 +71,7 @@ class AjouterAnnonce extends Component {
     return (
       
       < div className="AjouterAnnonce" >
-        <Box style={{ position: "absolute",top:"0",bottom: "0", width: "800px",height: "600px",
+        <Box style={{ position: "absolute",top:"90px",bottom: "0", width: "800px",height: "600px",
           left: "0",right: "0",margin: "auto" }}>
           <Box 
         border={1}

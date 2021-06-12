@@ -251,6 +251,12 @@ app.get("/supprimerFavoris", async (req, res) => {
   await users.supprimerFavoris(userId, annonceId);
 });
 
+
+app.get("/supprimerAnnonces", async (req, res) => {
+  let userId = req.query.id;
+  let annonceId = req.query.annonceId;
+  await users.supprimerAnnonces(userId, annonceId);
+});
 app.get("/getDescriptionAnnonce", (req, res) => {
   annonces.getAnnonce(req.query.id).then((annonce) => {
     console.log(annonce.description);
