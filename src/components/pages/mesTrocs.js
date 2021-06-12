@@ -6,6 +6,7 @@ import axios from "axios";
 import "./mesTrocs.css";
 
 class mesTrocs extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -172,12 +173,6 @@ class mesTrocs extends React.Component {
     );
   }
 }
-// const ListTrocs = () => (
-//   <List>
-//     <List.Item>Troc1</List.Item>
-//     <List.Item>Troc2</List.Item>
-//     <List.Item></List.Item>
-//   </List>
-// )
+
 
 export default mesTrocs;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ButtonInscription } from './ButtonInscription';
+
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -49,8 +49,13 @@ function Navbar() {
                 Connexion
               </Link>
             </li>
+            <li className='nav-item'>
+              <Link to='/inscription' className='nav-links' onClick={closeMobileMenu}>
+              Inscription
+              </Link>
+            </li>
           </ul>
-          {button && <ButtonInscription buttonStyle='btn--outline'>Inscription</ButtonInscription>}
+          
           
         </div>
       </nav>

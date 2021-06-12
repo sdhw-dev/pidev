@@ -68,7 +68,9 @@ const addUser = (utilisateur) => {
     description: "",
     messages: [],
   });
-  newUser.save();
+  newUser.save().then(() => {
+    return newUser;
+  });
 
   return newUser;
 };
@@ -132,6 +134,20 @@ const supprimerFavoris = async (userId, annonceId) => {
   }
 };
 
+const supprimerContact = async (userId, annonceId) => {
+  let user = await userModel.findOne({ _id: userId });
+  let c = -1;
+  for (let i = 0; i < user.contact.length; i++) {
+    if (JSON.stringify(user.contact[i]) === JSON.stringify(annonceId)) {
+      c = i;
+    }
+  }
+  if (c >= 0) {
+    user.contact.splice(c, 1);
+    user.save();
+  }
+};
+
 const ajouterNote = async (id, note) => {
   let user = await userModel.findOne({ _id: id });
   if (user.note) {
@@ -147,6 +163,7 @@ const ajouterNote = async (id, note) => {
   user.save();
 };
 
+exports.supprimerContact = supprimerContact;
 exports.ajouterNote = ajouterNote;
 exports.supprimerFavoris = supprimerFavoris;
 exports.getListeContacts = getListeContacts;

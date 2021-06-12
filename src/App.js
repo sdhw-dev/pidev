@@ -24,6 +24,7 @@ import DemandesReçues from "./components/pages/DemandesReçues";
 import mesFavoris from "./components/pages/mesFavoris";
 import mesContacts from "./components/pages/mesContacts";
 import mesAnnonces from "./components/pages/mesAnnonces";
+import axios from "axios";
 export default class App extends Component {
   state = {
     isConnected: false,
@@ -65,7 +66,10 @@ export default class App extends Component {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       console.log(loggedInUser);
-      this.setUser(JSON.parse(loggedInUser));
+      //this.setUser(JSON.parse(loggedInUser));
+      axios.get("/getUser?id=" + JSON.parse(loggedInUser)._id).then((res) => {
+        this.setUser(res.data);
+      });
     }
   };
 
@@ -94,9 +98,10 @@ export default class App extends Component {
           </Route>
           <Route path="/inscription">
             <Inscription
-              onInscription={(user) =>
-                this.setState({ isConnected: true, user: user })
-              }
+              onInscription={(user) => {
+                this.setUser(user);
+                localStorage.setItem("user", JSON.stringify(user));
+              }}
             />
           </Route>
           <Route path="/espaceP">

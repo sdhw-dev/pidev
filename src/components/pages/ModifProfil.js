@@ -227,13 +227,7 @@ class ModifProfil extends React.Component {
                       >
                         <i class="glyphicon glyphicon-ok-sign"></i>Enregistrer
                       </button>
-                      <button
-                        class="btn btn-lg"
-                        type="reset"
-                        onClick={this.handleClickAnnuler}
-                      >
-                        <i class="glyphicon glyphicon-repeat"></i>Annuler
-                      </button>
+
                       <Link to="/espaceP" className="LinkMP">
                         Retour
                       </Link>
