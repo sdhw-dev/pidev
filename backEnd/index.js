@@ -40,10 +40,9 @@ app.all("/connexion", (req, res) => {
   });
 });
 
-app.all("/addUser", async (req, res) => {
+app.all("/addUser", (req, res) => {
   let newUser = req.body;
-  await users.addUser(newUser);
-  users.exists(newUser).then((result) => res.json(result));
+  res.json(users.addUser(newUser));
 });
 const PORT = process.env.PORT || 6700;
 
@@ -254,6 +253,11 @@ app.get("/supprimerFavoris", async (req, res) => {
   let userId = req.query.id;
   let annonceId = req.query.annonceId;
   await users.supprimerFavoris(userId, annonceId);
+});
+app.get("/supprimerContact", async (req, res) => {
+  let userId = req.query.id;
+  let annonceId = req.query.annonceId;
+  await users.supprimerContact(userId, annonceId);
 });
 
 app.get("/getDescriptionAnnonce", (req, res) => {
