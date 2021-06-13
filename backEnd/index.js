@@ -260,6 +260,12 @@ app.get("/supprimerContact", async (req, res) => {
   await users.supprimerContact(userId, annonceId);
 });
 
+
+app.get("/supprimerAnnonces", async (req, res) => {
+  let userId = req.query.id;
+  let annonceId = req.query.annonceId;
+  await users.supprimerAnnonces(userId, annonceId);
+});
 app.get("/getDescriptionAnnonce", (req, res) => {
   annonces.getAnnonce(req.query.id).then((annonce) => {
     console.log(annonce.description);

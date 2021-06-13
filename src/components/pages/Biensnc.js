@@ -3,6 +3,7 @@ import "../../App.css";
 import axios from "axios";
 import "../Cards.css";
 import CardItem from "../CardItem";
+import "./mesFavorisT.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 class Biensnc extends React.Component {
   constructor() {
@@ -52,6 +53,8 @@ class Biensnc extends React.Component {
     console.warn(this.state);
   }
 
+ 
+
   ligneOfCards = (L) => {
     return (
       <ul className="cards__items">
@@ -72,14 +75,12 @@ class Biensnc extends React.Component {
 
   cards = () => {
     return (
-      <div className="mesFavoris">
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <div style={{ flex: "1", flexDirection: "row" }}>
+    
             <div className="wrapper">
               {this.state.annonces.map((service) => {
                 return (
                   <div className="card">
-                    <div className="card">
+                    <div className="card" style={{height:"380px"}}>
                       <img src={"/getImage?path=" + service.image} />
                       <h2 className="card__title">{service.titre}</h2>
                       <p className="card__description">{service.description}</p>
@@ -99,9 +100,8 @@ class Biensnc extends React.Component {
                 );
               })}
             </div>
-          </div>
-        </div>
-      </div>
+       
+      
     );
   };
   cardServices = () => {
@@ -227,12 +227,13 @@ class Biensnc extends React.Component {
     }
   };
 
+
   render() {
     return (
       <div>
         <div className="row">
           <div className="col-md-6 offset-md-3">
-            <h3>Accueil/{this.state.filtre.type ? "service" : "bien"}</h3>
+          
             <br />
             <this.categories />
 
@@ -247,9 +248,12 @@ class Biensnc extends React.Component {
                 </button>
               </div>
             </div>
+            
           </div>
         </div>
-        <this.cards />
+       
+        <div > <this.cards /> </div>
+         
       </div>
     );
   }
