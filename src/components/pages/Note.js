@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../demander.css";
 import Footer from "../Footer";
+import axios from "axios";
 
 
 class Note extends Component {
@@ -44,13 +45,31 @@ class Note extends Component {
               <form>
                 <h6 style={{ marginLeft: "15px" }}>
                   Note :
-                  <input
-                    type="text"
-                    name="name"
-                    onChange={(event) =>
-                      Number((this.state.note = event.target.value))
-                    }
-                  />{" "}
+                  <select
+                      type="text"
+                      name="name"
+                      onChange={(event) =>
+                        Number((this.state.note = event.target.value))
+                      }
+                  >{" "}
+                    <option selected value="10">
+                      10
+                    </option>
+
+                    <option value="9">9</option>
+                    <option value="8">8</option>
+                    <option value="7">7</option>
+                    <option value="6">6</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                    
+                  </select>
+                  
+                
                   /10
                 </h6>
               </form>

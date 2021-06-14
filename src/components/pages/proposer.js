@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import axios from "axios";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import TextField from "@material-ui/core/TextField";
+import { Link } from 'react-router-dom';
 
 class Proposer extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class Proposer extends Component {
       },
     };
   }
+  
 
   componentWillMount = () => {
     axios
@@ -115,6 +117,7 @@ class Proposer extends Component {
             </div>
             <div class="form-group">
               <div class="col-sm-10 col-sm-offset-2">
+              
                 <input
                   id="submit"
                   name="submit"
@@ -124,6 +127,7 @@ class Proposer extends Component {
                     this.state.demande.idDemandeur = JSON.parse(
                       localStorage.getItem("user")
                     )._id;
+                    
                     this.state.demande.idProposeur =
                       this.state.infosTroqueur.idTroqueur;
                     this.state.demande.idAnnonceConcerné =
@@ -150,13 +154,22 @@ class Proposer extends Component {
                   }}
                   style={{ marginLeft: "450px" }}
                 />
+               
+                  
+
+                
+                 
+                
+                
               </div>
             </div>
           </form>
         </div>
+  
 
         <Footer />
       </div>
+    	
     );
   }
 }
