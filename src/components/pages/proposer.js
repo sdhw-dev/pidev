@@ -115,40 +115,48 @@ class Proposer extends Component {
             </div>
             <div class="form-group">
               <div class="col-sm-10 col-sm-offset-2">
-                <input
-                  id="submit"
-                  name="submit"
-                  value="Envoyer"
-                  class="btn btn-primary"
-                  onClick={() => {
-                    this.state.demande.idDemandeur = JSON.parse(
-                      localStorage.getItem("user")
-                    )._id;
-                    this.state.demande.idProposeur =
-                      this.state.infosTroqueur.idTroqueur;
-                    this.state.demande.idAnnonceConcerné =
-                      this.state.infosTroqueur.idAnnonce;
-                    this.state.demande.titreAnnonceDemandé =
-                      this.state.infosTroqueur.troc.titre;
-                    this.state.demande.nomDemandeur =
-                      JSON.parse(localStorage.getItem("user")).nom +
-                      " " +
-                      JSON.parse(localStorage.getItem("user")).prenom;
-                    for (let i = 0; i < this.state.listeTrocs.length; i++) {
-                      if (
-                        this.state.listeTrocs[i]._id ===
-                        this.state.demande.idAnnonceProposé
-                      ) {
-                        this.state.demande.titreAnnonceProposé =
-                          this.state.listeTrocs[i].titre;
-                      }
-                    }
-                    axios
-                      .post("/enregistrerDemande", this.state.demande)
-                      .then((res) => {})
-                      .catch((error) => console.log(error));
-                  }}
-                  style={{ marginLeft: "450px" }}
+                <Route
+                  render={({ history }) => (
+                    <input
+                      id="submit"
+                      name="submit"
+                      value="Envoyer"
+                      class="btn btn-primary"
+                      onClick={() => {
+                        this.state.demande.idDemandeur = JSON.parse(
+                          localStorage.getItem("user")
+                        )._id;
+                        this.state.demande.idProposeur =
+                          this.state.infosTroqueur.idTroqueur;
+                        this.state.demande.idAnnonceConcerné =
+                          this.state.infosTroqueur.idAnnonce;
+                        this.state.demande.titreAnnonceDemandé =
+                          this.state.infosTroqueur.troc.titre;
+                        this.state.demande.nomDemandeur =
+                          JSON.parse(localStorage.getItem("user")).nom +
+                          " " +
+                          JSON.parse(localStorage.getItem("user")).prenom;
+                        for (let i = 0; i < this.state.listeTrocs.length; i++) {
+                          if (
+                            this.state.listeTrocs[i]._id ===
+                            this.state.demande.idAnnonceProposé
+                          ) {
+                            this.state.demande.titreAnnonceProposé =
+                              this.state.listeTrocs[i].titre;
+                          }
+                        }
+                        axios
+                          .post("/enregistrerDemande", this.state.demande)
+                          .then((res) => {
+                            history.push(
+                              "/Mytroc/" + this.state.demande.idAnnonceConcerné
+                            );
+                          })
+                          .catch((error) => console.log(error));
+                      }}
+                      style={{ marginLeft: "450px" }}
+                    />
+                  )}
                 />
               </div>
             </div>

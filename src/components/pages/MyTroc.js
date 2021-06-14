@@ -4,7 +4,7 @@ import "./myTroc.css";
 import { Route } from "react-router-dom";
 import Ripples from "react-ripples";
 import axios from "axios";
-import demander from "./demander";
+
 import Avis from "./Avis";
 
 export default class MyTroc extends React.Component {
@@ -20,6 +20,45 @@ export default class MyTroc extends React.Component {
       idTroqueur: "",
     };
   }
+
+  note = () => {
+    if (this.state.troc.notes) {
+      return (
+        <div>
+          {this.state.troc.notes.map((note) => {
+            return (
+              <div className="Avis">
+                <link
+                  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+                  rel="stylesheet"
+                />
+                <div class="container bootdey">
+                  <div class="col-md-12 bootstrap snippets">
+                    <div class="panel">
+                      <div class="panel-body">
+                        <div class="media-block">
+                          <div class="media-body">
+                            <div class="mar-btm"></div>
+                            <p>{"note: " + note.note}</p>
+                            <p>{"commentaire:" + note.commentaire}</p>
+
+                            <hr />
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
 
   componentWillMount = () => {
     axios
@@ -230,6 +269,10 @@ export default class MyTroc extends React.Component {
                         {" "}
                         {"date d'ajout: " + this.state.troc.date /*date*/}{" "}
                       </h6>
+                      moyenne des notes:
+                      {this.state.troc.note
+                        ? this.state.troc.note
+                        : "aucune note"}
                     </div>
                     <br />
                     <div className="description">
@@ -247,7 +290,7 @@ export default class MyTroc extends React.Component {
             </div>
           </div>
         </div>
-        <Avis />
+        <this.note />
         <Footer />
       </div>
     );

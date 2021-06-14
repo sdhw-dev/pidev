@@ -25,7 +25,7 @@ function NavbarServices(props) {
 
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar" style={{marginTop:"-20px"}}>
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             E.TROC

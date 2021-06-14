@@ -6,7 +6,9 @@ import { Link, Route } from "react-router-dom";
 import { Component } from "react";
 import { isThisHour } from "date-fns";
 import axios from "axios";
+import "./mesMessages.css"
 import { user } from "firebase-functions/lib/providers/auth";
+import { ButtonOr } from "semantic-ui-react";
 
 class mesMessages extends Component {
   state = {
@@ -26,34 +28,38 @@ class mesMessages extends Component {
 
   messages = () => {
     return (
-      <div>
+      <div >
         {this.state.listeMessages.map((message) => {
           return (
             <div>
-              <div class="media-block">
-                <a class="media-left" href="#">
-                  <img
-                    class="img-circle img-sm"
+              <div style={{padding:"10px"}}>
+              <img style={{float:"left" , width:"200px" ,height:"200px"}}
                     alt="Profile Picture"
                     src={"/getImageUser?id=" + message.user}
                   />
-                </a>
-                <div class="media-body">
-                  <div class="mar-btm">
+              <div style={{marginTop:"50px" }} >
+                    <pre>
+                    &thinsp;De :
                     <Link to={"/ProfilTroqueur/" + message.user}>
                       {message.nomUser}
                     </Link>
-
-                    <a> {"Reçu le :" + message.date}</a>
-                  </div>
-                  <p>{message.message}</p>
-                  <div class="pad-ver">
-                    <Link to={"/EnvoyerMessage/" + message.user}>Repondre</Link>
-                  </div>
+                  
+                    <a> &thinsp; {"  ,Reçu le :" + message.date}</a>
+                    <hr />
+                  <p>&thinsp;{message.message}</p>
+                  
                   <hr />
+
+                    <Link to={"/EnvoyerMessage/" + message.user}>Repondre</Link>
+                  
+                  
+                    </pre>
+                </div>
+
+               
                 </div>
               </div>
-            </div>
+           
           );
         })}
       </div>

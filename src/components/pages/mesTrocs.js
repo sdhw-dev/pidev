@@ -5,6 +5,7 @@ import "../../App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import "./mesTrocs.css";
+import { Link } from "react-router-dom";
 
 class mesTrocs extends React.Component {
   constructor(props) {
@@ -107,9 +108,7 @@ class mesTrocs extends React.Component {
                                 {troc.titreAnnonceDemandé}
                               </h4>
                               <p class="card-text">
-                                Description du troc:
-                                {this.state.troc.description}Lorem ipsum dolor
-                                sit amet, consectetur adipiscing elit
+                                {troc.descriptionAnnonceDemandé}
                               </p>
 
                               <a
@@ -136,7 +135,9 @@ class mesTrocs extends React.Component {
                               <h4 class="card-title">
                                 {troc.titreAnnonceProposé}
                               </h4>
-                              <p class="card-text">{"description"}</p>
+                              <p class="card-text">
+                                {troc.descriptionAnnonceProposé}
+                              </p>
                               <p class="card-text">
                                 Etat :{" "}
                                 {troc.etat == 4 || troc.etat == 2

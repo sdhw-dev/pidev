@@ -81,6 +81,17 @@ const supprimerAnnonce = async (annonceId) => {
   });
 };
 
+const getListeCommentaire = async (idAnnonce) => {
+  let annonce = await annonceModel.find({ _id: idAnnonce });
+  let result = annonce.notes;
+  if (result) {
+    return result;
+  } else {
+    return null;
+  }
+};
+
+exports.getListeCommentaire = getListeCommentaire;
 exports.supprimerAnnonce = supprimerAnnonce;
 exports.ajouterNote = ajouterNote;
 exports.addAnnonce = addAnnonce;

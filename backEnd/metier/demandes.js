@@ -1,5 +1,7 @@
 const demandeModel = require("../models/demandeModel");
 
+const annonces = require("../models/annonceModel");
+
 const ajouterDemande = async (demande, userId) => {
   let date = new Date();
   date = date.toLocaleString();
@@ -11,11 +13,21 @@ const ajouterDemande = async (demande, userId) => {
     message: demande.message,
     nbrePoints: demande.nbrePoints,
     titreAnnonceDemandé: demande.titreAnnonceDemandé,
+    descriptionAnnonceDemandé: "",
+    descriptionAnnonceProposé: "",
     titreAnnonceProposé: demande.titreAnnonceProposé,
     nomDemandeur: demande.nomDemandeur,
     date: date,
     etat: 0,
   });
+  let annonceDemandé = await annonces.findOne({
+    _id: demande.idAnnonceConcerné,
+  });
+  let annonceProposé = await annonces.findOne({
+    _id: demande.idAnnonceProposé,
+  });
+  newDemande.descriptionAnnonceDemandé = annonceDemandé.description;
+  newDemande.descriptionAnnonceProposé = annonceProposé.description;
   newDemande.save();
   return 1;
 };
@@ -68,6 +80,21 @@ const updateEtat = async (idDemande, idUser) => {
     demande.etat = 3;
   }
   demande.save();
+};
+
+const getNbreTroc = async (idUser) => {
+  let res = {
+    complet: 0,
+    total: 0,
+  };
+  let demandes = await demandeModel.find({ idProposeur: idUser });
+  let demandes1 = demandeModel.find({ idDemandeur: idUser });
+  let demandes2 = await demandeModel.find({ idProposeur: idUser, etat: 0 });
+  let demandes3 = demandeModel.find({ idDemandeur: idUser, etat: 0 });
+  let demandes4 = await demandeModel.find({ idProposeur: idUser, etat: 1 });
+  let demandes5 = demandeModel.find({ idDemandeur: idUser, etat: 1 });
+
+  res.total = demandes + demandes1 - demandes2 - demandes3;
 };
 
 exports.updateEtat = updateEtat;

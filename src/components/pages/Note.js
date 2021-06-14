@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import "../demander.css";
-import Footer from "../Footer";
-import { Route } from "react-router-dom";
+
 import axios from "axios";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import TextField from "@material-ui/core/TextField";
+import Footer from "../Footer";
 
 class Note extends Component {
   constructor(props) {
