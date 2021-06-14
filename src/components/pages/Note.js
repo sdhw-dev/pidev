@@ -1,10 +1,5 @@
 import React, { Component } from "react";
 import "../demander.css";
-<<<<<<< HEAD
-import Footer from "../Footer";
-import axios from "axios";
-=======
->>>>>>> 0a2bc25e1dc02b4e4636eca968a6d8c9ff30d2f4
 
 import axios from "axios";
 import Footer from "../Footer";
