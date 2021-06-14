@@ -298,6 +298,7 @@ app.get("/supprimerAnnonce", (req, res) => {
 app.post("/setEtat", (req, res) => {
   let idDemande = req.body.idDemande;
   let idUser = req.body.idUser;
+  console.log(idDemande);
   demandes.updateEtat(idDemande, idUser);
   res.send();
 });

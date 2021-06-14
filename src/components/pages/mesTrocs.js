@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
 import "../../App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import "./mesTrocs.css";
 
@@ -42,20 +43,28 @@ class mesTrocs extends React.Component {
     console.warn(this.state);
   }
 
-  boutonTerminé = (id, i) => {
+  boutonTerminé = (id, i, idAnnonce) => {
     if (!i) {
       return (
-        <button
-          className="card__btn"
-          onClick={() => {
-            axios.post("/setEtat", {
-              idUser: JSON.parse(localStorage.getItem("user"))._id,
-              idDemande: id,
-            });
-          }}
-        >
-          terminer{" "}
-        </button>
+        <Route
+          render={({ history }) => (
+            <button
+              className="card__btn"
+              onClick={() => {
+                axios
+                  .post("/setEtat", {
+                    idUser: JSON.parse(localStorage.getItem("user"))._id,
+                    idDemande: id,
+                  })
+                  .then(() => {
+                    history.push("/noterTroc/" + idAnnonce);
+                  });
+              }}
+            >
+              terminer{" "}
+            </button>
+          )}
+        />
       );
     } else {
       return null;
@@ -136,7 +145,8 @@ class mesTrocs extends React.Component {
                               </p>
                               {this.boutonTerminé(
                                 troc._id,
-                                troc.etat == 4 || troc.etat == 2
+                                troc.etat == 4 || troc.etat == 2,
+                                troc.idAnnonceConcerné
                               )}
 
                               <a
@@ -212,7 +222,8 @@ class mesTrocs extends React.Component {
                               </p>
                               {this.boutonTerminé(
                                 troc._id,
-                                troc.etat == 4 || troc.etat == 3
+                                troc.etat == 4 || troc.etat == 3,
+                                troc.idAnnonceConcerné
                               )}
 
                               <a
