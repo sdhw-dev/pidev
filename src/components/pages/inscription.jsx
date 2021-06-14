@@ -23,18 +23,19 @@ const CheckMail = (data) => {
   return res;
 };
 
-const handleAddUser = (utilisateur) => {
+const handleAddUser = async (utilisateur) => {
   const url = "/addUser";
   const data = utilisateur;
-  axios
+  let res = await axios
     .post(url, data)
     .then((response) => {
       console.log(response);
-      return response.data;
+      return JSON.parse(JSON.stringify(response.data));
     })
     .catch((error) => {
       console.log(error.response);
     });
+  return res;
 };
 
 class Inscription extends Component {
@@ -137,6 +138,7 @@ class Inscription extends Component {
                 id="mail"
                 label="adresse mail"
                 style={{ margin: 8 }}
+                type="email"
                 margin="normal"
                 required
                 variant="outlined"
@@ -220,11 +222,12 @@ class Inscription extends Component {
                           let res = CheckMail(
                             this.state.infosInscription.contact.mail
                           );
-                          res.then((a) => {
+                          res.then(async (a) => {
                             if (!a) {
-                              this.props.onInscription(
-                                handleAddUser(this.state.infosInscription)
+                              let user = await handleAddUser(
+                                this.state.infosInscription
                               );
+                              this.props.onInscription(user);
                               console.log("a" + this.state.infosInscription);
                               history.push("./espaceP");
                             } else {

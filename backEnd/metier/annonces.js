@@ -74,8 +74,11 @@ const ajouterNote = async (idAnnonce, commentaire, note) => {
   return user;
 };
 
-const supprimerAnnonce = (annonceId) => {
-  annonceModel.deleteOne({ _id: annonceId });
+const supprimerAnnonce = async (annonceId) => {
+  console.log(annonceId);
+  annonceModel.findById(annonceId).then((res) => {
+    res.delete();
+  });
 };
 
 exports.supprimerAnnonce = supprimerAnnonce;
