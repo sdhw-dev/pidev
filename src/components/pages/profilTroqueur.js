@@ -58,7 +58,7 @@ class profilTroqueur extends Component {
                 <div class="row">
                   <div class="col-md-4">
                     <div class="profile-img">
-                      <img
+                      <img style={{width:"350px" , height:"350px"}}
                         src={
                           this.state.user.image
                             ? "/getImage?path=" + this.state.user.image
@@ -72,14 +72,14 @@ class profilTroqueur extends Component {
                     <div class="col-md-8">
                       <h2 id="profilTroqueur">Profil du troqueur</h2>
                     </div>
-                    <div class="row">
+                    <div class="row" style={{marginTop:"40px"}}>
                       <div class="col-md-8">
                         <h5>
                           Nom et prénom :
                           {this.state.user.nom + " " + this.state.user.prenom}{" "}
                         </h5>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-6" >
                         <h5></h5>
                       </div>
                     </div>
@@ -111,7 +111,7 @@ class profilTroqueur extends Component {
 
                   <this.button />
                 </div>
-                <div class="row">
+                <div class="row" style={{marginTop:"40px"}}>
                   <div class="col-md-12">
                     <ul class="list-group">
                       <li class="list-group-item text-muted">

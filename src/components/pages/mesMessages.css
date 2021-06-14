@@ -1,0 +1,57 @@
+.main{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.main .content .card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+
+
+}
+.main .content .card .left{
+    flex: 0 0 30%;
+    padding: 20px;
+    background-color: black;
+    color: #fff;
+   
+}
+
+.main .content .card.right{
+    flex: 0 0 70%;
+    
+}
+.main .content .card .right img{
+    height: 300px;
+    width: 400px;
+    margin-top: 5px;
+
+
+}
+
+
+
+@media screen and (max-width: 800px)
+{
+  
+    .main .card{
+        margin: 0px;
+    }
+    main .content .card .right img{
+        height: 200px;
+        width: 100%;	
+        margin-top: 0px;
+    }
+
+    .main .content .card{
+        display: block;
+    }
+
+  
+
+}
