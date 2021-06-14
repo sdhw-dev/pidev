@@ -80,7 +80,14 @@ const Sidebar = () => {
               </CDBSidebarMenuItem>
             </NavLink>
 
-          
+            <NavLink exact to="/mesAnnonces" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="paper" style={{ color: "#55d3e8" }}>
+                Mes Annonces
+              </CDBSidebarMenuItem>
+            </NavLink>
+
+
+           
             <NavLink exact to="/ajouterAnnonce" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="plus" style={{ color: "#55d3e8" }}>
                 {" "}

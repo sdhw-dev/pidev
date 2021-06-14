@@ -74,6 +74,14 @@ const ajouterNote = async (idAnnonce, commentaire, note) => {
   return user;
 };
 
+const supprimerAnnonce = async (annonceId) => {
+  console.log(annonceId);
+  annonceModel.findById(annonceId).then((res) => {
+    res.delete();
+  });
+};
+
+exports.supprimerAnnonce = supprimerAnnonce;
 exports.ajouterNote = ajouterNote;
 exports.addAnnonce = addAnnonce;
 exports.addImage = addImage;

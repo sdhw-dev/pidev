@@ -30,6 +30,164 @@ export default class MyTroc extends React.Component {
       .catch((error) => console.log(error));
   };
 
+  buttons = () => {
+    if (localStorage.getItem("user")) {
+      return (
+        <div class="row">
+          <div
+            className=" col-md-2 "
+            style={{
+              display: "inline-flex",
+              borderRadius: 25,
+              overflow: "hidden",
+              backgroundcolor: "cadetblue",
+            }}
+          ></div>
+
+          <div
+            className="col-md-2 "
+            style={{
+              display: "inline-flex",
+              borderRadius: 25,
+              overflow: "hidden",
+            }}
+          >
+            <Route
+              render={({ history }) => (
+                <Ripples color={"yellow"}>
+                  <button
+                    to="/proposertroc"
+                    type="button"
+                    className="btn btn-primary"
+                    style={{ width: "350px", height: "50px" }}
+                    onClick={() => {
+                      history.push("/proposertroc/" + this.state.troc._id);
+                    }}
+                  >
+                    Demander
+                  </button>
+                </Ripples>
+              )}
+            />
+          </div>
+          <div
+            className=" col-md-2"
+            style={{
+              display: "inline-flex",
+              borderRadius: 25,
+              overflow: "hidden",
+            }}
+          >
+            <Route
+              render={({ history }) => (
+                <Ripples color={"yellow"}>
+                  <button
+                    to="/Avis"
+                    type="button"
+                    className="btn btn-primary"
+                    style={{ width: "350px", height: "50px" }}
+                    onClick={() => {
+                      axios.post("/ajouterAuxFavoris", {
+                        idAnnonce: this.state.idAnnonce,
+                        idUser: JSON.parse(localStorage.getItem("user"))._id,
+                      });
+                    }}
+                  >
+                    Ajouter aux favoris
+                  </button>
+                </Ripples>
+              )}
+            />
+          </div>
+          <div
+            className=" col-md-3"
+            style={{
+              display: "inline-flex",
+              borderRadius: 25,
+              overflow: "hidden",
+            }}
+          >
+            <Route
+              render={({ history }) => (
+                <Ripples color={"yellow"}>
+                  <button
+                    to="/ProfilTroqueur/:id"
+                    type="button"
+                    className="btn btn-primary"
+                    style={{ width: "350px", height: "50px" }}
+                    onClick={() => {
+                      axios.post("/ajouterAuxContacts", {
+                        idContact: this.state.idTroqueur,
+                        idUser: JSON.parse(localStorage.getItem("user"))._id,
+                      });
+                    }}
+                  >
+                    Ajouter aux contactes
+                  </button>
+                </Ripples>
+              )}
+            />
+          </div>
+          <div
+            className=" col-md-3"
+            style={{
+              display: "inline-flex",
+              borderRadius: 25,
+              overflow: "hidden",
+            }}
+          >
+            <Route
+              render={({ history }) => (
+                <Ripples color={"yellow"}>
+                  <button
+                    to="/ProfilTroqueur/:id"
+                    type="button"
+                    className="btn btn-primary"
+                    style={{ width: "350px", height: "50px" }}
+                    onClick={() => {
+                      history.push("/ProfilTroqueur/" + this.state.troc.idUser);
+                    }}
+                  >
+                    Consulter le profil du troqueur
+                  </button>
+                </Ripples>
+              )}
+            />
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className=" col-md-3"
+          style={{
+            display: "inline-flex",
+            borderRadius: 25,
+            overflow: "hidden",
+          }}
+        >
+          <Route
+            render={({ history }) => (
+              <Ripples color={"yellow"}>
+                <button
+                  to="/ProfilTroqueur/:id"
+                  type="button"
+                  className="btn btn-primary"
+                  style={{ width: "350px", height: "50px" }}
+                  onClick={() => {
+                    history.push("/ProfilTroqueur/" + this.state.troc.idUser);
+                  }}
+                >
+                  Consulter le profil du troqueur
+                </button>
+              </Ripples>
+            )}
+          />
+        </div>
+      );
+    }
+  };
+
   render() {
     return (
       <div className="troc" style={{ backgroundColor: "#ABD0BE" }}>
@@ -84,154 +242,7 @@ export default class MyTroc extends React.Component {
 
                 <br />
                 <br />
-                <div class="row">
-                  <div
-                    className=" col-md-2 "
-                    style={{
-                      display: "inline-flex",
-                      borderRadius: 25,
-                      overflow: "hidden",
-                      backgroundcolor: "cadetblue",
-                    }}
-                  >
-                    <Route
-                      render={({ history }) => (
-                        <Ripples color={"yellow"}>
-                          <button
-                            to="/demandertroc"
-                            type="button"
-                            className="btn btn-primary"
-                            style={{ width: "350px", height: "50px" }}
-                            onClick={() => {
-                              history.push(
-                                "/demandertroc/" + this.state.troc._id
-                              );
-                            }}
-                          >
-                            Demander
-                          </button>
-                        </Ripples>
-                      )}
-                    />
-                  </div>
-
-                  <div
-                    className="col-md-2 "
-                    style={{
-                      display: "inline-flex",
-                      borderRadius: 25,
-                      overflow: "hidden",
-                    }}
-                  >
-                    <Route
-                      render={({ history }) => (
-                        <Ripples color={"yellow"}>
-                          <button
-                            to="/proposertroc"
-                            type="button"
-                            className="btn btn-primary"
-                            style={{ width: "350px", height: "50px" }}
-                            onClick={() => {
-                              history.push(
-                                "/proposertroc/" + this.state.troc._id
-                              );
-                            }}
-                          >
-                            Proposer
-                          </button>
-                        </Ripples>
-                      )}
-                    />
-                  </div>
-                  <div
-                    className=" col-md-2"
-                    style={{
-                      display: "inline-flex",
-                      borderRadius: 25,
-                      overflow: "hidden",
-                    }}
-                  >
-                    <Route
-                      render={({ history }) => (
-                        <Ripples color={"yellow"}>
-                          <button
-                            to="/Avis"
-                            type="button"
-                            className="btn btn-primary"
-                            style={{ width: "350px", height: "50px" }}
-                            onClick={() => {
-                              axios.post("/ajouterAuxFavoris", {
-                                idAnnonce: this.state.idAnnonce,
-                                idUser: JSON.parse(localStorage.getItem("user"))
-                                  ._id,
-                              });
-                            }}
-                          >
-                            Ajouter aux favoris
-                          </button>
-                        </Ripples>
-                      )}
-                    />
-                  </div>
-                  <div
-                    className=" col-md-3"
-                    style={{
-                      display: "inline-flex",
-                      borderRadius: 25,
-                      overflow: "hidden",
-                    }}
-                  >
-                    <Route
-                      render={({ history }) => (
-                        <Ripples color={"yellow"}>
-                          <button
-                            to="/ProfilTroqueur/:id"
-                            type="button"
-                            className="btn btn-primary"
-                            style={{ width: "350px", height: "50px" }}
-                            onClick={() => {
-                              axios.post("/ajouterAuxContacts", {
-                                idContact: this.state.idTroqueur,
-                                idUser: JSON.parse(localStorage.getItem("user"))
-                                  ._id,
-                              });
-                            }}
-                          >
-                            Ajouter aux contactes
-                          </button>
-                        </Ripples>
-                      )}
-                    />
-                  </div>
-                  <div
-                    className=" col-md-3"
-                    style={{
-                      display: "inline-flex",
-                      borderRadius: 25,
-                      overflow: "hidden",
-                    }}
-                  >
-                    <Route
-                      render={({ history }) => (
-                        <Ripples color={"yellow"}>
-                          <button
-                            to="/ProfilTroqueur/:id"
-                            type="button"
-                            className="btn btn-primary"
-                            style={{ width: "350px", height: "50px" }}
-                            onClick={() => {
-                              history.push(
-                                "/ProfilTroqueur/" + this.state.troc.idUser
-                              );
-                            }}
-                          >
-                            Consulter le profil du troqueur
-                          </button>
-                        </Ripples>
-                      )}
-                    />
-                  </div>
-                </div>
+                <this.buttons />
               </form>
             </div>
           </div>

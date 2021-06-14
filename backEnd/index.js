@@ -42,8 +42,7 @@ app.all("/connexion", (req, res) => {
 
 app.all("/addUser", (req, res) => {
   let newUser = req.body;
-  users.addUser(newUser);
-  users.exists(user).then((result) => res.json(result));
+  res.json(users.addUser(newUser));
 });
 const PORT = process.env.PORT || 6700;
 
@@ -255,7 +254,16 @@ app.get("/supprimerFavoris", async (req, res) => {
   let annonceId = req.query.annonceId;
   await users.supprimerFavoris(userId, annonceId);
 });
+app.get("/supprimerContact", async (req, res) => {
+  let userId = req.query.id;
+  let annonceId = req.query.annonceId;
+  await users.supprimerContact(userId, annonceId);
+});
 
+app.get("/supprimerAnnonces", async (req, res) => {
+  let userId = req.query.id;
+  await annonces.supprimerAnnonce(userId);
+});
 app.get("/getDescriptionAnnonce", (req, res) => {
   annonces.getAnnonce(req.query.id).then((annonce) => {
     console.log(annonce.description);
@@ -280,6 +288,20 @@ app.post("/noterTroc", (req, res) => {
     users.ajouterNote(user, note);
   });
   res.send();
+});
+
+app.get("/supprimerAnnonce", (req, res) => {
+  let idAnnonce = req.query.id;
+  annonces.supprimerAnnonce(idAnnonce);
+});
+
+app.get("/getAnnoncesUser", (req, res) => {
+  let filtre = {
+    idUser: req.query.id,
+  };
+  annonces.getAnnonces(filtre).then((result) => {
+    res.json(result);
+  });
 });
 
 /*app.get("/*", (req, res) => {

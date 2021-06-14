@@ -26,37 +26,41 @@ class mesFavoris extends Component {
     return (
       <div className="wrapper">
         {this.state.getListeFavoris.map((service) => {
-          return (
-            <div className="card">
+          if (service) {
+            return (
               <div className="card">
-                <img src={"/getImage?path=" + service.image} />
-                <h2 className="card__title">{service.titre}</h2>
-                <p className="card__description">{service.description}</p>
+                <div className="card">
+                  <img src={"/getImage?path=" + service.image} />
+                  <h2 className="card__title">{service.titre}</h2>
+                  <p className="card__description">{service.description}</p>
+                </div>
+                <button
+                  className="card__btn"
+                  onClick={() => {
+                    axios.get(
+                      "/supprimerFavoris?id=" +
+                        JSON.parse(localStorage.getItem("user"))._id +
+                        "&annonceId=" +
+                        service._id
+                    );
+                    const index = this.state.getListeFavoris.indexOf(service);
+                    if (index > -1) {
+                      let liste = this.state.getListeFavoris;
+                      liste.splice(index, 1);
+                      console.log(liste);
+                      this.setState({
+                        getListeFavoris: liste,
+                      });
+                    }
+                  }}
+                >
+                  Supprimer{" "}
+                </button>
               </div>
-              <button
-                className="card__btn"
-                onClick={() => {
-                  axios.get(
-                    "/supprimerFavoris?id=" +
-                      JSON.parse(localStorage.getItem("user"))._id +
-                      "&annonceId=" +
-                      service._id
-                  );
-                  const index = this.state.getListeFavoris.indexOf(service);
-                  if (index > -1) {
-                    let liste = this.state.getListeFavoris;
-                    liste.splice(index, 1);
-                    console.log(liste);
-                    this.setState({
-                      getListeFavoris: liste,
-                    });
-                  }
-                }}
-              >
-                Supprimer{" "}
-              </button>
-            </div>
-          );
+            );
+          } else {
+            return;
+          }
         })}
       </div>
     );

@@ -4,7 +4,7 @@ import Footer from "../Footer";
 import "../../App.css";
 import { Component } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 class mesContacts extends Component {
   state = {
@@ -84,26 +84,45 @@ class mesContacts extends Component {
                                 <p class="card-text">
                                   Adresse : {contact.adresse.adresse}
                                 </p>
-                                <Link to={'/ProfilTroqueur/'+contact._id} className='nav-links' >
-                                      Consulter le profil du troqueur
+                                <Link
+                                  to={"/ProfilTroqueur/" + contact._id}
+                                  className="nav-links"
+                                >
+                                  Consulter le profil du troqueur
                                 </Link>
                                 <button
-                          className="card__btn"
-                         
-                          
-                        >
-                          Supprimer{" "}
-                    </button>
-                              
+                                  className="card__btn"
+                                  onClick={() => {
+                                    axios.get(
+                                      "/supprimerContact?id=" +
+                                        JSON.parse(localStorage.getItem("user"))
+                                          ._id +
+                                        "&annonceId=" +
+                                        contact._id
+                                    );
+                                    const index =
+                                      this.state.getListeContacts.indexOf(
+                                        contact
+                                      );
+                                    if (index > -1) {
+                                      let liste = this.state.getListeContacts;
+                                      liste.splice(index, 1);
+                                      console.log(liste);
+                                      this.setState({
+                                        getListeContacts: liste,
+                                      });
+                                    }
+                                  }}
+                                >
+                                  Supprimer{" "}
+                                </button>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-               
                   </div>
-                
                 </div>
               </section>
             </div>

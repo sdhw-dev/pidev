@@ -51,7 +51,6 @@ class EnvoyerMessage extends Component {
                   <input
                     id="submit"
                     name="submit"
-                    type="submit"
                     value="Envoyer"
                     class="btn btn-primary"
                     onClick={() => {

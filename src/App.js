@@ -22,6 +22,8 @@ import Note from "./components/pages/Note";
 import DemandesReçues from "./components/pages/DemandesReçues";
 import mesFavoris from "./components/pages/mesFavoris";
 import mesContacts from "./components/pages/mesContacts";
+import mesAnnonces from "./components/pages/mesAnnonces";
+import axios from "axios";
 export default class App extends Component {
   state = {
     isConnected: false,
@@ -63,7 +65,10 @@ export default class App extends Component {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       console.log(loggedInUser);
-      this.setUser(JSON.parse(loggedInUser));
+      //this.setUser(JSON.parse(loggedInUser));
+      axios.get("/getUser?id=" + JSON.parse(loggedInUser)._id).then((res) => {
+        this.setUser(res.data);
+      });
     }
   };
 
@@ -112,7 +117,7 @@ export default class App extends Component {
           </Route>
           <Route path="/mesMessages" component={mesMessages} />
           <Route path="/mesTrocs" component={mesTrocs} />
-          
+          <Route path="/mesAnnonces" component={mesAnnonces} />
           <Route path="/ProfilTroqueur/:id" component={ProfilTroqueur} />
           <Route path="/MyTroc/:id" component={Troc} />
           <Route path="/Avis" component={Avis} />
@@ -124,6 +129,7 @@ export default class App extends Component {
           <Route path="/DemandesReçues" component={DemandesReçues} />
           <Route path="/mesFavoris" component={mesFavoris} />
           <Route path="/mesContacts" component={mesContacts} />
+         
         </Switch>
       </Router>
     );
