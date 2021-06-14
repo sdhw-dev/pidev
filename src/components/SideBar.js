@@ -80,15 +80,7 @@ const Sidebar = () => {
               </CDBSidebarMenuItem>
             </NavLink>
 
-            <NavLink exact to="/calendrier" activeClassName="activeClicked">
-              <CDBSidebarMenuItem
-                icon="calculator"
-                style={{ color: "#55d3e8" }}
-              >
-                {" "}
-                Calendrier{" "}
-              </CDBSidebarMenuItem>
-            </NavLink>
+          
             <NavLink exact to="/ajouterAnnonce" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="plus" style={{ color: "#55d3e8" }}>
                 {" "}

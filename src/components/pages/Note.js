@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import "../demander.css";
 import Footer from "../Footer";
-import { Route } from "react-router-dom";
-import axios from "axios";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import TextField from "@material-ui/core/TextField";
+
 
 class Note extends Component {
   constructor() {
@@ -38,7 +35,7 @@ class Note extends Component {
             action="index.php"
           >
             <div class="form-group ">
-              <h6 style={{ marginLeft: "15px" }}>Troqueur :</h6>
+              <h6 style={{ marginLeft: "15px" }}>Troqueur :</h6> 
               <h6 style={{ marginLeft: "15px" }}>Pour son troc :</h6>
               <form>
                 <h6 style={{ marginLeft: "15px" }}>
@@ -70,7 +67,9 @@ class Note extends Component {
                 ></textarea>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group"> 
+                  
+
               <div class="col-sm-10 col-sm-offset-2">
                 <input
                   id="submit"
@@ -81,7 +80,9 @@ class Note extends Component {
                   style={{ marginLeft: "450px" }}
                 />
               </div>
+          
             </div>
+      
           </form>
         </div>
 

@@ -4,7 +4,7 @@ import "./myTroc.css";
 import { Route } from "react-router-dom";
 import Ripples from "react-ripples";
 import axios from "axios";
-import demander from "./demander";
+
 import Avis from "./Avis";
 
 export default class MyTroc extends React.Component {

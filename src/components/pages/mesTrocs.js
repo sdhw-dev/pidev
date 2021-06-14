@@ -4,6 +4,7 @@ import Footer from "../Footer";
 import "../../App.css";
 import axios from "axios";
 import "./mesTrocs.css";
+import { Link } from 'react-router-dom';
 
 class mesTrocs extends React.Component {
 
@@ -91,6 +92,7 @@ class mesTrocs extends React.Component {
                                 <i class="fa fa-plus"></i>
                               </a>
                             </div>
+                            
                           </div>
                         </div>
                         <div class="backside">
@@ -109,20 +111,22 @@ class mesTrocs extends React.Component {
                                 {troc.titreAnnonceDemandé}
                               </h4>
                               <p class="card-text">{"description"}</p>
-                              <a
-                                href="https://www.fiverr.com/share/qb8D02"
-                                class="btn btn-primary btn-sm"
-                              >
-                                <i class="fa fa-plus"></i>
-                              </a>
+                          
+                                <Link to="/noterTroc/:id" className='nav-links' >
+                                      Terminer
+                                </Link>
+                              
                             </div>
                           </div>
+                        
                         </div>
+                        
                       </div>
                     </div>
                   </div>
                 );
               })}
+               
             </div>
           </div>
         </section>

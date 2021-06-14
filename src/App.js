@@ -11,7 +11,6 @@ import Navbar from "./components/Navbar";
 import NavbarServices from "./components/NavbarServices";
 import ModifProfil from "./components/pages/ModifProfil";
 import mesMessages from "./components/pages/mesMessages";
-import Calendrier from "./components/pages/Calendrier";
 import mesTrocs from "./components/pages/mesTrocs";
 import ProfilTroqueur from "./components/pages/profilTroqueur";
 import Troc from "./components/pages/MyTroc";
@@ -113,7 +112,7 @@ export default class App extends Component {
           </Route>
           <Route path="/mesMessages" component={mesMessages} />
           <Route path="/mesTrocs" component={mesTrocs} />
-          <Route path="/calendrier" component={Calendrier} />
+          
           <Route path="/ProfilTroqueur/:id" component={ProfilTroqueur} />
           <Route path="/MyTroc/:id" component={Troc} />
           <Route path="/Avis" component={Avis} />
