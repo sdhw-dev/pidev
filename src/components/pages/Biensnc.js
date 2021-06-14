@@ -53,8 +53,6 @@ class Biensnc extends React.Component {
     console.warn(this.state);
   }
 
- 
-
   ligneOfCards = (L) => {
     return (
       <ul className="cards__items">
@@ -75,33 +73,30 @@ class Biensnc extends React.Component {
 
   cards = () => {
     return (
-    
-            <div className="wrapper">
-              {this.state.annonces.map((service) => {
-                return (
-                  <div className="card">
-                    <div className="card" style={{height:"380px"}}>
-                      <img src={"/getImage?path=" + service.image} />
-                      <h2 className="card__title">{service.titre}</h2>
-                      <p className="card__description">{service.description}</p>
-                    </div>
-                    <Route
-                      render={({ history }) => (
-                        <button
-                          className="card__btn"
-                          to={"/MyTroc/" + service._id}
-                          onClick={() => history.push("/MyTroc/" + service._id)}
-                        >
-                          plus d'informations{" "}
-                        </button>
-                      )}
-                    />
-                  </div>
-                );
-              })}
+      <div className="wrapper">
+        {this.state.annonces.map((service) => {
+          return (
+            <div className="card">
+              <div className="card" style={{ height: "380px" }}>
+                <img src={"/getImage?path=" + service.image} />
+                <h2 className="card__title">{service.titre}</h2>
+                <p className="card__description">{service.description}</p>
+              </div>
+              <Route
+                render={({ history }) => (
+                  <button
+                    className="card__btn"
+                    to={"/MyTroc/" + service._id}
+                    onClick={() => history.push("/MyTroc/" + service._id)}
+                  >
+                    plus d'informations{" "}
+                  </button>
+                )}
+              />
             </div>
-       
-      
+          );
+        })}
+      </div>
     );
   };
   cardServices = () => {
@@ -227,13 +222,11 @@ class Biensnc extends React.Component {
     }
   };
 
-
   render() {
     return (
       <div>
         <div className="row">
           <div className="col-md-6 offset-md-3">
-          
             <br />
             <this.categories />
 
@@ -248,12 +241,13 @@ class Biensnc extends React.Component {
                 </button>
               </div>
             </div>
-            
           </div>
         </div>
-       
-        <div > <this.cards /> </div>
-         
+
+        <div>
+          {" "}
+          <this.cards />{" "}
+        </div>
       </div>
     );
   }

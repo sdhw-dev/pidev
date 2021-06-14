@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import axios from "axios";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import TextField from "@material-ui/core/TextField";
+import { Link } from 'react-router-dom';
 
 class Proposer extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class Proposer extends Component {
       },
     };
   }
+  
 
   componentWillMount = () => {
     axios
@@ -115,6 +117,8 @@ class Proposer extends Component {
             </div>
             <div class="form-group">
               <div class="col-sm-10 col-sm-offset-2">
+<<<<<<< HEAD
+              
                 <input
                   id="submit"
                   name="submit"
@@ -124,6 +128,7 @@ class Proposer extends Component {
                     this.state.demande.idDemandeur = JSON.parse(
                       localStorage.getItem("user")
                     )._id;
+                    
                     this.state.demande.idProposeur =
                       this.state.infosTroqueur.idTroqueur;
                     this.state.demande.idAnnonceConcerné =
@@ -149,14 +154,67 @@ class Proposer extends Component {
                       .catch((error) => console.log(error));
                   }}
                   style={{ marginLeft: "450px" }}
+=======
+                <Route
+                  render={({ history }) => (
+                    <input
+                      id="submit"
+                      name="submit"
+                      value="Envoyer"
+                      class="btn btn-primary"
+                      onClick={() => {
+                        this.state.demande.idDemandeur = JSON.parse(
+                          localStorage.getItem("user")
+                        )._id;
+                        this.state.demande.idProposeur =
+                          this.state.infosTroqueur.idTroqueur;
+                        this.state.demande.idAnnonceConcerné =
+                          this.state.infosTroqueur.idAnnonce;
+                        this.state.demande.titreAnnonceDemandé =
+                          this.state.infosTroqueur.troc.titre;
+                        this.state.demande.nomDemandeur =
+                          JSON.parse(localStorage.getItem("user")).nom +
+                          " " +
+                          JSON.parse(localStorage.getItem("user")).prenom;
+                        for (let i = 0; i < this.state.listeTrocs.length; i++) {
+                          if (
+                            this.state.listeTrocs[i]._id ===
+                            this.state.demande.idAnnonceProposé
+                          ) {
+                            this.state.demande.titreAnnonceProposé =
+                              this.state.listeTrocs[i].titre;
+                          }
+                        }
+                        axios
+                          .post("/enregistrerDemande", this.state.demande)
+                          .then((res) => {
+                            history.push(
+                              "/Mytroc/" + this.state.demande.idAnnonceConcerné
+                            );
+                          })
+                          .catch((error) => console.log(error));
+                      }}
+                      style={{ marginLeft: "450px" }}
+                    />
+                  )}
+>>>>>>> 0a2bc25e1dc02b4e4636eca968a6d8c9ff30d2f4
                 />
+               
+                  
+
+                
+                 
+                
+                
               </div>
             </div>
           </form>
         </div>
+  
 
         <Footer />
       </div>
+    	
     );
   }
 }

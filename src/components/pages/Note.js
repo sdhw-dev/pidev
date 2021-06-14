@@ -3,6 +3,7 @@ import "../demander.css";
 import Footer from "../Footer";
 import axios from "axios";
 
+
 class Note extends Component {
   constructor(props) {
     super(props);
@@ -39,18 +40,36 @@ class Note extends Component {
             action="index.php"
           >
             <div class="form-group ">
-              <h6 style={{ marginLeft: "15px" }}>Troqueur :</h6> 
+              <h6 style={{ marginLeft: "15px" }}>Troqueur :</h6>
               <h6 style={{ marginLeft: "15px" }}>Pour son troc :</h6>
               <form>
                 <h6 style={{ marginLeft: "15px" }}>
                   Note :
-                  <input
-                    type="text"
-                    name="name"
-                    onChange={(event) =>
-                      Number((this.state.note = event.target.value))
-                    }
-                  />{" "}
+                  <select
+                      type="text"
+                      name="name"
+                      onChange={(event) =>
+                        Number((this.state.note = event.target.value))
+                      }
+                  >{" "}
+                    <option selected value="10">
+                      10
+                    </option>
+
+                    <option value="9">9</option>
+                    <option value="8">8</option>
+                    <option value="7">7</option>
+                    <option value="6">6</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                    
+                  </select>
+                  
+                
                   /10
                 </h6>
               </form>
@@ -71,9 +90,7 @@ class Note extends Component {
                 ></textarea>
               </div>
             </div>
-            <div class="form-group"> 
-                  
-
+            <div class="form-group">
               <div class="col-sm-10 col-sm-offset-2">
                 <input
                   id="submit"
@@ -86,9 +103,7 @@ class Note extends Component {
                   style={{ marginLeft: "450px" }}
                 />
               </div>
-          
             </div>
-      
           </form>
         </div>
 

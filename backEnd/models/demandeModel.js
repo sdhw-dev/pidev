@@ -4,7 +4,7 @@ mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
 
 mongoose
-  .connect("mongodb+srv://oumaima:oumaimatahiri@cluster0.hm988.mongodb.net/app?retryWrites=true&w=majority", { useNewUrlParser: true })
+  .connect("mongodb://localhost:27017/app", { useNewUrlParser: true })
   .then(() => {
     console.log("Demandes :connected to db");
   })
@@ -22,7 +22,9 @@ const demandeSchema = new mongoose.Schema(
     message: String,
     nbrePoints: Number,
     titreAnnonceDemandé: String,
+    descriptionAnnonceDemandé: String,
     titreAnnonceProposé: String,
+    descriptionAnnonceProposé: String,
     nomDemandeur: String,
     date: String,
     etat: Number,

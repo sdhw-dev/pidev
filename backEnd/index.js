@@ -231,6 +231,7 @@ app.get("/getTrocs", (req, res) => {
 
 app.post("/enregistrerDemande", (req, res) => {
   demandes.ajouterDemande(JSON.parse(JSON.stringify(req.body)));
+  res.send();
 });
 
 app.get("/getListeFavoris", (req, res) => {
@@ -295,11 +296,30 @@ app.get("/supprimerAnnonce", (req, res) => {
   annonces.supprimerAnnonce(idAnnonce);
 });
 
+app.post("/setEtat", (req, res) => {
+  let idDemande = req.body.idDemande;
+  let idUser = req.body.idUser;
+  console.log(idDemande);
+  demandes.updateEtat(idDemande, idUser);
+  res.send();
+});
+
 app.get("/getAnnoncesUser", (req, res) => {
   let filtre = {
     idUser: req.query.id,
   };
   annonces.getAnnonces(filtre).then((result) => {
+    res.json(result);
+  });
+});
+
+app.get("/infosTrocsTermine", (req, res) => {
+  let idUser = req.query.id;
+});
+
+app.get("/getListeCommentaire", (req, res) => {
+  let idAnnonce = req.query.id;
+  annonces.getListeCommentaire(idAnnonce).then((result) => {
     res.json(result);
   });
 });
