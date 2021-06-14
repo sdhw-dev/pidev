@@ -295,6 +295,13 @@ app.get("/supprimerAnnonce", (req, res) => {
   annonces.supprimerAnnonce(idAnnonce);
 });
 
+app.post("/setEtat", (req, res) => {
+  let idDemande = req.body.idDemande;
+  let idUser = req.body.idUser;
+  demandes.updateEtat(idDemande, idUser);
+  res.send();
+});
+
 app.get("/getAnnoncesUser", (req, res) => {
   let filtre = {
     idUser: req.query.id,
