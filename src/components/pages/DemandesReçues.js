@@ -30,37 +30,40 @@ class DemandesReçues extends Component {
         {this.state.listeDemandes.map((demande) => {
           return (
             <div>
-              <div class="form-group">
-                <div style={{ fontSize: "25px" }} for="textarea">
+              <div style={{padding:"9px" ,backgroundColor:"rgb(202, 207, 210)" , fontFamily:"calibri" , fontSize:"20px"}}>
+                <div style={{marginTop:"50px" }}>
+                <pre>
+                  
                   Demande reçue par :
                   <Link
-                    style={{ fontSize: "25px", color: "blue" }}
                     to={"/ProfilTroqueur/" + demande.idDemandeur}
                   >
                     {demande.nomDemandeur}
                   </Link>
+                  <hr />
                   Troc demandé :
                   <Link
-                    style={{ fontSize: "25px", color: "gray" }}
+                   
                     to={"/MyTroc/" + demande.idAnnonceConcerné}
                   >
                     {demande.titreAnnonceDemandé}
                   </Link>
+                  <hr />
                   En échange de :
                   <Link
-                    style={{ fontSize: "25px", color: "gray" }}
+                   
                     to={"/MyTroc/" + demande.idAnnonceProposé}
                   >
                     {demande.titreAnnonceProposé}
                   </Link>
+                  </pre>
                 </div>
 
                 <hr />
-                <div style={{ backgroundColor: "white" }}>
-                  {demande.message}
-                </div>
+                <p>&thinsp;&thinsp;{demande.message}</p>
+               
               </div>
-              <button
+              <button style={{ marginRight:"200px"}}
                 className="btn btn-sm btn-primary pull-right"
                 onClick={() => {
                   axios.get("/accepterDemande?id=" + demande._id);
@@ -68,8 +71,8 @@ class DemandesReçues extends Component {
               >
                 Accepter
               </button>
-              )
-              <button
+              
+              <button style={{ marginRight:"50px"}}
                 className="btn btn-sm btn-primary pull-right"
                 onClick={() => {
                   axios.get("/refuserDemande?id=" + demande._id);
@@ -77,7 +80,7 @@ class DemandesReçues extends Component {
               >
                 Refuser
               </button>
-              )
+              
             </div>
           );
         })}

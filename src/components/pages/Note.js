@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../demander.css";
 import Footer from "../Footer";
-
+import axios from "axios";
 
 class Note extends Component {
   constructor(props) {
