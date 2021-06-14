@@ -2,12 +2,12 @@ import React from "react";
 import Sidebar from "../SideBar";
 import Footer from "../Footer";
 import "../../App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import "./mesTrocs.css";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 class mesTrocs extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +19,7 @@ class mesTrocs extends React.Component {
       nom: "",
       idAnnonce: "",
       idTroqueur: "",
-      listeTrocs: [],
+      listeTrocs: [[], [], [], []],
     };
   }
 
@@ -44,6 +44,33 @@ class mesTrocs extends React.Component {
     console.warn(this.state);
   }
 
+  boutonTerminé = (id, i, idAnnonce) => {
+    if (!i) {
+      return (
+        <Route
+          render={({ history }) => (
+            <button
+              className="card__btn"
+              onClick={() => {
+                axios
+                  .post("/setEtat", {
+                    idUser: JSON.parse(localStorage.getItem("user"))._id,
+                    idDemande: id,
+                  })
+                  .then(() => {
+                    history.push("/noterTroc/" + idAnnonce);
+                  });
+              }}
+            >
+              terminer{" "}
+            </button>
+          )}
+        />
+      );
+    } else {
+      return null;
+    }
+  };
   component = () => {
     return (
       <div>
@@ -60,7 +87,7 @@ class mesTrocs extends React.Component {
         <section id="team" class="pb-5">
           <div class="container">
             <div class="row">
-              {this.state.listeTrocs.map((troc) => {
+              {this.state.listeTrocs[1].map((troc) => {
                 return (
                   <div class="col-xs-12 col-sm-6 col-md-6">
                     <div class="image-flip">
@@ -81,10 +108,9 @@ class mesTrocs extends React.Component {
                                 {troc.titreAnnonceDemandé}
                               </h4>
                               <p class="card-text">
-                                Description du troc:
-                                {this.state.troc.description}Lorem ipsum dolor
-                                sit amet, consectetur adipiscing elit
+                                {troc.descriptionAnnonceDemandé}
                               </p>
+
                               <a
                                 href="https://www.fiverr.com/share/qb8D02"
                                 class="btn btn-primary btn-sm"
@@ -92,7 +118,6 @@ class mesTrocs extends React.Component {
                                 <i class="fa fa-plus"></i>
                               </a>
                             </div>
-                            
                           </div>
                         </div>
                         <div class="backside">
@@ -108,25 +133,114 @@ class mesTrocs extends React.Component {
                                 />
                               </p>
                               <h4 class="card-title">
-                                {troc.titreAnnonceDemandé}
+                                {troc.titreAnnonceProposé}
                               </h4>
-                              <p class="card-text">{"description"}</p>
-                          
-                                <Link to="/noterTroc/:id" className='nav-links' >
-                                      Terminer
-                                </Link>
-                              
+                              <p class="card-text">
+                                {troc.descriptionAnnonceProposé}
+                              </p>
+                              <p class="card-text">
+                                Etat :{" "}
+                                {troc.etat == 4 || troc.etat == 2
+                                  ? "terminé"
+                                  : "en cours"}
+                              </p>
+                              {this.boutonTerminé(
+                                troc._id,
+                                troc.etat == 4 || troc.etat == 2,
+                                troc.idAnnonceConcerné
+                              )}
+
+                              <a
+                                href="https://www.fiverr.com/share/qb8D02"
+                                class="btn btn-primary btn-sm"
+                              >
+                                <i class="fa fa-plus"></i>
+                              </a>
                             </div>
                           </div>
-                        
                         </div>
-                        
                       </div>
                     </div>
                   </div>
                 );
               })}
-               
+
+              {this.state.listeTrocs[0].map((troc) => {
+                return (
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="image-flip">
+                      <div class="mainflip flip-0">
+                        <div class="frontside">
+                          <div class="card">
+                            <div class="card-body text-center">
+                              <p>
+                                <img
+                                  class=" img-fluid"
+                                  src={
+                                    "/getImageAnnonce?id=" +
+                                    troc.idAnnonceProposé
+                                  }
+                                />
+                              </p>
+                              <h4 class="card-title">
+                                {troc.titreAnnonceProposé}
+                              </h4>
+                              <p class="card-text">
+                                Description du troc:
+                                {this.state.troc.description}Lorem ipsum dolor
+                                sit amet, consectetur adipiscing elit
+                              </p>
+                              <a
+                                href="https://www.fiverr.com/share/qb8D02"
+                                class="btn btn-primary btn-sm"
+                              >
+                                <i class="fa fa-plus"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="backside">
+                          <div class="card">
+                            <div class="card-body text-center">
+                              <p>
+                                <img
+                                  class=" img-fluid"
+                                  src={
+                                    "/getImageAnnonce?id=" +
+                                    troc.idAnnonceConcerné
+                                  }
+                                />
+                              </p>
+                              <h4 class="card-title">
+                                {troc.titreAnnonceDemandé}
+                              </h4>
+                              <p class="card-text">{"description"}</p>
+                              <p class="card-text">
+                                Etat :{" "}
+                                {troc.etat == 4 || troc.etat == 3
+                                  ? "terminé"
+                                  : "en cours"}
+                              </p>
+                              {this.boutonTerminé(
+                                troc._id,
+                                troc.etat == 4 || troc.etat == 3,
+                                troc.idAnnonceConcerné
+                              )}
+
+                              <a
+                                href="https://www.fiverr.com/share/qb8D02"
+                                class="btn btn-primary btn-sm"
+                              >
+                                <i class="fa fa-plus"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -177,6 +291,5 @@ class mesTrocs extends React.Component {
     );
   }
 }
-
 
 export default mesTrocs;

@@ -25,7 +25,7 @@ class EspaceP extends Component {
           <div style={{ flex: "1", flexDirection: "row" }}>
             <div class="container emp-profile">
               <form method="post">
-                <div class="row" style={{ marginTop: "70px" }}>
+                <div class="row" style={{ marginTop: "70px"  }}>
                   <div class="col-md-4">
                     <img
                       src={
