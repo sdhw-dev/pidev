@@ -78,12 +78,7 @@ class EspaceP extends Component {
                         <li class="list-group-item text-muted">
                           Activité <i class="fa fa-dashboard fa-1x"></i>
                         </li>
-                        <li class="list-group-item text-right">
-                          <span class="pull-left">
-                            <strong>Trocs complets</strong>
-                          </span>{" "}
-                          10
-                        </li>
+                        
                         <li class="list-group-item text-right">
                           <span class="pull-left">
                             <strong>Favoris</strong>
@@ -92,12 +87,7 @@ class EspaceP extends Component {
                             ? this.state.user.favoris.length
                             : "0"}
                         </li>
-                        <li class="list-group-item text-right">
-                          <span class="pull-left">
-                            <strong>Trocs en cours</strong>
-                          </span>{" "}
-                          5
-                        </li>
+                       
                         <li class="list-group-item text-right">
                           <span class="pull-left">
                             <strong>Contacts</strong>
